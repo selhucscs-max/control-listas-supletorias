@@ -1619,22 +1619,18 @@ function populateYearSelect(){
 
 // ═══════ RESTAURAR ESTADO DESDE HASH ═══════
 function restoreHashState(){
-  const h = readHash();
-  if(h.tab && document.getElementById('pane-'+h.tab)){
-    STATE.tab = h.tab;
+  // readHash() ya aplica t/y/a/q/f sobre STATE directamente (no devuelve objeto);
+  // aquí solo sincronizamos la UI con lo que quedó en STATE.
+  readHash();
+  if(STATE.tab && document.getElementById('pane-'+STATE.tab)){
     document.querySelectorAll('.pane').forEach(p=>p.classList.remove('active'));
-    document.getElementById('pane-'+h.tab).classList.add('active');
+    document.getElementById('pane-'+STATE.tab).classList.add('active');
     document.querySelectorAll('.bot-btn').forEach(b=>b.classList.remove('active'));
-    const navBtn = document.getElementById('nb-'+h.tab);
+    const navBtn = document.getElementById('nb-'+STATE.tab);
     if(navBtn) navBtn.classList.add('active');
   }
-  if(h.year !== undefined){
-    STATE.year = h.year;
-    const sel = document.getElementById('hdr-year');
-    if(sel) sel.value = h.year || '';
-  }
-  if(h.phase) STATE.phase = h.phase;
-  if(h.area) STATE.area = h.area;
+  const sel = document.getElementById('hdr-year');
+  if(sel) sel.value = (STATE.year && STATE.year!=='all') ? STATE.year : '';
 }
 
 // ═══════ EVENTOS GLOBALES ═══════
