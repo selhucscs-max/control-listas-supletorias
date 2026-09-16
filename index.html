@@ -392,6 +392,9 @@ tbody td{padding:8px 10px}
       <p>Selección, Evaluación y Formación · RRHH</p>
     </div>
     <div class="hdr-actions">
+      <button class="hdr-btn" id="btn-home" title="Volver al inicio" onclick="showPane('resumen', document.getElementById('nb-resumen'))">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      </button>
       <select class="hdr-year" id="hdr-year" title="Año (filtro global)">
         <option value="all">Todos los años</option>
       </select>
@@ -619,6 +622,113 @@ tbody td{padding:8px 10px}
     </div>
   </div>
 
+  <!-- TAB: BÚSQUEDA AVANZADA -->
+  <div class="pane" id="pane-buscar">
+    <div class="filters" style="gap:8px;flex-wrap:wrap">
+      <div class="search-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input class="search-input" id="bs-q" type="text" placeholder="Buscar por categoría, área, dirección o ID…" oninput="renderBuscar()" autocomplete="off">
+      </div>
+      <label>Año:</label>
+      <select id="bs-anio" onchange="renderBuscar()"><option value="all">Todos</option></select>
+      <label>Área:</label>
+      <select id="bs-area" onchange="renderBuscar()">
+        <option value="all">Todas</option>
+        <option value="Gestión / Admin.">Gestión / Admin.</option>
+        <option value="Servicios">Servicios</option>
+        <option value="San. No Facultativo">San. No Facultativo</option>
+        <option value="Fac. Especialistas">Fac. Especialistas</option>
+        <option value="Otros">Otros</option>
+      </select>
+      <label>Fase:</label>
+      <select id="bs-fase" onchange="renderBuscar()">
+        <option value="all">Todas</option>
+        <option value="none">Sin publicar</option>
+        <option value="bases">Bases publicadas</option>
+        <option value="adex">Ad&amp;Ex provisional</option>
+        <option value="prov">Lista provisional</option>
+        <option value="def">Lista definitiva</option>
+      </select>
+      <label>Días s/avance:</label>
+      <select id="bs-idle" onchange="renderBuscar()">
+        <option value="all">Cualquiera</option>
+        <option value="90">&gt; 90 días</option>
+        <option value="180">&gt; 180 días</option>
+        <option value="365">&gt; 365 días</option>
+      </select>
+      <label>Ordenar por:</label>
+      <select id="bs-rank" onchange="renderBuscar()">
+        <option value="pres">Presentados</option>
+        <option value="idle">Días sin avance</option>
+        <option value="count">Año (recientes)</option>
+        <option value="exclRate">Tasa exclusión</option>
+      </select>
+      <button class="btn-sec" id="bs-clear" type="button" style="margin-left:auto" onclick="document.getElementById('bs-q').value='';document.getElementById('bs-anio').value='all';document.getElementById('bs-area').value='all';document.getElementById('bs-fase').value='all';document.getElementById('bs-idle').value='all';document.getElementById('bs-rank').value='pres';renderBuscar();">Limpiar filtros</button>
+    </div>
+
+    <div id="bs-kpis" class="kpis" style="grid-template-columns:repeat(2,1fr)"></div>
+
+    <div class="card">
+      <div class="card-t">Comparativa año a año</div>
+      <div class="card-s">Convocatorias y presentados, sobre los resultados filtrados</div>
+      <div class="chart-w" style="height:220px"><canvas id="bs-chart-evol"></canvas></div>
+    </div>
+
+    <div class="g2">
+      <div class="card">
+        <div class="card-t">Ranking de categorías</div>
+        <div class="card-s">Top 10 según el criterio de orden elegido</div>
+        <div class="chart-w" style="height:280px"><canvas id="bs-chart-rank"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="card-t">Cruce área × fase</div>
+        <div class="card-s">Nº de convocatorias por área y fase actual</div>
+        <div class="chart-w" style="height:280px"><canvas id="bs-chart-cross"></canvas></div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:0">
+      <div class="card-t">Resultados</div>
+      <div class="card-s" id="bs-count-sub">0 convocatorias</div>
+      <div class="tbl-w">
+        <table>
+          <thead><tr><th>Año</th><th>Categoría</th><th>Área</th><th>Dirección</th><th>Fase</th><th>Días s/avance</th><th>Presentados</th><th>Admitidos</th><th>Excluidos</th></tr></thead>
+          <tbody id="bs-table-body"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB: ESTADO DE LAS SUPLES -->
+  <div class="pane" id="pane-estado">
+    <div class="file-chip" id="es-scope" style="margin-bottom:14px"></div>
+    <div id="es-kpis" class="kpis" style="grid-template-columns:repeat(2,1fr)"></div>
+
+    <div class="g2">
+      <div class="card">
+        <div class="card-t">Distribución por fase</div>
+        <div class="card-s">En qué fase se encuentra cada convocatoria</div>
+        <div class="chart-w" style="height:260px"><canvas id="es-chart-fase"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="card-t">Estancadas por área (&gt;180 días)</div>
+        <div class="card-s">Convocatorias sin avance reciente, por colectivo</div>
+        <div class="chart-w" style="height:260px"><canvas id="es-chart-stale"></canvas></div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:0">
+      <div class="card-t">Pendientes de lista definitiva</div>
+      <div class="card-s">Ordenadas por días sin avance (mayor a menor)</div>
+      <div class="tbl-w">
+        <table>
+          <thead><tr><th>Año</th><th>Categoría</th><th>Área</th><th>Dirección</th><th>Fase</th><th>Días s/avance</th></tr></thead>
+          <tbody id="es-table-body"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
 </div><!-- /scroll-area -->
 
 <!-- BOTTOM NAV -->
@@ -642,6 +752,14 @@ tbody td{padding:8px 10px}
   <button class="bot-btn" id="nb-areas" onclick="showPane('areas',this)">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
     <span class="bot-lbl">Áreas</span>
+  </button>
+  <button class="bot-btn" id="nb-buscar" onclick="showPane('buscar',this)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <span class="bot-lbl">Buscar</span>
+  </button>
+  <button class="bot-btn" id="nb-estado" onclick="showPane('estado',this)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+    <span class="bot-lbl">Estado</span>
   </button>
 </nav>
 
@@ -746,6 +864,8 @@ function showPane(id, btn){
     if(id==='gestion') renderGestion();
     if(id==='areas') renderAreas();
     if(id==='resumen') renderResumen();
+    if(id==='buscar') renderBuscar();
+    if(id==='estado') renderEstado();
   }
 }
 
@@ -1058,6 +1178,8 @@ function renderAll(){
     if(id==='categorias') renderCategorias();
     if(id==='gestion') renderGestion();
     if(id==='areas') renderAreas();
+    if(id==='buscar') renderBuscar();
+    if(id==='estado') renderEstado();
   }
 }
 
@@ -1099,7 +1221,6 @@ function renderResumen(){
 
   // Insights inteligentes (múltiples)
   const insights = computeInsights(D);
-  const insightHost = document.getElementById('insight-text').parentElement.parentElement; // .insight container parent
   // Reemplazar el bloque .insight individual por una grid de insights
   const grid = document.createElement('div');
   grid.className='insights-grid';
@@ -1549,7 +1670,7 @@ function renderAreas(){
   });
 
   mkChart('c-area-time',{type:'line',
-    data:{labels:D.años.map(String),datasets:areaKeys.map((ar,i)=>({label:ar,data:D.areaTime[ar]||D.años.map(()=>0),borderColor:areaCols[i],backgroundColor:areaCols[i].replace(')',',0.07)').replace('rgb','rgba').replace('#','rgba(').replace(/^rgba\(([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2}),/i,(_,r,g,b)=>`rgba(${parseInt(r,16)},${parseInt(g,16)},${parseInt(b,16)},`),borderWidth:2,pointRadius:2,tension:.35,fill:true}))},
+    data:{labels:D.años.map(String),datasets:areaKeys.map((ar,i)=>({label:ar,data:D.areaTime[ar]||D.años.map(()=>0),borderColor:areaCols[i],backgroundColor:(function(h){var c=h.replace('#','');return 'rgba('+parseInt(c.substring(0,2),16)+','+parseInt(c.substring(2,4),16)+','+parseInt(c.substring(4,6),16)+',0.08)';})(areaCols[i]),borderWidth:2,pointRadius:2,tension:.35,fill:true}))},
     options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{display:false}},
       scales:{x:{grid:{color:GC},border:{display:false}},y:{grid:{color:GC},border:{display:false},beginAtZero:true,ticks:{callback:v=>v>=1000?(v/1000).toFixed(0)+'k':v}}}}
   });
@@ -1561,6 +1682,180 @@ function renderAreas(){
     return `<tr><td>${a.area}</td><td>${a.conv}</td><td>${fmtN(a.pres)}</td><td>${fmtN(a.adm)}</td><td>${fmtN(a.excl)}</td><td>${pillHtml(te)}</td>
       <td><div style="display:flex;align-items:center;gap:6px"><div style="flex:1;height:5px;background:var(--g100);border-radius:3px;overflow:hidden"><div style="width:${pctT}%;height:100%;background:#1A8080;border-radius:3px"></div></div><span style="font-size:10px;color:var(--g600)">${pctT}%</span></div></td></tr>`;
   }).join('');
+}
+
+// ═══════ BÚSQUEDA AVANZADA ═══════
+function renderBuscar(){
+  if(!DATA || !DATA.records) return;
+
+  // Poblar selector de año (una sola vez, o si cambian los años disponibles)
+  const anioSel = document.getElementById('bs-anio');
+  if(anioSel && (anioSel.options.length-1) !== DATA.años.length){
+    const curV = anioSel.value || 'all';
+    anioSel.innerHTML = '<option value="all">Todos</option>' + DATA.años.map(a=>`<option value="${a}">${a}</option>`).join('');
+    anioSel.value = curV;
+  }
+
+  const q = (document.getElementById('bs-q')?.value||'').trim().toLowerCase();
+  const anio = document.getElementById('bs-anio')?.value || 'all';
+  const area = document.getElementById('bs-area')?.value || 'all';
+  const fase = document.getElementById('bs-fase')?.value || 'all';
+  const idleMin = document.getElementById('bs-idle')?.value || 'all';
+  const rank = document.getElementById('bs-rank')?.value || 'pres';
+
+  let list = DATA.records.filter(r=>{
+    if(q && !((r.cat||'').toLowerCase().includes(q) || (r.area||'').toLowerCase().includes(q) || (r.dir||'').toLowerCase().includes(q) || (r.id||'').toLowerCase().includes(q))) return false;
+    if(anio!=='all' && String(r.año)!==String(anio)) return false;
+    if(area!=='all' && r.areaSimple!==area) return false;
+    if(fase!=='all' && r.estado.fase!==fase) return false;
+    if(idleMin!=='all'){
+      const th = parseInt(idleMin);
+      if(!(r.idleDays!==null && r.idleDays>=th)) return false;
+    }
+    return true;
+  });
+
+  // KPIs
+  const total = list.length;
+  const pres = list.reduce((s,r)=>s+r.pres,0);
+  const adm = list.reduce((s,r)=>s+r.admDef,0);
+  const excl = list.reduce((s,r)=>s+r.exclDef,0);
+  const tasaExcl = pres>0?(excl/pres*100).toFixed(1):'0.0';
+  const diasArr = list.map(r=>r.dias).filter(v=>v&&v>0);
+  const diasMed = diasArr.length ? Math.round(diasArr.reduce((s,v)=>s+v,0)/diasArr.length) : null;
+  const estancadas = list.filter(r=>r.idleDays!==null && r.idleDays>180 && r.estado.fase!=='def').length;
+
+  const kpisEl = document.getElementById('bs-kpis');
+  if(kpisEl) kpisEl.innerHTML = `
+    <div class="kpi"><div class="kpi-v">${total}</div><div class="kpi-l">Resultados</div></div>
+    <div class="kpi gold"><div class="kpi-v">${fmtN(pres)}</div><div class="kpi-l">Presentados</div></div>
+    <div class="kpi green"><div class="kpi-v">${fmtN(adm)}</div><div class="kpi-l">Admitidos def.</div></div>
+    <div class="kpi red"><div class="kpi-v">${fmtN(excl)}</div><div class="kpi-l">Excluidos def. (${tasaExcl}%)</div></div>
+    <div class="kpi"><div class="kpi-v">${diasMed!=null?('~'+diasMed+'d'):'—'}</div><div class="kpi-l">Días med. resolución</div></div>
+    <div class="kpi red"><div class="kpi-v">${estancadas}</div><div class="kpi-l">Estancadas &gt;180d</div></div>`;
+
+  const countSub = document.getElementById('bs-count-sub');
+  if(countSub) countSub.textContent = `${total} convocatoria${total===1?'':'s'} encontrada${total===1?'':'s'}`;
+
+  // Comparativa año a año (sobre resultados filtrados)
+  const añosList = [...new Set(list.map(r=>r.año))].sort();
+  const convByYear = añosList.map(a=>list.filter(r=>r.año===a).length);
+  const presByYear = añosList.map(a=>list.filter(r=>r.año===a).reduce((s,r)=>s+r.pres,0));
+  mkChart('bs-chart-evol',{
+    data:{labels:añosList.map(String),datasets:[
+      {type:'bar',label:'Convocatorias',data:convByYear,backgroundColor:'#1A8080',yAxisID:'y',borderRadius:4,order:2},
+      {type:'line',label:'Presentados',data:presByYear,borderColor:'#C89B2A',backgroundColor:'rgba(200,155,42,.12)',yAxisID:'y2',tension:.35,borderWidth:2,pointRadius:3,pointBackgroundColor:'#C89B2A',fill:true,order:1,spanGaps:true}
+    ]},
+    options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{position:'bottom',labels:{font:{size:10},boxWidth:10}}},
+      scales:{y:{grid:{color:GC},border:{display:false},ticks:{precision:0}},y2:{position:'right',grid:{display:false},border:{display:false},ticks:{callback:v=>v>=1000?(v/1000).toFixed(0)+'k':v}}}}
+  });
+
+  // Ranking de categorías según el criterio elegido (sobre resultados filtrados)
+  const catAgg = {};
+  list.forEach(r=>{
+    if(!catAgg[r.cat]) catAgg[r.cat]={cat:r.cat,pres:0,idle:0,añoMax:0,exclSum:0};
+    catAgg[r.cat].pres+=r.pres;
+    catAgg[r.cat].exclSum+=r.exclDef;
+    catAgg[r.cat].añoMax=Math.max(catAgg[r.cat].añoMax, r.año);
+    if(r.idleDays!==null) catAgg[r.cat].idle=Math.max(catAgg[r.cat].idle, r.idleDays);
+  });
+  let rankArr = Object.values(catAgg).map(c=>({...c, exclRate: c.pres>0?(c.exclSum/c.pres*100):0}));
+  const rankKeyMap = {pres:'pres', idle:'idle', count:'añoMax', exclRate:'exclRate'};
+  const rk = rankKeyMap[rank]||'pres';
+  rankArr.sort((a,b)=>b[rk]-a[rk]);
+  rankArr = rankArr.slice(0,10);
+  mkChart('bs-chart-rank',{type:'bar',
+    data:{labels:rankArr.map(c=>c.cat.length>22?c.cat.slice(0,20)+'…':c.cat),datasets:[{data:rankArr.map(c=>Math.round(c[rk]*10)/10),backgroundColor:'#0B2D5F',borderRadius:3}]},
+    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},
+      scales:{x:{grid:{color:GC},border:{display:false},beginAtZero:true},y:{grid:{display:false},border:{display:false},ticks:{font:{size:10}}}}}
+  });
+
+  // Cruce área × fase (sobre resultados filtrados)
+  const areaKeysX = ['Gestión / Admin.','Servicios','San. No Facultativo','Fac. Especialistas','Otros'];
+  const faseOrderX = ['none','bases','adex','prov','def'];
+  const faseLabelsX = {none:'Sin publicar',bases:'Bases',adex:'Ad&Ex prov.',prov:'Lista prov.',def:'Lista def.'};
+  const faseColorsX = {none:'#8EA0BA',bases:'#C89B2A',adex:'#D97706',prov:'#1A8080',def:'#1A7850'};
+  mkChart('bs-chart-cross',{type:'bar',
+    data:{labels:areaKeysX.map(a=>a.length>15?a.substring(0,14)+'…':a), datasets:faseOrderX.map(f=>({label:faseLabelsX[f], data:areaKeysX.map(ar=>list.filter(r=>r.areaSimple===ar && r.estado.fase===f).length), backgroundColor:faseColorsX[f]}))},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{font:{size:9},usePointStyle:true,pointStyle:'rect',boxWidth:8}}},
+      scales:{x:{stacked:true,grid:{display:false},border:{display:false}},y:{stacked:true,grid:{color:GC},border:{display:false},beginAtZero:true,ticks:{precision:0}}}}
+  });
+
+  // Tabla de resultados
+  let sorted = list.slice();
+  if(rank==='idle') sorted.sort((a,b)=>(b.idleDays==null?-1:b.idleDays)-(a.idleDays==null?-1:a.idleDays));
+  else if(rank==='count') sorted.sort((a,b)=>b.año-a.año);
+  else if(rank==='exclRate') sorted.sort((a,b)=>(b.pres>0?b.exclDef/b.pres:0)-(a.pres>0?a.exclDef/a.pres:0));
+  else sorted.sort((a,b)=>b.pres-a.pres);
+
+  const tbody = document.getElementById('bs-table-body');
+  if(tbody){
+    tbody.innerHTML = sorted.slice(0,200).map(r=>{
+      const idleStyle = (r.idleDays!==null && r.idleDays>180) ? 'color:var(--red);font-weight:700' : '';
+      return `<tr>
+        <td>${r.año}</td>
+        <td>${r.cat}</td>
+        <td>${r.areaSimple}</td>
+        <td>${r.dir}</td>
+        <td><span class="fase-chip ${r.estado.cls}">${r.estado.label}</span></td>
+        <td style="${idleStyle}">${r.idleDays!=null?r.idleDays:'—'}</td>
+        <td>${fmtN(r.pres)}</td>
+        <td>${fmtN(r.admDef)}</td>
+        <td>${fmtN(r.exclDef)}</td>
+      </tr>`;
+    }).join('') || '<tr><td colspan="9" class="no-res">Sin resultados con estos filtros.</td></tr>';
+  }
+}
+
+// ═══════ ESTADO DE LAS SUPLES ═══════
+function renderEstado(){
+  const D = getScoped();
+  if(!D || !D.records) return;
+  const list = D.records;
+
+  const scopeEl = document.getElementById('es-scope');
+  if(scopeEl) scopeEl.innerHTML = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>${(STATE.year==='all'?'Todos los años':('Año '+STATE.year))} · ${list.length} convocatorias`;
+
+  const faseOrder = ['none','bases','adex','prov','def'];
+  const faseLabels = {none:'Sin publicar',bases:'Bases publicadas',adex:'Ad&Ex provisional',prov:'Lista provisional',def:'Lista definitiva'};
+  const faseColors = {none:'#8EA0BA',bases:'#C89B2A',adex:'#D97706',prov:'#1A8080',def:'#1A7850'};
+  const counts = {none:0,bases:0,adex:0,prov:0,def:0};
+  list.forEach(r=>{ counts[r.estado.fase] = (counts[r.estado.fase]||0)+1; });
+  const stale = list.filter(r=>r.idleDays!==null && r.idleDays>180 && r.estado.fase!=='def');
+
+  const kpisEl = document.getElementById('es-kpis');
+  if(kpisEl) kpisEl.innerHTML = faseOrder.map(f=>
+    `<div class="kpi"><div class="kpi-v" style="color:${faseColors[f]}">${counts[f]||0}</div><div class="kpi-l">${faseLabels[f]}</div></div>`
+  ).join('') + `<div class="kpi red"><div class="kpi-v">${stale.length}</div><div class="kpi-l">Estancadas &gt;180d</div></div>`;
+
+  mkChart('es-chart-fase',{type:'doughnut',
+    data:{labels:faseOrder.map(f=>faseLabels[f]),datasets:[{data:faseOrder.map(f=>counts[f]||0),backgroundColor:faseOrder.map(f=>faseColors[f]),borderWidth:3,borderColor:'#fff'}]},
+    options:{responsive:true,maintainAspectRatio:false,cutout:'62%',plugins:{legend:{position:'bottom',labels:{font:{size:10},usePointStyle:true,pointStyle:'rect',boxWidth:8}},
+      tooltip:{callbacks:{label:c=>` ${fmtN(c.parsed)} (${list.length>0?(c.parsed/list.length*100).toFixed(1):0}%)`}}}}
+  });
+
+  const areaKeysE = ['Gestión / Admin.','Servicios','San. No Facultativo','Fac. Especialistas','Otros'];
+  const staleByArea = {}; areaKeysE.forEach(a=>staleByArea[a]=0);
+  stale.forEach(r=>{ if(staleByArea.hasOwnProperty(r.areaSimple)) staleByArea[r.areaSimple]++; });
+  mkChart('es-chart-stale',{type:'bar',
+    data:{labels:areaKeysE.map(a=>a.length>15?a.substring(0,14)+'…':a),datasets:[{label:'Estancadas (>180d)',data:areaKeysE.map(a=>staleByArea[a]),backgroundColor:'#C0392B',borderRadius:3}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},
+      scales:{x:{grid:{display:false},border:{display:false}},y:{grid:{color:GC},border:{display:false},beginAtZero:true,ticks:{precision:0}}}}
+  });
+
+  const pending = list.filter(r=>r.estado.fase!=='def').sort((a,b)=>(b.idleDays==null?-1:b.idleDays)-(a.idleDays==null?-1:a.idleDays));
+  const tbodyEl = document.getElementById('es-table-body');
+  if(tbodyEl) tbodyEl.innerHTML = pending.slice(0,200).map(r=>{
+    const idleStyle = (r.idleDays!==null && r.idleDays>180) ? 'color:var(--red);font-weight:700' : '';
+    return `<tr>
+      <td>${r.año}</td>
+      <td>${r.cat}</td>
+      <td>${r.areaSimple}</td>
+      <td>${r.dir}</td>
+      <td><span class="fase-chip ${r.estado.cls}">${r.estado.label}</span></td>
+      <td style="${idleStyle}">${r.idleDays!=null?r.idleDays:'—'}</td>
+    </tr>`;
+  }).join('') || '<tr><td colspan="6" class="no-res">Sin convocatorias pendientes de lista definitiva.</td></tr>';
 }
 
 // ═══════ DATOS POR DEFECTO ═══════
