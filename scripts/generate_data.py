@@ -18,10 +18,13 @@ import json
 import math
 import re
 import sys
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 
 import pandas as pd
+
+# Época de los números de serie de fecha de Excel/ODS (día 0 = 30/12/1899).
+EXCEL_EPOCH = datetime(1899, 12, 30)
 
 SHEET_NAME = "1_Datos_generales"
 
@@ -89,7 +92,18 @@ def clean_cell(col, v):
     if col in DATE_COLUMNS:
         if isinstance(v, (pd.Timestamp, datetime)):
             return v.strftime("%Y-%m-%d")
+        # Celda mal tipada como número (en vez de fecha) en el .ods: viene
+        # como el número de serie de Excel/ODS (p.ej. 46167 = 25/05/2026).
+        # Sin esto, se cuela el número tal cual y el navegador lo interpreta
+        # como si fuese literalmente el año 46167.
+        if isinstance(v, (int, float)) and not isinstance(v, bool):
+            if 20000 <= v < 60000:
+                return (EXCEL_EPOCH + timedelta(days=v)).strftime("%Y-%m-%d")
         s = str(v).strip()
+        if re.fullmatch(r"\d+(\.\d+)?", s):
+            serial = float(s)
+            if 20000 <= serial < 60000:
+                return (EXCEL_EPOCH + timedelta(days=serial)).strftime("%Y-%m-%d")
         parsed = pd.to_datetime(s, errors="coerce", dayfirst=False)
         if pd.isna(parsed):
             return s
