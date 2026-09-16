@@ -921,6 +921,15 @@ function processRows(rows, fname){
     if(v instanceof Date) return isNaN(v)?null:v;
     const s = String(v).trim();
     if(!s||s==='null'||s==='undefined') return null;
+    // Celda mal tipada como número de serie (Excel/ODS) en vez de fecha:
+    // p.ej. 46167 en lugar de "2026-05-25". Rango 20000–60000 ≈ años 1954–2064.
+    if(/^\d+(\.\d+)?$/.test(s)){
+      const serial = parseFloat(s);
+      if(serial>=20000 && serial<60000){
+        const d = new Date(Date.UTC(1899,11,30) + Math.round(serial)*86400000);
+        return isNaN(d)?null:d;
+      }
+    }
     const d = new Date(s);
     return isNaN(d)?null:d;
   };
