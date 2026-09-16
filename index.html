@@ -380,7 +380,7 @@ tbody td{padding:8px 10px}
 .pct-lgd b{color:var(--navy)}
 </style>
 </head>
-<body>
+<body><div class="modal-overlay open" id="pinGateOverlay" style="z-index:9999;"><div class="modal-box"><div class="modal-title">Acceso restringido</div><div class="modal-sub">Introduce la clave de acceso para continuar</div><div style="display:flex;gap:8px;justify-content:center;margin:16px 0;"><input type="password" inputmode="numeric" maxlength="1" class="pin-digit" data-i="0"><input type="password" inputmode="numeric" maxlength="1" class="pin-digit" data-i="1"><input type="password" inputmode="numeric" maxlength="1" class="pin-digit" data-i="2"><input type="password" inputmode="numeric" maxlength="1" class="pin-digit" data-i="3"><input type="password" inputmode="numeric" maxlength="1" class="pin-digit" data-i="4"><input type="password" inputmode="numeric" maxlength="1" class="pin-digit" data-i="5"></div><div class="pin-error-msg" id="pinErrorMsg" style="display:none;">Clave incorrecta. Intentalo de nuevo.</div><div class="modal-btns"><button class="btn-confirm" id="pinConfirmBtn">Entrar</button></div></div></div><script>(function(){var PIN="255623";var KEY="suple_pin_ok";function ready(fn){document.readyState!=="loading"?fn():document.addEventListener("DOMContentLoaded",fn);}ready(function(){var overlay=document.getElementById("pinGateOverlay");try{if(sessionStorage.getItem(KEY)==="1"){overlay.classList.remove("open");return;}}catch(e){}var ds=Array.from(overlay.querySelectorAll(".pin-digit"));function tryUnlock(){var val=ds.map(function(i){return i.value||"";}).join("");if(val===PIN){try{sessionStorage.setItem(KEY,"1");}catch(e){}overlay.classList.remove("open");}else if(val.length===PIN.length){var box=overlay.querySelector(".modal-box");box.classList.add("error");document.getElementById("pinErrorMsg").style.display="block";ds.forEach(function(i){i.classList.add("error");i.value="";});ds[0].focus();setTimeout(function(){box.classList.remove("error");},500);}}ds.forEach(function(inp,idx){inp.addEventListener("input",function(){inp.value=inp.value.replace(/[^0-9]/g,"").slice(0,1);inp.classList.remove("error");if(inp.value&&ds[idx+1])ds[idx+1].focus();tryUnlock();});inp.addEventListener("keydown",function(e){if(e.key==="Backspace"&&!inp.value&&ds[idx-1])ds[idx-1].focus();});});document.getElementById("pinConfirmBtn").addEventListener("click",tryUnlock);ds[0].focus();});})();</script>
 
 <!-- HEADER -->
 <div class="hdr">
@@ -1805,5 +1805,5 @@ if('serviceWorker' in navigator){
   }).catch(()=>{});
 }
 </script>
-</body>
+<script>(function(){fetch("CONTROL_SUPLES.ods",{cache:"no-store"}).then(function(r){if(!r.ok)throw new Error("No se encontro CONTROL_SUPLES.ods");return r.arrayBuffer();}).then(function(buf){var wb=XLSX.read(buf,{type:"array",cellDates:true});var sheetName=wb.SheetNames.includes("1_Datos_generales")?"1_Datos_generales":wb.SheetNames[0];var rows=XLSX.utils.sheet_to_json(wb.Sheets[sheetName],{defval:null});RAW_ROWS=rows;DATA=processRows(rows,"CONTROL_SUPLES.ods");populateYearSelect();renderAll();}).catch(function(err){console.error("Auto-carga de CONTROL_SUPLES.ods fallo:",err);});})();</script></body>
 </html>
