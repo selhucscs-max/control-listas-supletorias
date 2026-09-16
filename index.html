@@ -87,23 +87,22 @@ body{font-family:'DM Sans',system-ui,sans-serif;font-size:14px;color:var(--g800)
 .bot-btn svg{width:22px;height:22px}
 .bot-lbl{font-size:10px;font-weight:500}
 
-/* ── TABS (desktop lateral) ── */
+/* ── TABS (desktop superior) ── */
 @media(min-width:768px){
-  .scroll-area{padding:20px 24px calc(20px)}
   .bot-nav{
-    top:0;bottom:auto;left:0;width:200px;height:100%;flex-direction:column;
-    border-top:none;border-right:1px solid var(--g100);padding-bottom:0;
-    padding-top:16px;box-shadow:none;
+    top:63px;bottom:auto;left:0;right:0;width:auto;height:auto;flex-direction:row;flex-wrap:nowrap;overflow-x:auto;
+    border-top:none;border-right:none;border-bottom:1px solid var(--g100);padding-bottom:0;
+    padding:4px 20px;box-shadow:none;
     background:var(--white);position:fixed;z-index:150;
   }
   .bot-btn{
     flex:none;flex-direction:row;justify-content:flex-start;
-    padding:10px 16px;gap:10px;border-radius:8px;margin:1px 8px;
+    padding:9px 14px;gap:8px;border-radius:8px;margin:2px 2px;
   }
   .bot-btn.active{background:var(--tealp);color:var(--teal)}
   .bot-lbl{font-size:13px}
-  .hdr-inner{padding:12px 20px 12px 220px}
-  .scroll-area{margin-left:200px;padding:20px 28px 32px}
+  .hdr-inner{padding:12px 20px}
+  .scroll-area{margin-left:0;margin-top:56px;padding:20px 28px 32px}
 }
 
 /* ── TAB PANES ── */
@@ -344,6 +343,7 @@ tbody td{padding:8px 10px}
   cursor:pointer;
 }
 .btn-sec:hover{background:var(--g100)}
+.btn-sec.active{background:var(--tealp);color:var(--teal);border-color:var(--teal)}
 .btn-sec.danger{color:var(--red);border-color:#F2BCB5}
 .btn-sec.danger:hover{background:var(--redp)}
 
@@ -701,7 +701,12 @@ tbody td{padding:8px 10px}
 
   <!-- TAB: ESTADO DE LAS SUPLES -->
   <div class="pane" id="pane-estado">
-    <div class="file-chip" id="es-scope" style="margin-bottom:14px"></div>
+    <div class="file-chip" id="es-scope" style="margin-bottom:10px"></div>
+    <div class="filters" id="es-filter-group" style="gap:8px">
+      <button class="btn-sec active" data-filter="all" onclick="setEstadoFilter('all')">Todas</button>
+      <button class="btn-sec" data-filter="curso" onclick="setEstadoFilter('curso')">En curso</button>
+      <button class="btn-sec" data-filter="fin" onclick="setEstadoFilter('fin')">Finalizado</button>
+    </div>
     <div id="es-kpis" class="kpis" style="grid-template-columns:repeat(2,1fr)"></div>
 
     <div class="g2">
@@ -711,7 +716,7 @@ tbody td{padding:8px 10px}
         <div class="chart-w" style="height:260px"><canvas id="es-chart-fase"></canvas></div>
       </div>
       <div class="card">
-        <div class="card-t">Estancadas por área (&gt;180 días)</div>
+        <div class="card-t">Pendientes por área (&gt;180 días)</div>
         <div class="card-s">Convocatorias sin avance reciente, por colectivo</div>
         <div class="chart-w" style="height:260px"><canvas id="es-chart-stale"></canvas></div>
       </div>
@@ -1430,7 +1435,7 @@ function renderEstadoActual(query){
   // Render barra de filtros
   const phases=[
     {k:'all',  lbl:'Todas',           cls:''},
-    {k:'stale',lbl:'⚠ Estancadas',    cls:'',hl:true},
+    {k:'stale',lbl:'⚠ Pendientes',    cls:'',hl:true},
     {k:'bases',lbl:'Bases',           cls:'fc-bases'},
     {k:'adex', lbl:'Ad&Ex',           cls:'fc-adex'},
     {k:'prov', lbl:'L. Provisional',  cls:'fc-prov'},
@@ -1732,7 +1737,7 @@ function renderBuscar(){
     <div class="kpi green"><div class="kpi-v">${fmtN(adm)}</div><div class="kpi-l">Admitidos def.</div></div>
     <div class="kpi red"><div class="kpi-v">${fmtN(excl)}</div><div class="kpi-l">Excluidos def. (${tasaExcl}%)</div></div>
     <div class="kpi"><div class="kpi-v">${diasMed!=null?('~'+diasMed+'d'):'—'}</div><div class="kpi-l">Días med. resolución</div></div>
-    <div class="kpi red"><div class="kpi-v">${estancadas}</div><div class="kpi-l">Estancadas &gt;180d</div></div>`;
+    <div class="kpi red"><div class="kpi-v">${estancadas}</div><div class="kpi-l">Pendientes &gt;180d</div></div>`;
 
   const countSub = document.getElementById('bs-count-sub');
   if(countSub) countSub.textContent = `${total} convocatoria${total===1?'':'s'} encontrada${total===1?'':'s'}`;
@@ -1808,10 +1813,15 @@ function renderBuscar(){
 }
 
 // ═══════ ESTADO DE LAS SUPLES ═══════
+function setEstadoFilter(f){ STATE.estadoFilter = f; renderEstado(); }
 function renderEstado(){
   const D = getScoped();
   if(!D || !D.records) return;
-  const list = D.records;
+  const filtroEstado = STATE.estadoFilter || 'all';
+  const list = filtroEstado==='curso' ? D.records.filter(r=>r.estado.fase!=='def') : filtroEstado==='fin' ? D.records.filter(r=>r.estado.fase==='def') : D.records;
+
+  const grpEl = document.getElementById('es-filter-group');
+  if(grpEl) Array.from(grpEl.children).forEach(b=>b.classList.toggle('active', b.dataset.filter===filtroEstado));
 
   const scopeEl = document.getElementById('es-scope');
   if(scopeEl) scopeEl.innerHTML = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>${(STATE.year==='all'?'Todos los años':('Año '+STATE.year))} · ${list.length} convocatorias`;
@@ -1826,7 +1836,7 @@ function renderEstado(){
   const kpisEl = document.getElementById('es-kpis');
   if(kpisEl) kpisEl.innerHTML = faseOrder.map(f=>
     `<div class="kpi"><div class="kpi-v" style="color:${faseColors[f]}">${counts[f]||0}</div><div class="kpi-l">${faseLabels[f]}</div></div>`
-  ).join('') + `<div class="kpi red"><div class="kpi-v">${stale.length}</div><div class="kpi-l">Estancadas &gt;180d</div></div>`;
+  ).join('') + `<div class="kpi red"><div class="kpi-v">${stale.length}</div><div class="kpi-l">Pendientes &gt;180d</div></div>`;
 
   mkChart('es-chart-fase',{type:'doughnut',
     data:{labels:faseOrder.map(f=>faseLabels[f]),datasets:[{data:faseOrder.map(f=>counts[f]||0),backgroundColor:faseOrder.map(f=>faseColors[f]),borderWidth:3,borderColor:'#fff'}]},
@@ -1838,7 +1848,7 @@ function renderEstado(){
   const staleByArea = {}; areaKeysE.forEach(a=>staleByArea[a]=0);
   stale.forEach(r=>{ if(staleByArea.hasOwnProperty(r.areaSimple)) staleByArea[r.areaSimple]++; });
   mkChart('es-chart-stale',{type:'bar',
-    data:{labels:areaKeysE.map(a=>a.length>15?a.substring(0,14)+'…':a),datasets:[{label:'Estancadas (>180d)',data:areaKeysE.map(a=>staleByArea[a]),backgroundColor:'#C0392B',borderRadius:3}]},
+    data:{labels:areaKeysE.map(a=>a.length>15?a.substring(0,14)+'…':a),datasets:[{label:'Pendientes (>180d)',data:areaKeysE.map(a=>staleByArea[a]),backgroundColor:'#C0392B',borderRadius:3}]},
     options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},
       scales:{x:{grid:{display:false},border:{display:false}},y:{grid:{color:GC},border:{display:false},beginAtZero:true,ticks:{precision:0}}}}
   });
