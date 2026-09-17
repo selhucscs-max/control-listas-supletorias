@@ -54,6 +54,7 @@ COLUMNS = [
     "FECHA RG LISTA DEF",
     "RG BASES",
     "RG LISTA DEF",
+    "BAREMADO",
 ]
 
 DATE_COLUMNS = {
@@ -124,6 +125,17 @@ def clean_cell(col, v):
             return int(float(v))
         except (TypeError, ValueError):
             return v
+    if col == "BAREMADO":
+        # Puede venir como fracción ya baremada (0–1) o como texto/errores de
+        # fórmula ("Sí", "AD", "#¡REF!", ...). Solo la fracción numérica 0–1
+        # es utilizable por el dashboard (pestaña Baremación); el resto se
+        # deja como texto tal cual, igual que al importar el archivo a mano.
+        if isinstance(v, (int, float)) and not isinstance(v, bool):
+            f = float(v)
+            if 0 <= f <= 1.0001:
+                return round(min(f, 1.0), 4)
+            return f
+        return str(v).strip()
     return str(v).strip()
 
 
