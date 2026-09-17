@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - "CONTROL_SUPLES.ods"
+      - "Indicadores.ods"
   workflow_dispatch: {}
 
 permissions:
@@ -25,8 +26,11 @@ jobs:
       - name: Instalar dependencias
         run: pip install pandas odfpy
 
-      - name: Regenerar datos por defecto en index.html
+      - name: Regenerar datos por defecto (SUPLE) desde CONTROL_SUPLES.ods
         run: python3 scripts/generate_data.py
+
+      - name: Regenerar datos por defecto (Acción Social) desde Indicadores.ods
+        run: python3 scripts/generate_accion_data.py
 
       - name: Commitear cambios si los hay
         run: |
@@ -36,6 +40,6 @@ jobs:
             echo "index.html sin cambios, nada que commitear."
           else
             git add index.html
-            git commit -m "Actualiza datos del dashboard desde CONTROL_SUPLES.ods [skip ci]"
+            git commit -m "Actualiza datos del dashboard desde CONTROL_SUPLES.ods / Indicadores.ods [skip ci]"
             git push
           fi
