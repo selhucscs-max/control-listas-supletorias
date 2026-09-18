@@ -873,6 +873,11 @@ tbody td{padding:8px 10px}
     <div class="card" style="margin-bottom:0">
       <div class="card-t">Cronograma secuencial estimado</div>
       <div class="card-s">Si se baremaran una detrás de otra, de lunes a viernes, con el equipo completo</div>
+
+      <div class="kpis" id="bar-gantt-stats" style="grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin-bottom:14px"></div>
+
+      <div class="chart-w" id="bar-gantt-wrap" style="height:340px;margin-bottom:20px;min-width:0"><canvas id="bar-gantt-chart"></canvas></div>
+
       <div class="tbl-w">
         <table>
           <thead><tr><th>#</th><th>Año</th><th>Categoría</th><th>Bloque</th><th>Área</th><th>Pendientes</th><th>Días</th><th>Fecha estimada</th></tr></thead>
@@ -1256,6 +1261,22 @@ function mkChart(id,cfg){
   const el=document.getElementById(id);
   if(!el) return;
   charts[id]=new Chart(el,cfg);
+}
+// Rectángulo con extremos totalmente redondeados ("pastilla"), centrado
+// verticalmente en yCenter, entre x0 y x1, con altura h. Usado por el
+// cronograma tipo Gantt de Baremación (riel de fondo de cada fila).
+function drawPillRect(ctx, x0, x1, yCenter, h){
+  const r = h/2;
+  const top = yCenter - r, bottom = yCenter + r;
+  if(x1 - x0 < h){ x1 = x0 + h; }
+  ctx.beginPath();
+  ctx.moveTo(x0+r, top);
+  ctx.lineTo(x1-r, top);
+  ctx.arc(x1-r, yCenter, r, -Math.PI/2, Math.PI/2);
+  ctx.lineTo(x0+r, bottom);
+  ctx.arc(x0+r, yCenter, r, Math.PI/2, -Math.PI/2);
+  ctx.closePath();
+  ctx.fill();
 }
 function toast(msg,dur=2500){
   const t=document.getElementById('toast');
@@ -2404,25 +2425,153 @@ function renderBaremacion(){
       scales:{x:{grid:{color:GC},border:{display:false},beginAtZero:true},y:{grid:{display:false},border:{display:false},ticks:{font:{size:10}}}}}
   });
 
+  // Ventana [inicio,fin] de cada categoría en el cronograma secuencial: una
+  // detrás de otra, en el mismo orden que la tabla (mayor carga primero).
+  // Se calcula una sola vez y se reutiliza tanto en la tabla como en el
+  // cronograma tipo Gantt de más abajo.
+  const ganttRef = new Date();
+  let ganttPrev = new Date(ganttRef);
+  const ganttRows = sorted.map(r=>{
+    const diasEq = r.dias/numBarem;
+    const start = new Date(ganttPrev);
+    const fin = addBusinessDays(ganttPrev, diasEq);
+    ganttPrev = fin;
+    return {...r, diasEq, start, fin};
+  });
+
   const tbody = document.getElementById('bar-table-body');
   if(tbody){
-    let prev = new Date();
-    tbody.innerHTML = sorted.map((r,i)=>{
-      const diasEq = r.dias/numBarem;
-      const fin = addBusinessDays(prev, diasEq);
-      prev = fin;
-      return `<tr>
+    tbody.innerHTML = ganttRows.map((r,i)=>`<tr>
         <td>${i+1}</td>
         <td>${r.año}</td>
         <td>${r.cat}</td>
         <td><span class="fase-chip ${r.isFea?'fc-adex':'fc-prov'}" style="font-size:9px">${r.isFea?'FEA':'General'}</span></td>
         <td>${r.areaSimple}</td>
         <td>${fmtN(r.pendientes)}</td>
-        <td>${diasEq.toFixed(1)}</td>
-        <td>${fin.toLocaleDateString('es-ES',{day:'2-digit',month:'2-digit',year:'numeric'})}</td>
-      </tr>`;
-    }).join('') || '<tr><td colspan="8" class="no-res">Sin convocatorias pendientes de baremación.</td></tr>';
+        <td>${r.diasEq.toFixed(1)}</td>
+        <td>${r.fin.toLocaleDateString('es-ES',{day:'2-digit',month:'2-digit',year:'numeric'})}</td>
+      </tr>`).join('') || '<tr><td colspan="8" class="no-res">Sin convocatorias pendientes de baremación.</td></tr>';
   }
+
+  renderBaremGantt(ganttRows, ganttRef, jornadas, finStr);
+}
+
+// Cronograma secuencial estimado — vista tipo Gantt: una barra horizontal por
+// categoría, posicionada según su ventana [inicio,fin] de baremación, con
+// columnas mensuales de fondo y una línea de referencia en "hoy". Reutiliza
+// exactamente los mismos datos ya calculados en renderBaremacion() (misma
+// fuente: CONTROL_SUPLES.ods), por lo que se actualiza solo al actualizarse
+// el archivo.
+function renderBaremGantt(rows, refDate, jornadas, finStr){
+  const statsEl = document.getElementById('bar-gantt-stats');
+  const refStr = refDate.toLocaleDateString('es-ES',{day:'2-digit',month:'2-digit',year:'numeric'});
+  if(statsEl) statsEl.innerHTML = `
+    <div class="kpi gold"><div class="kpi-v">${jornadas.toFixed(1).replace('.',',')}</div><div class="kpi-l">Días</div><div class="kpi-s">duración total acumulada</div></div>
+    <div class="kpi green"><div class="kpi-v">${finStr}</div><div class="kpi-l">Fecha estimada</div><div class="kpi-s">fecha estimada de cierre</div></div>
+    <div class="kpi"><div class="kpi-v">${refStr}</div><div class="kpi-l">Inicio del cálculo</div><div class="kpi-s">línea de referencia</div></div>`;
+
+  const wrap = document.getElementById('bar-gantt-wrap');
+  if(wrap) wrap.style.height = Math.max(240, rows.length*30+70)+'px';
+
+  const dayMs = 86400000;
+  const off = d => Math.round((d.getTime()-refDate.getTime())/dayMs);
+  const maxOff = rows.length ? Math.max(...rows.map(r=>off(r.fin))) : 0;
+
+  // Marcas de mes (1er día de cada mes) desde el mes de referencia hasta un
+  // mes después del cierre estimado, para simular un eje temporal por meses
+  // sin depender de un adaptador de fechas externo.
+  const MESES = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+  const monthTicks = [];
+  const cursor = new Date(refDate.getFullYear(), refDate.getMonth(), 1);
+  const endCursor = new Date(refDate.getTime());
+  endCursor.setDate(endCursor.getDate()+Math.max(maxOff,30)+31);
+  while(cursor.getTime() <= endCursor.getTime()){
+    monthTicks.push({ value: Math.round((cursor.getTime()-refDate.getTime())/dayMs), label: MESES[cursor.getMonth()]+String(cursor.getFullYear()).slice(2) });
+    cursor.setMonth(cursor.getMonth()+1);
+  }
+  const axisMax = monthTicks.length ? monthTicks[monthTicks.length-1].value : Math.max(30,maxOff);
+
+  mkChart('bar-gantt-chart',{
+    type:'bar',
+    data:{
+      labels: rows.map(r=>{ const lbl = r.cat; return lbl.length>26?lbl.slice(0,25)+'…':lbl; }),
+      datasets:[{
+        label:'Ventana estimada de baremación',
+        data: rows.map(r=>[off(r.start), off(r.fin)]),
+        backgroundColor: rows.map(r=>r.isFea?'#0B2D5F':'#1A8080'),
+        borderRadius:8,
+        barPercentage:0.5,
+        categoryPercentage:0.85,
+      }]
+    },
+    plugins:[{
+      id:'ganttExtras',
+      beforeDatasetsDraw(chart){
+        // Riel de fondo a lo ancho de cada fila (pista gris clara detrás de
+        // cada barra), como en el diseño de referencia.
+        const ctx = chart.ctx, x = chart.scales.x, y = chart.scales.y;
+        const meta = chart.getDatasetMeta(0);
+        ctx.save();
+        ctx.fillStyle = '#EEF1F6';
+        meta.data.forEach(bar=>{
+          if(!bar) return;
+          const h = Math.max(6, bar.height*0.62);
+          drawPillRect(ctx, x.left, x.right, bar.y, h);
+        });
+        ctx.restore();
+      },
+      afterDatasetsDraw(chart){
+        const ctx = chart.ctx, x = chart.scales.x, y = chart.scales.y;
+        const meta = chart.getDatasetMeta(0);
+        ctx.save();
+        ctx.font = '10px "Segoe UI",Arial,sans-serif';
+        ctx.textBaseline = 'middle';
+        ctx.fillStyle = '#0B2D5F';
+        meta.data.forEach((bar,i)=>{
+          const r = rows[i];
+          if(!r || !bar) return;
+          const label = r.fin.toLocaleDateString('es-ES',{day:'2-digit',month:'2-digit',year:'numeric'});
+          ctx.fillText(label, bar.x+6, bar.y);
+        });
+        // Línea de referencia: "hoy" (inicio del cálculo, offset 0)
+        const refX = x.getPixelForValue(0);
+        ctx.strokeStyle = '#C0392B';
+        ctx.setLineDash([4,3]);
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.moveTo(refX, y.top);
+        ctx.lineTo(refX, y.bottom);
+        ctx.stroke();
+        ctx.restore();
+      }
+    }],
+    options:{
+      indexAxis:'y',
+      responsive:true,
+      maintainAspectRatio:false,
+      layout:{padding:{right:66}},
+      plugins:{
+        legend:{display:false},
+        tooltip:{callbacks:{
+          title:(items)=>{ const r=rows[items[0].dataIndex]; return r?`${r.cat} (${r.año})`:''; },
+          label:(c)=>{
+            const r = rows[c.dataIndex];
+            const f = d=>d.toLocaleDateString('es-ES',{day:'2-digit',month:'2-digit',year:'numeric'});
+            return ` ${f(r.start)} → ${f(r.fin)} · ${r.diasEq.toFixed(1)} días · ${fmtN(r.pendientes)} pendientes`;
+          }
+        }}
+      },
+      scales:{
+        x:{
+          min:0, max:axisMax,
+          grid:{color:GC}, border:{display:false},
+          afterBuildTicks: axis => { axis.ticks = monthTicks.map(t=>({value:t.value})); },
+          ticks:{ font:{size:10}, callback: v => { const t=monthTicks.find(t=>t.value===v); return t?t.label:''; } }
+        },
+        y:{ grid:{display:false}, border:{display:false}, ticks:{font:{size:10}} }
+      }
+    }
+  });
 }
 
 // ═══════ DATOS POR DEFECTO ═══════
@@ -2501,9 +2650,13 @@ function populateYearSelect(){
   const sel = document.getElementById('hdr-year');
   if(!sel || !DATA) return;
   const cur = STATE.year;
-  sel.innerHTML = '<option value="">Todos los años</option>' +
-    DATA.años.map(a=>`<option value="${a}">20${a}</option>`).join('');
-  if(cur && DATA.años.includes(cur)) sel.value = cur;
+  // DATA.años ya contiene el año completo de 4 cifras (p. ej. 2026), no el
+  // sufijo de 2 cifras del .ods — no hay que anteponerle "20".
+  sel.innerHTML = '<option value="all">Todos los años</option>' +
+    DATA.años.map(a=>`<option value="${a}">${a}</option>`).join('');
+  // Comparación tolerante a tipo (cur puede llegar como string desde el
+  // <select> o el hash de la URL; DATA.años son números).
+  if(cur && cur!=='all' && DATA.años.some(a=>String(a)===String(cur))) sel.value = String(cur);
 }
 
 // ═══════ RESTAURAR ESTADO DESDE HASH ═══════
@@ -2519,7 +2672,7 @@ function restoreHashState(){
     if(navBtn) navBtn.classList.add('active');
   }
   const sel = document.getElementById('hdr-year');
-  if(sel) sel.value = (STATE.year && STATE.year!=='all') ? STATE.year : '';
+  if(sel) sel.value = (STATE.year && STATE.year!=='all') ? String(STATE.year) : 'all';
 }
 
 // ═══════ EVENTOS GLOBALES ═══════
@@ -2528,7 +2681,7 @@ function bindGlobalEvents(){
   const yrSel = document.getElementById('hdr-year');
   if(yrSel){
     yrSel.addEventListener('change', ()=>{
-      STATE.year = yrSel.value || null;
+      STATE.year = yrSel.value || 'all';
       writeHash();
       renderAll();
     });
@@ -2640,8 +2793,8 @@ function handleFile(file){
       RAW_ROWS = rows;
       DATA = processRows(rows, file.name);
       // Reset filtros que pueden no aplicar a nuevos datos
-      STATE.year = null;
-      STATE.area = null;
+      STATE.year = 'all';
+      STATE.area = 'all';
       STATE.phase = 'all';
       writeHash();
       populateYearSelect();
