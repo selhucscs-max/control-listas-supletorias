@@ -403,6 +403,7 @@ tbody td{padding:8px 10px}
 .selector-sub{color:rgba(255,255,255,.82);font-size:13px;margin-bottom:26px}
 .selector-cards{display:grid;grid-template-columns:1fr;gap:16px}
 @media(min-width:640px){.selector-cards{grid-template-columns:1fr 1fr}}
+@media(min-width:1100px){.selector-cards{grid-template-columns:repeat(4,1fr)}}
 .selector-card{
   background:var(--white);border:none;border-radius:var(--rL);padding:26px 20px;
   cursor:pointer;text-align:left;font-family:inherit;position:relative;overflow:hidden;
@@ -412,9 +413,13 @@ tbody td{padding:8px 10px}
 .selector-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px}
 .selector-card.c-suple::before{background:linear-gradient(90deg,var(--teal),var(--teal2))}
 .selector-card.c-accion::before{background:linear-gradient(90deg,var(--gold),var(--gold2))}
+.selector-card.c-carrera::before{background:linear-gradient(90deg,#7952B3,#9B7BD4)}
+.selector-card.c-formacion::before{background:linear-gradient(90deg,var(--navy),var(--navy2))}
 .selector-card-ico{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
 .selector-card.c-suple .selector-card-ico{background:var(--tealp);color:var(--teal)}
 .selector-card.c-accion .selector-card-ico{background:#FBF1DC;color:var(--gold)}
+.selector-card.c-carrera .selector-card-ico{background:#EFE8F8;color:#7952B3}
+.selector-card.c-formacion .selector-card-ico{background:#E3EAF5;color:var(--navy)}
 .selector-card-ico svg{width:24px;height:24px}
 .selector-card-t{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:4px}
 .selector-card-s{font-size:12.5px;color:var(--g600);line-height:1.5}
@@ -429,6 +434,118 @@ tbody td{padding:8px 10px}
 .pie-year-w{position:relative;height:110px}
 .pie-year-pct{font-size:15px;font-weight:700;color:var(--teal);margin-top:6px}
 .pie-year-lbl{font-size:9.5px;color:var(--g400)}
+
+/* ═══════════════════════════════════════════════
+   MÓDULO: CARRERA PROFESIONAL
+   ═══════════════════════════════════════════════ */
+.car-refbox{display:flex;align-items:center;gap:6px}
+.car-refbox input[type="date"]{font-family:inherit;font-size:12px;color:var(--g800);border:1px solid var(--g200);border-radius:7px;padding:5px 8px;background:var(--g50);outline:none}
+.car-cards{display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:14px}
+@media(min-width:600px){.car-cards{grid-template-columns:1fr 1fr}}
+@media(min-width:960px){.car-cards{grid-template-columns:1fr 1fr 1fr}}
+@media(min-width:1300px){.car-cards{grid-template-columns:1fr 1fr 1fr 1fr}}
+.car-pcard{background:var(--white);border:1px solid var(--g100);border-left:4px solid var(--carc,var(--teal));border-radius:var(--rL);padding:14px;transition:box-shadow .15s}
+.car-pcard:hover{box-shadow:var(--sh)}
+.car-pc-top{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:4px}
+.car-pc-conv{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.4px;color:var(--g400)}
+.car-pc-com{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.car-pc-com .cdot{width:9px;height:9px;border-radius:50%;background:var(--carc,var(--teal));flex-shrink:0}
+.car-pc-next{font-size:11.5px;color:var(--g600);margin-bottom:10px}
+.car-pc-next b{color:var(--navy)}
+.car-pc-foot{display:flex;align-items:center;justify-content:space-between;font-size:10.5px;color:var(--g400);margin-top:10px;padding-top:8px;border-top:1px solid var(--g100)}
+.car-pc-foot b{color:var(--g600)}
+.car-pc-warn{color:var(--amber);font-weight:600}
+.stg{display:inline-block;font-size:10px;font-weight:600;padding:3px 9px;border-radius:10px}
+.stg-pend{background:var(--g100);color:var(--g600)}
+.stg-prov{background:#EFF6FF;color:#1d4ed8}
+.stg-aleg{background:var(--amberp);color:var(--amber)}
+.stg-rev{background:#FDF4FF;color:#7c3aed}
+.stg-def{background:var(--tealp);color:var(--teal)}
+.stg-fin{background:var(--greenp);color:var(--green)}
+.car-stepper{display:flex;align-items:center;margin:2px 0 8px;overflow-x:auto;gap:0}
+.car-stepper .step{min-width:26px}
+.car-stepper .step-dot{width:14px;height:14px;font-size:7px}
+.car-stepper .step-lbl{display:none}
+.car-agenda-item{display:flex;align-items:center;gap:10px;padding:9px 4px;border-bottom:1px solid var(--g100)}
+.car-agenda-item:last-child{border-bottom:none}
+.car-agenda-date{width:56px;flex-shrink:0;text-align:center}
+.car-agenda-date .d{font-size:16px;font-weight:700;color:var(--navy);line-height:1}
+.car-agenda-date .m{font-size:9px;color:var(--g400);text-transform:uppercase}
+.car-agenda-body{flex:1;min-width:0}
+.car-agenda-t{font-size:12.5px;font-weight:600;color:var(--navy)}
+.car-agenda-s{font-size:11px;color:var(--g600)}
+.tag{display:inline-block;font-size:10px;font-weight:600;padding:3px 8px;border-radius:10px;flex-shrink:0}
+.tag.done{background:var(--g100);color:var(--g600)}
+.tag.hoy{background:var(--red);color:#fff}
+.tag.soon{background:var(--amberp);color:var(--amber)}
+.tag.fut{background:var(--tealp);color:var(--teal)}
+.car-cal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.car-cal-title{font-size:14px;font-weight:700;color:var(--navy);text-transform:capitalize}
+.car-cal-nav{display:flex;gap:6px}
+.car-cal-nav button{width:28px;height:28px;border:1px solid var(--g200);border-radius:7px;background:var(--white);cursor:pointer;color:var(--g600);display:flex;align-items:center;justify-content:center}
+.car-cal-nav button:hover{background:var(--g50)}
+.car-cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.car-cal-dow{font-size:9px;font-weight:600;text-transform:uppercase;color:var(--g400);text-align:center;padding-bottom:4px}
+.car-cal-cell{aspect-ratio:1;border-radius:8px;background:var(--g50);border:1px solid var(--g100);padding:4px;display:flex;flex-direction:column;gap:2px;min-height:44px}
+.car-cal-cell.empty{background:transparent;border-color:transparent}
+.car-cal-cell.today{border-color:var(--teal);box-shadow:0 0 0 1px var(--teal)}
+.car-cal-cell .n{font-size:10px;color:var(--g600);font-weight:600}
+.car-cal-dots{display:flex;flex-wrap:wrap;gap:2px}
+.car-cal-dots i{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.car-cal-list{margin-top:14px}
+.car-rule-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px solid var(--g100);font-size:12px}
+.car-rule-row:last-child{border-bottom:none}
+.car-rule-lbl{color:var(--navy);font-weight:600}
+.car-rule-exp{color:var(--g400);font-size:11px}
+.car-issue{display:flex;align-items:flex-start;gap:8px;padding:6px 0;font-size:11.5px}
+.car-issue .dot{width:7px;height:7px;border-radius:50%;margin-top:4px;flex-shrink:0}
+.car-issue.crit .dot{background:var(--red)}
+.car-issue.warn .dot{background:var(--amber)}
+.car-issue.info .dot{background:var(--g400)}
+.car-issue.crit{color:var(--red)}
+.car-issue.warn{color:#8a5b12}
+.car-issue.info{color:var(--g600)}
+.car-empty{text-align:center;padding:40px 20px;color:var(--g400);font-size:13px}
+
+/* ═══════════════════════════════════════════════
+   MÓDULO: FORMACIÓN
+   ═══════════════════════════════════════════════ */
+.for-distro-bar{display:flex;width:100%;height:12px;border-radius:8px;overflow:hidden;background:var(--g50)}
+.for-distro-bar div{height:100%}
+.for-distro-legend{display:flex;flex-wrap:wrap;gap:9px 16px;margin-top:10px}
+.for-distro-legend .item{display:flex;align-items:center;gap:6px;font-size:11.5px;color:var(--g600)}
+.for-distro-legend .dot{width:9px;height:9px;border-radius:3px;flex-shrink:0}
+.for-distro-legend b{color:var(--navy);font-weight:700}
+.for-tabs{display:flex;gap:7px;overflow-x:auto;padding-bottom:2px;margin-bottom:12px}
+.for-tab{flex:none;padding:7px 13px;border-radius:999px;background:var(--white);border:1px solid var(--g200);color:var(--g600);font-size:12.5px;font-weight:600;cursor:pointer;white-space:nowrap;display:flex;align-items:center;gap:6px}
+.for-tab .count{background:var(--g50);color:var(--g600);border-radius:999px;padding:1px 6px;font-size:10.5px;font-weight:600}
+.for-tab:hover{border-color:var(--teal);color:var(--teal)}
+.for-tab.active{background:var(--navy);border-color:var(--navy);color:#fff}
+.for-tab.active .count{background:rgba(255,255,255,.2);color:#fff}
+.for-controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+.for-controls select{font-family:inherit;font-size:12.5px;color:var(--g800);border:1px solid var(--g200);border-radius:7px;padding:7px 10px;background:var(--white);cursor:pointer;outline:none}
+.for-toggle-all{border:1px solid var(--g200);border-radius:7px;background:var(--white);padding:7px 12px;font-family:inherit;font-size:12px;font-weight:600;color:var(--navy);cursor:pointer;white-space:nowrap}
+.for-toggle-all:hover{border-color:var(--teal)}
+.for-acc-item{background:var(--white);border:1px solid var(--g100);border-radius:var(--rL);margin-bottom:12px;box-shadow:var(--sh);overflow:hidden}
+.for-acc-head{width:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px 16px;background:var(--white);border:none;border-left:4px solid var(--dirc,var(--teal));cursor:pointer;text-align:left;font-family:inherit}
+.for-acc-head:hover{background:var(--g50)}
+.for-acc-head h3{margin:0;font-size:14.5px;color:var(--navy);font-weight:700}
+.for-acc-head .n{font-size:11px;color:var(--g400);font-weight:500;background:var(--g50);padding:2px 9px;border-radius:999px;border:1px solid var(--g100);margin-left:8px}
+.for-chevron{flex:none;transition:transform .2s ease;color:var(--g400)}
+.for-acc-item.open .for-chevron{transform:rotate(180deg)}
+.for-acc-body{max-height:0;overflow:hidden;transition:max-height .28s ease}
+.for-acc-body-inner{padding:4px 16px 16px}
+.for-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+.for-crd{background:var(--g50);border:1px solid var(--g100);border-left:3px solid var(--dirc,var(--teal));border-radius:10px;padding:13px 14px 11px;display:flex;flex-direction:column;gap:8px;transition:transform .12s,box-shadow .12s}
+.for-crd:hover{transform:translateY(-2px);box-shadow:var(--sh)}
+.for-crd .code{font-size:10.5px;color:var(--g400);letter-spacing:.3px}
+.for-crd h4{margin:0;font-size:13px;line-height:1.35;font-weight:600;color:var(--g800)}
+.for-crd .meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:2px}
+.for-pill{font-size:10.5px;font-weight:600;padding:3px 8px;border-radius:999px;display:flex;align-items:center;gap:4px}
+.for-pill.horas,.for-pill.plazas{background:#fff;color:var(--navy);border:1px solid var(--g200)}
+.for-pill.mod-presencial{background:#E3EAF5;color:var(--navy)}
+.for-pill.mod-online{background:var(--amberp);color:#8a5b12}
+.for-pill.mod-mixto{background:var(--g100);color:var(--g600)}
 </style>
 </head>
 <body><div class="modal-overlay open" id="pinGateOverlay" style="z-index:9999;"><div class="modal-box"><div class="modal-title">Acceso restringido</div><div class="modal-sub">Introduce la clave de acceso para continuar</div><div style="display:flex;gap:8px;justify-content:center;margin:16px 0;"><input type="password" inputmode="numeric" maxlength="1" class="pin-digit" data-i="0"><input type="password" inputmode="numeric" maxlength="1" class="pin-digit" data-i="1"><input type="password" inputmode="numeric" maxlength="1" class="pin-digit" data-i="2"><input type="password" inputmode="numeric" maxlength="1" class="pin-digit" data-i="3"><input type="password" inputmode="numeric" maxlength="1" class="pin-digit" data-i="4"><input type="password" inputmode="numeric" maxlength="1" class="pin-digit" data-i="5"></div><div class="pin-error-msg" id="pinErrorMsg" style="display:none;">Clave incorrecta. Intentalo de nuevo.</div><div class="modal-btns"><button class="btn-confirm" id="pinConfirmBtn">Entrar</button></div></div></div><script>(function(){var PIN="255623";var KEY="suple_pin_ok";function ready(fn){document.readyState!=="loading"?fn():document.addEventListener("DOMContentLoaded",fn);}ready(function(){var overlay=document.getElementById("pinGateOverlay");try{if(sessionStorage.getItem(KEY)==="1"){overlay.classList.remove("open");return;}}catch(e){}var ds=Array.from(overlay.querySelectorAll(".pin-digit"));function tryUnlock(){var val=ds.map(function(i){return i.value||"";}).join("");if(val===PIN){try{sessionStorage.setItem(KEY,"1");}catch(e){}overlay.classList.remove("open");}else if(val.length===PIN.length){var box=overlay.querySelector(".modal-box");box.classList.add("error");document.getElementById("pinErrorMsg").style.display="block";ds.forEach(function(i){i.classList.add("error");i.value="";});ds[0].focus();setTimeout(function(){box.classList.remove("error");},500);}}ds.forEach(function(inp,idx){inp.addEventListener("input",function(){inp.value=inp.value.replace(/[^0-9]/g,"").slice(0,1);inp.classList.remove("error");if(inp.value&&ds[idx+1])ds[idx+1].focus();tryUnlock();});inp.addEventListener("keydown",function(e){if(e.key==="Backspace"&&!inp.value&&ds[idx-1])ds[idx-1].focus();});});document.getElementById("pinConfirmBtn").addEventListener("click",tryUnlock);ds[0].focus();});})();</script>
@@ -465,6 +582,20 @@ tbody td{padding:8px 10px}
         </div>
         <div class="selector-card-t">Ayudas de Acción Social</div>
         <div class="selector-card-s">Convocatoria anual: participantes, admitidos, excluidos y reclamaciones.</div>
+      </button>
+      <button class="selector-card c-carrera" id="sel-carrera" onclick="enterModule('carrera')">
+        <div class="selector-card-ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+        </div>
+        <div class="selector-card-t">Carrera Profesional</div>
+        <div class="selector-card-s">Previsión de sesiones, publicaciones provisionales y definitivas por convocatoria y comisión.</div>
+      </button>
+      <button class="selector-card c-formacion" id="sel-formacion" onclick="enterModule('formacion')">
+        <div class="selector-card-ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z"/><path d="M6 12v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg>
+        </div>
+        <div class="selector-card-t">Formación</div>
+        <div class="selector-card-s">Catálogo de actividades formativas gestionadas por el Servicio de Selección, Evaluación y Formación.</div>
       </button>
     </div>
   </div>
@@ -1124,6 +1255,274 @@ tbody td{padding:8px 10px}
 
 </div><!-- /app-accion -->
 
+<!-- ═══════════════ MÓDULO: CARRERA PROFESIONAL ═══════════════ -->
+<div class="app-shell" id="app-carrera">
+
+<!-- HEADER -->
+<div class="hdr">
+  <div class="hdr-stripe"></div>
+  <div class="hdr-inner">
+    <div class="hdr-logo" title="Carrera Profesional" style="background:linear-gradient(135deg,#7952B3,#9B7BD4)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:60%;height:60%;margin:20% auto;display:block"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+    </div>
+    <div class="hdr-text">
+      <h1>Carrera Profesional · CHUC</h1>
+      <p>Previsión de sesiones y publicaciones por comisión</p>
+    </div>
+    <div class="hdr-actions">
+      <button class="hdr-btn switch" id="btn-switch-car" title="Cambiar de procedimiento" onclick="showSelector()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/></svg>
+      </button>
+      <button class="hdr-btn" id="btn-home-car" title="Volver al inicio" onclick="showPaneCar('resumen', document.getElementById('nb-car-resumen'))">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      </button>
+      <div class="car-refbox" title="Fecha de referencia para calcular plazos">
+        <input type="date" id="car-ref-date">
+        <button class="btn-sec" id="car-ref-today" type="button" style="padding:5px 10px;font-size:11.5px">Hoy</button>
+      </div>
+      <button class="hdr-btn" id="btn-import-car" title="Importar datos (.ods, .xlsx, .csv)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- CONTENIDO CARRERA PROFESIONAL -->
+<div class="scroll-area" id="scroll-area-car">
+
+  <!-- TAB: RESUMEN -->
+  <div class="pane active" id="pane-car-resumen">
+    <div id="car-file-info"></div>
+    <div id="car-kpis" class="kpis"></div>
+    <div class="filters" id="car-filters"></div>
+    <div class="car-cards" id="car-cards"></div>
+  </div>
+
+  <!-- TAB: CRONOGRAMA -->
+  <div class="pane" id="pane-car-gantt">
+    <div class="card">
+      <div class="card-t">Cronograma por proceso</div>
+      <div class="card-s">Fase provisional · plazo de alegaciones · revisión T.A. · fase definitiva. La línea roja discontinua marca la fecha de referencia.</div>
+      <div class="lgd" id="car-gantt-lgd"></div>
+      <div class="chart-w" id="car-gantt-wrap" style="height:320px;overflow-x:auto"><canvas id="car-gantt-chart"></canvas></div>
+    </div>
+  </div>
+
+  <!-- TAB: AGENDA -->
+  <div class="pane" id="pane-car-agenda">
+    <div class="card" style="margin-bottom:0">
+      <div class="card-t">Agenda de hitos</div>
+      <div class="card-s">Todos los hitos de los procesos visibles, en orden cronológico</div>
+      <div id="car-agenda-list"></div>
+    </div>
+  </div>
+
+  <!-- TAB: CALENDARIO -->
+  <div class="pane" id="pane-car-cal">
+    <div class="card" style="margin-bottom:0">
+      <div class="car-cal-head">
+        <div class="car-cal-title" id="car-cal-title"></div>
+        <div class="car-cal-nav">
+          <button id="car-cal-prev" type="button" aria-label="Mes anterior">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button id="car-cal-today" type="button" aria-label="Mes actual" style="width:auto;padding:0 10px;font-size:11px">Hoy</button>
+          <button id="car-cal-next" type="button" aria-label="Mes siguiente">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="car-cal-grid" id="car-cal-grid"></div>
+      <div class="car-cal-list" id="car-cal-list"></div>
+    </div>
+  </div>
+
+  <!-- TAB: PLAZOS Y AVISOS -->
+  <div class="pane" id="pane-car-rules">
+    <div class="card">
+      <div class="card-t">Plazos de referencia</div>
+      <div class="card-s">Márgenes esperados entre hitos consecutivos</div>
+      <div id="car-rules-list"></div>
+    </div>
+    <div class="card" style="margin-bottom:0">
+      <div class="card-t">Avisos por proceso</div>
+      <div class="card-s">Incumplimientos de plazo, fechas en fin de semana/festivo o datos incompletos</div>
+      <div id="car-issues-list"></div>
+    </div>
+  </div>
+
+  <!-- TAB: DATOS -->
+  <div class="pane" id="pane-car-data">
+    <div class="card" style="margin-bottom:0">
+      <div class="card-t">Datos completos</div>
+      <div class="card-s">Todas las fechas por convocatoria y comisión</div>
+      <div class="tbl-w">
+        <table>
+          <thead><tr><th>Convocatoria</th><th>Comisión</th><th>1ª sesión</th><th>Firma prov.</th><th>Envío pub.</th><th>Pub. provisional</th><th>Fin alegaciones</th><th>Revisión</th><th>2ª sesión</th><th>Firma def.</th><th>Envío pub. def.</th><th>Pub. definitiva</th></tr></thead>
+          <tbody id="car-data-body"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /scroll-area-car -->
+
+<!-- BOTTOM NAV -->
+<nav class="bot-nav">
+  <button class="bot-btn bot-btn-car active" id="nb-car-resumen" onclick="showPaneCar('resumen',this)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+    <span class="bot-lbl">Resumen</span>
+  </button>
+  <button class="bot-btn bot-btn-car" id="nb-car-gantt" onclick="showPaneCar('gantt',this)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>
+    <span class="bot-lbl">Cronograma</span>
+  </button>
+  <button class="bot-btn bot-btn-car" id="nb-car-agenda" onclick="showPaneCar('agenda',this)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+    <span class="bot-lbl">Agenda</span>
+  </button>
+  <button class="bot-btn bot-btn-car" id="nb-car-cal" onclick="showPaneCar('cal',this)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+    <span class="bot-lbl">Calendario</span>
+  </button>
+  <button class="bot-btn bot-btn-car" id="nb-car-rules" onclick="showPaneCar('rules',this)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+    <span class="bot-lbl">Plazos</span>
+  </button>
+  <button class="bot-btn bot-btn-car" id="nb-car-data" onclick="showPaneCar('data',this)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="9" y1="10" x2="9" y2="20"/></svg>
+    <span class="bot-lbl">Datos</span>
+  </button>
+</nav>
+
+<!-- MODAL IMPORTAR (CARRERA PROFESIONAL) -->
+<div class="modal-bg" id="mdl-import-car">
+  <div class="modal-panel">
+    <div class="modal-head">
+      <div class="modal-t">Importar previsión de Carrera Profesional</div>
+      <button class="modal-x" id="mdl-close-car" aria-label="Cerrar">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="dropzone" id="dz-car">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+      <div class="dropzone-t">Arrastra tu archivo aquí</div>
+      <div class="dropzone-s">o pulsa para seleccionarlo<br>Formatos: <b>.ods</b> · <b>.xlsx</b> · <b>.xls</b> · <b>.csv</b></div>
+    </div>
+    <input type="file" id="dz-car-input" accept=".ods,.xlsx,.xls,.csv" style="display:none">
+    <div class="modal-info">
+      El archivo debe tener, por cada convocatoria, una fila de cabecera <code style="background:var(--g50);padding:1px 4px;border-radius:3px;font-size:11px">CONVOCATORIA · COMISIÓN · 1º SESIÓN · FIRMAS · ENVÍO PUB. · PUB. T.A. · PLAZO · REV. T.A. · 2º SESIÓN · FIRMAS · ENVÍO PUB. · PUB.</code> seguida de una fila por comisión, igual que <b>CARRERA_PREVISION.ods</b>. Los datos se guardan solo en este navegador.
+    </div>
+    <div class="modal-actions">
+      <button class="btn-sec danger" id="btn-reset-car" title="Volver a los datos de fábrica">Restaurar originales</button>
+      <button class="btn-sec" id="btn-cancel-car" style="background:var(--navy);color:#fff;border-color:var(--navy)">Listo</button>
+    </div>
+  </div>
+</div>
+
+</div><!-- /app-carrera -->
+
+<!-- ═══════════════ MÓDULO: FORMACIÓN ═══════════════ -->
+<div class="app-shell" id="app-formacion">
+
+<!-- HEADER -->
+<div class="hdr">
+  <div class="hdr-stripe"></div>
+  <div class="hdr-inner">
+    <div class="hdr-logo" title="Formación" style="background:linear-gradient(135deg,var(--navy),var(--navy2))">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:60%;height:60%;margin:20% auto;display:block"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z"/><path d="M6 12v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg>
+    </div>
+    <div class="hdr-text">
+      <h1>Formación · CHUC</h1>
+      <p>Actividades formativas gestionadas por SEF</p>
+    </div>
+    <div class="hdr-actions">
+      <button class="hdr-btn switch" id="btn-switch-for" title="Cambiar de procedimiento" onclick="showSelector()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/></svg>
+      </button>
+      <button class="hdr-btn" id="btn-import-for" title="Importar datos (.ods, .xlsx, .csv)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- CONTENIDO FORMACIÓN -->
+<div class="scroll-area" id="scroll-area-for" style="padding-bottom:32px">
+
+  <div id="for-file-info"></div>
+  <div id="for-stat-grid" class="kpis" style="grid-template-columns:repeat(2,1fr)"></div>
+  <div class="card">
+    <div class="card-t">Distribución de actividades por dirección</div>
+    <div class="card-s" id="for-distro-total"></div>
+    <div class="for-distro-bar" id="for-distro-bar"></div>
+    <div class="for-distro-legend" id="for-distro-legend"></div>
+  </div>
+
+  <div class="g2">
+    <div class="card">
+      <div class="card-t">Modalidad de impartición</div>
+      <div class="card-s">Nº de actividades por modalidad</div>
+      <div class="chart-w" style="height:210px"><canvas id="for-c-modalidad"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-t">Horas de formación por dirección</div>
+      <div class="card-s">Suma de horas programadas, por dirección/servicio</div>
+      <div class="chart-w" id="for-c-horas-dir-wrap" style="height:210px"><canvas id="for-c-horas-dir"></canvas></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-t">Plazas ofertadas por dirección</div>
+    <div class="card-s">Suma de plazas ofertadas, por dirección/servicio</div>
+    <div class="chart-w" id="for-c-plazas-dir-wrap" style="height:210px"><canvas id="for-c-plazas-dir"></canvas></div>
+  </div>
+
+  <div class="for-tabs" id="for-tabs"></div>
+  <div class="for-controls">
+    <div class="search-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <input class="search-input" id="for-q" type="text" placeholder="Buscar por título o código…" autocomplete="off">
+    </div>
+    <select id="for-mod-filter">
+      <option value="">Todas las modalidades</option>
+      <option value="Presencial">Presencial</option>
+      <option value="Online">Online</option>
+      <option value="Mixto">Mixto</option>
+    </select>
+    <button class="for-toggle-all" id="for-toggle-all" type="button">Expandir todas</button>
+  </div>
+
+  <div id="for-main"></div>
+
+</div><!-- /scroll-area-for -->
+
+<!-- MODAL IMPORTAR (FORMACIÓN) -->
+<div class="modal-bg" id="mdl-import-for">
+  <div class="modal-panel">
+    <div class="modal-head">
+      <div class="modal-t">Importar catálogo de Formación</div>
+      <button class="modal-x" id="mdl-close-for" aria-label="Cerrar">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="dropzone" id="dz-for">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+      <div class="dropzone-t">Arrastra tu archivo aquí</div>
+      <div class="dropzone-s">o pulsa para seleccionarlo<br>Formatos: <b>.ods</b> · <b>.xlsx</b> · <b>.xls</b> · <b>.csv</b></div>
+    </div>
+    <input type="file" id="dz-for-input" accept=".ods,.xlsx,.xls,.csv" style="display:none">
+    <div class="modal-info">
+      El archivo debe tener columnas <code style="background:var(--g50);padding:1px 4px;border-radius:3px;font-size:11px">dir, dirName, code, title, horas, plazas, modalidad</code> (una fila por actividad formativa). Los datos se guardan solo en este navegador.
+    </div>
+    <div class="modal-actions">
+      <button class="btn-sec danger" id="btn-reset-for" title="Volver a los datos de fábrica">Restaurar originales</button>
+      <button class="btn-sec" id="btn-cancel-for" style="background:var(--navy);color:#fff;border-color:var(--navy)">Listo</button>
+    </div>
+  </div>
+</div>
+
+</div><!-- /app-formacion -->
+
 <script>
 // ═══════ ESTADO GLOBAL ═══════
 let DATA = null; // datos procesados
@@ -1153,6 +1552,49 @@ let RAW_ROWS_ACC = null;  // filas crudas (formato ancho original) para reproces
 let APP_MODULE = null;    // 'suple' | 'accion' | null (selector visible)
 const STATE_ACC = { tab: 'resumen', year: 'all' };
 const LS_KEY_ACC = 'accion_social_chuc_data_v1';
+
+// ═══════ ESTADO GLOBAL (CARRERA PROFESIONAL) ═══════
+let DATA_CAR = null;      // {procs, comOrder, convOrder, source}
+let RAW_ROWS_CAR = null;  // filas crudas (grid ancho) para reprocesar
+const STATE_CAR = { tab: 'resumen', conv: 'all', com: 'all', ref: new Date().toISOString().slice(0,10), calMonth: null };
+const LS_KEY_CAR = 'carrera_prof_chuc_data_v1';
+const CAR_DAY = 86400000;
+const CAR_MS = [
+  {k:'s1', t:'1ª sesión de la comisión', ph:'prov'},
+  {k:'f1', t:'Firma de actas (fase provisional)', ph:'prov'},
+  {k:'e1', t:'Envío a publicación', ph:'prov'},
+  {k:'p1', t:'Publicación T.A. (provisional)', ph:'prov'},
+  {k:'fp', t:'Fin del plazo de alegaciones', ph:'aleg'},
+  {k:'s2', t:'2ª sesión de la comisión', ph:'def'},
+  {k:'f2', t:'Firma de actas (fase definitiva)', ph:'def'},
+  {k:'e2', t:'Envío a publicación definitiva', ph:'def'},
+  {k:'p2', t:'Publicación definitiva', ph:'def'},
+];
+CAR_MS.forEach((m,i)=>{ m.i = i; });
+const CAR_MK = Object.fromEntries(CAR_MS.map(m=>[m.k,m]));
+const CAR_RULES = [
+  {id:'f1',  label:'Firma de actas provisional',        from:'s1', to:'f1', unit:'d', min:0, max:7,  exp:'≤ 7 días'},
+  {id:'aleg',label:'Plazo de alegaciones',               from:'p1', to:'fp', unit:'h', min:8, max:12, exp:'≈ 10 días hábiles'},
+  {id:'rev', label:'Revisión T.A. antes de la 2ª sesión', from:'fp', to:'s2', unit:'d', min:7, max:14, exp:'7–14 días'},
+  {id:'f2',  label:'Firma de actas definitiva',           from:'s2', to:'f2', unit:'d', min:0, max:7,  exp:'≤ 7 días'},
+  {id:'pub', label:'Envío → publicación definitiva',      from:'e2', to:'p2', unit:'d', min:10,max:15, exp:'10–15 días'},
+];
+const CAR_STAGES = {pend:'Sin iniciar', prov:'Fase provisional', aleg:'Plazo de alegaciones', rev:'Revisión T.A.', def:'Fase definitiva', fin:'Finalizado'};
+// Festivos nacionales/autonómicos fijos conocidos (ampliar según calendario laboral de Canarias)
+const CAR_HOL = {'2026-01-01':'Año Nuevo','2026-01-06':'Reyes','2026-05-01':'Día del Trabajo','2026-10-12':'Fiesta Nacional','2026-11-01':'Todos los Santos','2026-12-06':'Día de la Constitución','2026-12-08':'Inmaculada Concepción','2026-12-25':'Navidad'};
+const CAR_PALETTE = [
+  ['#1A8080','#E2F4F4'], ['#0B2D5F','#E3EAF5'], ['#C89B2A','#FBF1DA'],
+  ['#7952B3','#EFE8F8'], ['#C0392B','#FBE7E4'], ['#2E9E5B','#E3F6EA'],
+];
+
+// ═══════ ESTADO GLOBAL (FORMACIÓN) ═══════
+let DATA_FOR = null;      // {courses, dirOrder, dirLabels, dirColors}
+const LS_KEY_FOR = 'formacion_chuc_data_v1';
+let forActiveDir = 'ALL';
+let forSearchTerm = '';
+let forModFilter = '';
+let forExpandedDirs = new Set();
+const FOR_DIR_COLORS_POOL = ['#0B2D5F','#1A8080','#C89B2A','#7952B3','#C0392B','#2E9E5B','#3296D2','#5BB8E8'];
 
 // ═══════ NORMALIZACIÓN DIRECCIONES ═══════
 function normalizeDir(d){
@@ -1220,17 +1662,23 @@ function enterModule(mod){
   document.getElementById('selectorScreen').classList.remove('active');
   document.getElementById('app-suple').classList.toggle('active', mod==='suple');
   document.getElementById('app-accion').classList.toggle('active', mod==='accion');
+  document.getElementById('app-carrera').classList.toggle('active', mod==='carrera');
+  document.getElementById('app-formacion').classList.toggle('active', mod==='formacion');
   // Re-renderizar tras hacer visible el contenedor: Chart.js necesita que el
   // canvas ya tenga tamaño real para dimensionarse bien (si se creó mientras
   // estaba oculto, sale con tamaño 0). mkChart() destruye y recrea, así que
   // volver a llamar al render es seguro e idempotente.
   if(mod==='suple' && DATA) renderAll();
   if(mod==='accion' && DATA_ACC) renderAccAll();
+  if(mod==='carrera' && DATA_CAR) renderCarAll();
+  if(mod==='formacion' && DATA_FOR) renderFormacion();
 }
 function showSelector(){
   APP_MODULE = null;
   document.getElementById('app-suple').classList.remove('active');
   document.getElementById('app-accion').classList.remove('active');
+  document.getElementById('app-carrera').classList.remove('active');
+  document.getElementById('app-formacion').classList.remove('active');
   document.getElementById('selectorScreen').classList.add('active');
 }
 
@@ -1244,6 +1692,18 @@ function showPaneAcc(id, btn){
   else document.getElementById('nb-acc-'+id)?.classList.add('active');
   document.getElementById('scroll-area-acc').scrollTo(0,0);
   if(DATA_ACC) renderAccAll();
+}
+
+// ═══════ NAVEGACIÓN (CARRERA PROFESIONAL) ═══════
+function showPaneCar(id, btn){
+  STATE_CAR.tab = id;
+  document.querySelectorAll('#app-carrera .pane').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('#app-carrera .bot-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('pane-car-'+id).classList.add('active');
+  if(btn) btn.classList.add('active');
+  else document.getElementById('nb-car-'+id)?.classList.add('active');
+  document.getElementById('scroll-area-car').scrollTo(0,0);
+  if(DATA_CAR) renderCarAll();
 }
 
 // ═══════ HELPERS ═══════
@@ -2665,9 +3125,13 @@ function restoreHashState(){
   // aquí solo sincronizamos la UI con lo que quedó en STATE.
   readHash();
   if(STATE.tab && document.getElementById('pane-'+STATE.tab)){
-    document.querySelectorAll('.pane').forEach(p=>p.classList.remove('active'));
+    // Importante: escopado a #app-suple. Otros módulos (Carrera Profesional,
+    // etc.) también usan las clases genéricas "pane"/"bot-btn" para heredar
+    // su estilo, y una consulta sin escopar aquí les quitaría la clase
+    // "active" nada más cargar la página, dejando su pestaña inicial vacía.
+    document.querySelectorAll('#app-suple .pane').forEach(p=>p.classList.remove('active'));
     document.getElementById('pane-'+STATE.tab).classList.add('active');
-    document.querySelectorAll('.bot-btn').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('#app-suple .bot-btn').forEach(b=>b.classList.remove('active'));
     const navBtn = document.getElementById('nb-'+STATE.tab);
     if(navBtn) navBtn.classList.add('active');
   }
@@ -3161,6 +3625,871 @@ function handleFileAccion(file){
   reader.readAsArrayBuffer(file);
 }
 
+// ═══════════════════════════════════════════════
+// MÓDULO: CARRERA PROFESIONAL — utilidades de fecha
+// ═══════════════════════════════════════════════
+const carP = s => { const a = String(s).split('-').map(Number); return Date.UTC(a[0], a[1]-1, a[2]); };
+const carF = t => new Date(t).toISOString().slice(0,10);
+const carFm = (t,o) => new Intl.DateTimeFormat('es-ES', Object.assign({timeZone:'UTC'}, o)).format(new Date(t)).replace(/\./g,'');
+const carDs = t => carFm(t, {day:'numeric', month:'short'});
+const carDl = t => carFm(t, {weekday:'short', day:'numeric', month:'short'});
+const carDy = t => carFm(t, {day:'numeric', month:'short', year:'numeric'});
+const carCap = s => s.charAt(0).toUpperCase()+s.slice(1);
+function carCd(t){
+  const REF = carP(STATE_CAR.ref);
+  const d = Math.round((t-REF)/CAR_DAY);
+  if(d===0) return 'Hoy';
+  if(d===1) return 'Mañana';
+  if(d===-1) return 'Ayer';
+  return d>0 ? ('En '+d+' días') : ('Hace '+(-d)+' días');
+}
+const carIsHol = t => CAR_HOL[carF(t)] || null;
+const carIsWe = t => { const w = new Date(t).getUTCDay(); return w===0||w===6; };
+function carBd(a,b){ let n=0; for(let t=a+CAR_DAY; t<=b; t+=CAR_DAY){ if(!carIsWe(t) && !carIsHol(t)) n++; } return n; }
+function carSlug(s){ return String(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,''); }
+
+// ═══════ CARRERA PROFESIONAL: PARSEO DEL .ODS ═══════
+function carCellDate(v){
+  if(v===null || v===undefined || v==='') return null;
+  if(v instanceof Date){ if(isNaN(v.getTime())) return null; return v.toISOString().slice(0,10); }
+  const s=String(v).trim();
+  const m=s.match(/^(\d{4}-\d{2}-\d{2})/);
+  return m ? m[1] : null;
+}
+// Detecta filas de datos (CONVOCATORIA + COMISIÓN en col. 0 y 1) sin depender
+// de los límites de bloque: cualquier número de convocatorias/comisiones
+// futuras se reconoce automáticamente. Las filas de cabecera de bloque
+// ("CARRERA / PROVISIONAL / DEFINITIVA") y de cabecera de columnas
+// ("CONVOCATORIA / COMISIÓN / ...") se descartan explícitamente.
+function parseCarreraSheet(rows){
+  const out=[];
+  (rows||[]).forEach(row=>{
+    if(!row || !row.length) return;
+    const c0 = row[0]==null ? '' : String(row[0]).trim();
+    const c1 = row[1]==null ? '' : String(row[1]).trim();
+    if(!c0 || !c1) return;
+    if(/^CARRERA/i.test(c0)) return;
+    if(/^CONVOCATORIA/i.test(c0)) return;
+    if(/^COMISI/i.test(c1)) return;
+    const revRaw = row[7];
+    let rev = (revRaw===null||revRaw===undefined||revRaw==='') ? '' : String(revRaw).trim();
+    if(/^\d{4}-\d{2}-\d{2}/.test(rev)) rev='';
+    out.push({
+      conv: c0, com: c1, rev: rev,
+      d: {
+        s1: carCellDate(row[2]), f1: carCellDate(row[3]), e1: carCellDate(row[4]),
+        p1: carCellDate(row[5]), fp: carCellDate(row[6]),
+        s2: carCellDate(row[8]), f2: carCellDate(row[9]), e2: carCellDate(row[10]), p2: carCellDate(row[11])
+      }
+    });
+  });
+  return out;
+}
+function processCarreraRows(procsRaw, source){
+  const comOrder=[]; const comColor={};
+  procsRaw.forEach(p=>{ if(!comOrder.includes(p.com)){ comOrder.push(p.com); comColor[p.com]=CAR_PALETTE[(comOrder.length-1)%CAR_PALETTE.length]; } });
+  const convOrder=[...new Set(procsRaw.map(p=>p.conv))];
+  const procs = procsRaw.map((p,i)=>({ id: carSlug(p.conv)+'-'+carSlug(p.com)+'-'+i, conv:p.conv, com:p.com, rev:p.rev, d:p.d, color: comColor[p.com] }));
+  return { procs, comOrder, convOrder, comColor, source };
+}
+
+// ═══════ CARRERA PROFESIONAL: CÁLCULO DE ESTADO Y PLAZOS ═══════
+const carT = (p,k) => (p.d && p.d[k]) ? carP(p.d[k]) : null;
+function carListOf(p){ return CAR_MS.map(m=>({k:m.k, m, t:carT(p,m.k)})).filter(x=>x.t!==null); }
+function carVisible(){
+  if(!DATA_CAR) return [];
+  return DATA_CAR.procs.filter(p => (STATE_CAR.conv==='all'||p.conv===STATE_CAR.conv) && (STATE_CAR.com==='all'||p.com===STATE_CAR.com));
+}
+function carStage(p){
+  const REF = carP(STATE_CAR.ref);
+  const past = carListOf(p).filter(x=>x.t<REF);
+  if(!past.length) return 'pend';
+  const last = past.reduce((a,b)=> b.m.i>a.m.i ? b : a);
+  if(last.k==='p2') return 'fin';
+  if(['s1','f1','e1'].includes(last.k)) return 'prov';
+  if(last.k==='p1') return 'aleg';
+  if(last.k==='fp') return 'rev';
+  return 'def';
+}
+function carNextMs(p){
+  const REF = carP(STATE_CAR.ref);
+  return carListOf(p).filter(x=>x.t>=REF).sort((a,b)=>a.t-b.t || a.m.i-b.m.i)[0] || null;
+}
+function carEvalRule(p,r){
+  const a=carT(p,r.from), b=carT(p,r.to);
+  if(a===null||b===null) return {st:'na'};
+  const v = r.unit==='h' ? carBd(a,b) : Math.round((b-a)/CAR_DAY);
+  return {st: (v>=r.min && v<=r.max) ? 'ok':'bad', v, r};
+}
+function carIssuesOf(p){
+  const out=[]; const L=carListOf(p);
+  CAR_RULES.forEach(r=>{ const e=carEvalRule(p,r); if(e.st==='bad') out.push({lv:'warn', txt:r.label+': '+e.v+(r.unit==='h'?' días hábiles':' días')+' (esperado '+r.exp+')'}); });
+  let prev=null;
+  L.forEach(x=>{
+    if(prev && x.t<prev.t) out.push({lv:'crit', txt:'«'+x.m.t+'» ('+carDs(x.t)+') es anterior a «'+prev.m.t+'» ('+carDs(prev.t)+')'});
+    if(carIsHol(x.t)) out.push({lv:'warn', txt:x.m.t+' ('+carDs(x.t)+') cae en festivo: '+carIsHol(x.t)});
+    else if(carIsWe(x.t)) out.push({lv:'warn', txt:x.m.t+' ('+carDs(x.t)+') cae en fin de semana'});
+    prev=x;
+  });
+  const provK=['s1','f1','e1','p1','fp']; const hasProv = provK.some(k=>carT(p,k)!==null);
+  if(!hasProv) out.push({lv:'info', txt:'Sin fase provisional en el Excel: solo consta la definitiva'});
+  else provK.forEach(k=>{ if(carT(p,k)===null) out.push({lv:'info', txt:'Falta fecha: '+CAR_MK[k].t}); });
+  ['s2','f2','e2','p2'].forEach(k=>{ if(carT(p,k)===null) out.push({lv:'info', txt:'Falta fecha: '+CAR_MK[k].t}); });
+  return out;
+}
+const carWarnCount = p => carIssuesOf(p).filter(i=>i.lv!=='info').length;
+function carSegsOf(p){
+  const g=k=>carT(p,k); const out=[];
+  const prov=['s1','f1','e1','p1'].map(g).filter(v=>v!==null);
+  if(prov.length) out.push({ph:'prov', a:Math.min.apply(null,prov), b:Math.max.apply(null,prov)});
+  const p1=g('p1'), fp=g('fp'), s2=g('s2');
+  if(p1!==null && fp!==null && fp>=p1) out.push({ph:'aleg', a:p1, b:fp});
+  if(fp!==null && s2!==null && s2>=fp) out.push({ph:'rev', a:fp, b:s2});
+  const def=['s2','f2','e2','p2'].map(g).filter(v=>v!==null);
+  if(def.length) out.push({ph:'def', a:Math.min.apply(null,def), b:Math.max.apply(null,def)});
+  return out;
+}
+const CAR_PH_COLOR = {prov:'#2C5B96', aleg:'#C89B2A', rev:'#7952B3', def:'#1A8080'};
+const CAR_PH_NAME = {prov:'Fase provisional', aleg:'Plazo de alegaciones', rev:'Revisión T.A.', def:'Fase definitiva'};
+const carStgLbl = s => CAR_STAGES[s]||s;
+
+// ═══════ CARRERA PROFESIONAL: RENDER ═══════
+function renderCarAll(){
+  if(!DATA_CAR) return;
+  renderCarKPIs();
+  renderCarCards();
+  const pane = document.querySelector('#app-carrera .pane.active');
+  if(pane){
+    const id = pane.id.replace('pane-car-','');
+    if(id==='gantt') renderCarGantt();
+    if(id==='agenda') renderCarAgenda();
+    if(id==='cal') renderCarCal();
+    if(id==='rules') renderCarRules();
+    if(id==='data') renderCarData();
+  }
+}
+function populateCarFilters(){
+  const elC = document.getElementById('car-filters');
+  if(!elC || !DATA_CAR) return;
+  elC.innerHTML = `
+    <label>Convocatoria:</label>
+    <select id="car-f-conv"><option value="all">Todas</option>${DATA_CAR.convOrder.map(c=>`<option value="${c}">${c}</option>`).join('')}</select>
+    <label>Comisión:</label>
+    <select id="car-f-com"><option value="all">Todas</option>${DATA_CAR.comOrder.map(c=>`<option value="${c}">${c}</option>`).join('')}</select>
+  `;
+  const selC = document.getElementById('car-f-conv'), selM = document.getElementById('car-f-com');
+  if(selC){ selC.value = STATE_CAR.conv; selC.addEventListener('change', ()=>{ STATE_CAR.conv=selC.value; renderCarAll(); }); }
+  if(selM){ selM.value = STATE_CAR.com; selM.addEventListener('change', ()=>{ STATE_CAR.com=selM.value; renderCarAll(); }); }
+}
+function renderCarKPIs(){
+  const vs = carVisible();
+  const REF = carP(STATE_CAR.ref);
+  const st = vs.map(carStage);
+  const en = st.filter(s=>s!=='pend'&&s!=='fin').length;
+  const pend = st.filter(s=>s==='pend').length, fin = st.filter(s=>s==='fin').length;
+  const all=[]; vs.forEach(p=>carListOf(p).forEach(x=>all.push({p,x})));
+  const fut = all.filter(a=>a.x.t>=REF).sort((a,b)=>a.x.t-b.x.t);
+  let nextV='—', nextS='Sin hitos pendientes';
+  if(fut.length){
+    const t0=fut[0].x.t, same=fut.filter(a=>a.x.t===t0);
+    nextV = carCd(t0);
+    nextS = carCap(carDl(t0))+' · '+(same.length===1 ? (same[0].x.m.t+' ('+same[0].p.conv+' · '+same[0].p.com+')') : (same.length+' hitos'));
+  }
+  const in14 = fut.filter(a=>a.x.t<=REF+14*CAR_DAY);
+  const procs14 = new Set(in14.map(a=>a.p.id)).size;
+  let endT=null, endP=null;
+  vs.forEach(p=>{ const t=carT(p,'p2'); if(t!==null && (endT===null||t>endT)){ endT=t; endP=p; } });
+  const iss = vs.reduce((n,p)=>n+carWarnCount(p),0);
+  const info = vs.reduce((n,p)=>n+carIssuesOf(p).filter(i=>i.lv==='info').length,0);
+  const el = document.getElementById('car-kpis');
+  if(!el) return;
+  el.innerHTML =
+    `<div class="kpi"><div class="kpi-v">${en}</div><div class="kpi-l">En tramitación</div><div class="kpi-s">de ${vs.length} procesos</div></div>`+
+    `<div class="kpi gold"><div class="kpi-v">${nextV}</div><div class="kpi-l">Próximo hito</div><div class="kpi-s">${nextS}</div></div>`+
+    `<div class="kpi"><div class="kpi-v">${in14.length}</div><div class="kpi-l">Hitos en 14 días</div><div class="kpi-s">en ${procs14} proceso${procs14===1?'':'s'}</div></div>`+
+    `<div class="kpi"><div class="kpi-v">${endT!==null?carDs(endT):'—'}</div><div class="kpi-l">Cierre previsto</div><div class="kpi-s">${endP?(endP.conv+' · '+endP.com):''}</div></div>`+
+    `<div class="kpi${iss?' red':''}"><div class="kpi-v">${iss}</div><div class="kpi-l">Avisos de calendario</div><div class="kpi-s">${info} dato(s) pendientes</div></div>`+
+    `<div class="kpi"><div class="kpi-v">${pend}</div><div class="kpi-l">Sin iniciar</div><div class="kpi-s">${fin} finalizado${fin===1?'':'s'}</div></div>`;
+}
+function renderCarCards(){
+  const vs = carVisible();
+  const cont = document.getElementById('car-cards');
+  if(!cont) return;
+  if(!vs.length){ cont.innerHTML = '<div class="car-empty">Ningún proceso coincide con los filtros.</div>'; return; }
+  const REF = carP(STATE_CAR.ref);
+  cont.innerHTML = vs.map(p=>{
+    const s = carStage(p), nx = carNextMs(p), tE = carT(p,'p2'), w = carWarnCount(p);
+    const stepsHtml = CAR_MS.map(m=>{
+      const t = carT(p,m.k);
+      let cls = 'pending';
+      if(t!==null){ cls = t<REF ? 'done' : (t===REF ? 'active' : 'pending'); }
+      const chk = cls==='done' ? '✓' : (cls==='active' ? '●' : '');
+      const title = t!==null ? (m.t+' · '+carDs(t)) : (m.t+' · sin fecha');
+      return `<div class="step ${cls}" title="${title}"><div class="step-dot">${chk}</div></div>`;
+    }).join('');
+    const nextTxt = nx ? `<b>${carCd(nx.t)}</b> · ${nx.m.t} (${carDs(nx.t)})` : (s==='fin' ? 'Proceso finalizado' : 'Sin hitos pendientes');
+    return `<div class="car-pcard" style="--carc:${p.color[0]}">
+      <div class="car-pc-top"><span class="car-pc-conv">${p.conv}</span><span class="stg stg-${s}">${carStgLbl(s)}</span></div>
+      <div class="car-pc-com"><span class="cdot"></span>${p.com}</div>
+      <div class="car-pc-next">${nextTxt}</div>
+      <div class="car-stepper">${stepsHtml}</div>
+      <div class="car-pc-foot"><span>Cierre previsto <b>${tE!==null?carDs(tE):'sin fecha'}</b></span>${w?`<span class="car-pc-warn">${w} aviso${w===1?'':'s'}</span>`:'<span>Sin avisos</span>'}</div>
+    </div>`;
+  }).join('');
+}
+function renderCarGantt(){
+  const vs = carVisible();
+  const wrap = document.getElementById('car-gantt-wrap');
+  if(wrap) wrap.style.height = Math.max(200, vs.length*46+70)+'px';
+  const lgd = document.getElementById('car-gantt-lgd');
+  if(lgd) lgd.innerHTML = Object.keys(CAR_PH_NAME).map(ph=>`<span class="lgd-i"><span class="lgd-d" style="background:${CAR_PH_COLOR[ph]}"></span>${CAR_PH_NAME[ph]}</span>`).join('');
+
+  if(!vs.length){
+    if(charts['car-gantt-chart']){ charts['car-gantt-chart'].destroy(); delete charts['car-gantt-chart']; }
+    return;
+  }
+
+  const REF = carP(STATE_CAR.ref);
+  const off = t => Math.round((t-REF)/CAR_DAY);
+  let allSegs=[]; vs.forEach(p=>carSegsOf(p).forEach(s=>allSegs.push(s)));
+  let minOff = allSegs.length ? Math.min.apply(null, allSegs.map(s=>off(s.a))) : 0;
+  let maxOff = allSegs.length ? Math.max.apply(null, allSegs.map(s=>off(s.b))) : 30;
+  minOff = Math.min(minOff, 0) - 5;
+  maxOff = maxOff + 10;
+
+  const MESES = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
+  const monthTicks = [];
+  const startDate = new Date(REF + minOff*CAR_DAY);
+  const cursor = new Date(Date.UTC(startDate.getUTCFullYear(), startDate.getUTCMonth(), 1));
+  const endTs = REF + (maxOff+31)*CAR_DAY;
+  while(cursor.getTime() <= endTs){
+    monthTicks.push({ value: Math.round((cursor.getTime()-REF)/CAR_DAY), label: MESES[cursor.getUTCMonth()]+String(cursor.getUTCFullYear()).slice(2) });
+    cursor.setUTCMonth(cursor.getUTCMonth()+1);
+  }
+
+  const labels = vs.map(p=>{ const l=p.conv+' · '+p.com; return l.length>30?l.slice(0,29)+'…':l; });
+  const phases = ['prov','aleg','rev','def'];
+  const datasets = phases.map(ph=>({
+    label: CAR_PH_NAME[ph],
+    data: vs.map(p=>{ const s = carSegsOf(p).find(x=>x.ph===ph); return s ? [off(s.a), off(s.b)] : null; }),
+    backgroundColor: CAR_PH_COLOR[ph],
+    borderRadius:6, barPercentage:0.55, categoryPercentage:0.8, grouped:false,
+  }));
+
+  mkChart('car-gantt-chart',{
+    type:'bar',
+    data:{ labels, datasets },
+    plugins:[{
+      id:'carGanttExtras',
+      afterDatasetsDraw(chart){
+        const ctx=chart.ctx, x=chart.scales.x, y=chart.scales.y;
+        ctx.save();
+        const refX = x.getPixelForValue(0);
+        ctx.strokeStyle='#C0392B'; ctx.setLineDash([4,3]); ctx.lineWidth=1.5;
+        ctx.beginPath(); ctx.moveTo(refX,y.top); ctx.lineTo(refX,y.bottom); ctx.stroke();
+        ctx.restore();
+      }
+    }],
+    options:{
+      indexAxis:'y', responsive:true, maintainAspectRatio:false,
+      plugins:{
+        legend:{display:false},
+        tooltip:{callbacks:{
+          title:(items)=>{ const p=vs[items[0].dataIndex]; return p?(p.conv+' · '+p.com):''; },
+          label:(c)=>{
+            if(c.raw==null) return null;
+            const ph = phases[c.datasetIndex];
+            const p = vs[c.dataIndex];
+            const seg = carSegsOf(p).find(s=>s.ph===ph);
+            if(!seg) return CAR_PH_NAME[ph];
+            return ' '+CAR_PH_NAME[ph]+': '+carDy(seg.a)+' → '+carDy(seg.b);
+          }
+        }}
+      },
+      scales:{
+        // Sin stacked:true a propósito: con barras "flotantes" ([inicio,fin])
+        // y varios datasets (una por fase) en la misma fila, "stacked" hace
+        // que Chart.js vaya acumulando la posición de cada dataset sobre la
+        // anterior (pensado para valores escalares apilados), lo que
+        // desplazaba la fase definitiva más allá de su fecha real. Con
+        // grouped:false en cada dataset basta para que las 4 fases se
+        // dibujen superpuestas en la misma fila, cada una en su posición
+        // real según su propio [inicio,fin].
+        x:{ min:minOff, max:maxOff, grid:{color:GC}, border:{display:false},
+          afterBuildTicks: axis => { axis.ticks = monthTicks.map(t=>({value:t.value})); },
+          ticks:{ font:{size:10}, callback: v => { const t=monthTicks.find(t=>t.value===v); return t?t.label:''; } } },
+        y:{ grid:{display:false}, border:{display:false}, ticks:{font:{size:10}} }
+      }
+    }
+  });
+}
+function renderCarAgenda(){
+  const vs = carVisible();
+  const cont = document.getElementById('car-agenda-list');
+  if(!cont) return;
+  const items = [];
+  vs.forEach(p=>{ carListOf(p).forEach(x=>items.push({p,x})); });
+  items.sort((a,b)=>a.x.t-b.x.t);
+  if(!items.length){ cont.innerHTML='<div class="car-empty">Sin hitos para los procesos visibles.</div>'; return; }
+  const REF = carP(STATE_CAR.ref);
+  cont.innerHTML = items.map(it=>{
+    const t = it.x.t;
+    const dayNum = new Date(t).getUTCDate();
+    const monLbl = carFm(t,{month:'short'});
+    const diff = Math.round((t-REF)/CAR_DAY);
+    let tagCls='fut', tagTxt=carCd(t);
+    if(diff<0){ tagCls='done'; tagTxt='Hecho'; }
+    else if(diff===0){ tagCls='hoy'; tagTxt='Hoy'; }
+    else if(diff<=7){ tagCls='soon'; }
+    return `<div class="car-agenda-item">
+      <div class="car-agenda-date"><div class="d">${dayNum}</div><div class="m">${monLbl}</div></div>
+      <div class="car-agenda-body">
+        <div class="car-agenda-t">${it.x.m.t}</div>
+        <div class="car-agenda-s">${it.p.conv} · ${it.p.com} · ${carCap(carDl(t))}</div>
+      </div>
+      <span class="tag ${tagCls}">${tagTxt}</span>
+    </div>`;
+  }).join('');
+}
+function carCalShift(n){
+  if(STATE_CAR.calMonth==null){ const REF=carP(STATE_CAR.ref); const d=new Date(REF); STATE_CAR.calMonth=Date.UTC(d.getUTCFullYear(),d.getUTCMonth(),1); }
+  const d = new Date(STATE_CAR.calMonth);
+  STATE_CAR.calMonth = Date.UTC(d.getUTCFullYear(), d.getUTCMonth()+n, 1);
+  renderCarCal();
+}
+function renderCarCal(){
+  if(STATE_CAR.calMonth==null){
+    const REF = carP(STATE_CAR.ref);
+    const d = new Date(REF);
+    STATE_CAR.calMonth = Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), 1);
+  }
+  const vs = carVisible();
+  const milestonesByDay = {};
+  vs.forEach(p=>{ carListOf(p).forEach(x=>{ const key=carF(x.t); (milestonesByDay[key]=milestonesByDay[key]||[]).push({p,x}); }); });
+
+  const mDate = new Date(STATE_CAR.calMonth);
+  const y = mDate.getUTCFullYear(), m = mDate.getUTCMonth();
+  const titleEl = document.getElementById('car-cal-title');
+  if(titleEl) titleEl.textContent = carCap(new Intl.DateTimeFormat('es-ES',{month:'long',year:'numeric',timeZone:'UTC'}).format(mDate));
+
+  const first = Date.UTC(y,m,1);
+  const startDow = (new Date(first).getUTCDay()+6)%7; // lunes=0
+  const daysInMonth = new Date(Date.UTC(y,m+1,0)).getUTCDate();
+  const todayKey = new Date().toISOString().slice(0,10);
+
+  const dows = ['Lu','Ma','Mi','Ju','Vi','Sá','Do'];
+  let html = dows.map(d=>`<div class="car-cal-dow">${d}</div>`).join('');
+  for(let i=0;i<startDow;i++) html += '<div class="car-cal-cell empty"></div>';
+  for(let day=1; day<=daysInMonth; day++){
+    const t = Date.UTC(y,m,day);
+    const key = carF(t);
+    const items = milestonesByDay[key]||[];
+    const dots = items.slice(0,6).map(it=>`<i style="background:${it.p.color[0]}" title="${it.x.m.t} · ${it.p.conv} · ${it.p.com}"></i>`).join('');
+    const isToday = key===todayKey;
+    html += `<div class="car-cal-cell${isToday?' today':''}"><div class="n">${day}</div><div class="car-cal-dots">${dots}</div></div>`;
+  }
+  const grid = document.getElementById('car-cal-grid');
+  if(grid) grid.innerHTML = html;
+
+  const monthItems=[];
+  vs.forEach(p=>{ carListOf(p).forEach(x=>{ const d2=new Date(x.t); if(d2.getUTCFullYear()===y && d2.getUTCMonth()===m) monthItems.push({p,x}); }); });
+  monthItems.sort((a,b)=>a.x.t-b.x.t);
+  const listEl = document.getElementById('car-cal-list');
+  if(listEl){
+    if(!monthItems.length) listEl.innerHTML = '<div class="car-empty">Sin hitos este mes.</div>';
+    else listEl.innerHTML = '<div class="sec-t">Hitos del mes</div>' + monthItems.map(it=>`
+      <div class="car-agenda-item">
+        <div class="car-agenda-date"><div class="d">${new Date(it.x.t).getUTCDate()}</div><div class="m">${carFm(it.x.t,{month:'short'})}</div></div>
+        <div class="car-agenda-body"><div class="car-agenda-t">${it.x.m.t}</div><div class="car-agenda-s">${it.p.conv} · ${it.p.com}</div></div>
+      </div>`).join('');
+  }
+}
+function renderCarRules(){
+  const rl = document.getElementById('car-rules-list');
+  if(rl) rl.innerHTML = CAR_RULES.map(r=>`<div class="car-rule-row"><span class="car-rule-lbl">${r.label}</span><span class="car-rule-exp">${r.exp}</span></div>`).join('');
+  const vs = carVisible();
+  const il = document.getElementById('car-issues-list');
+  if(!il) return;
+  const blocks = vs.map(p=>{
+    const issues = carIssuesOf(p);
+    if(!issues.length) return '';
+    const rows = issues.map(i=>`<div class="car-issue ${i.lv}"><span class="dot"></span><span>${i.txt}</span></div>`).join('');
+    return `<div style="margin-bottom:14px"><div class="car-pc-com" style="margin-bottom:4px"><span class="cdot" style="background:${p.color[0]}"></span>${p.conv} · ${p.com}</div>${rows}</div>`;
+  }).filter(Boolean);
+  il.innerHTML = blocks.length ? blocks.join('') : '<div class="car-empty">Sin avisos para los procesos visibles.</div>';
+}
+function renderCarData(){
+  const vs = carVisible();
+  const body = document.getElementById('car-data-body');
+  if(!body) return;
+  if(!vs.length){ body.innerHTML = '<tr><td colspan="12" style="text-align:center;color:var(--g400)">Sin datos</td></tr>'; return; }
+  body.innerHTML = vs.map(p=>{
+    const c = k => { const t=carT(p,k); return t===null?'—':carDy(t); };
+    return `<tr>
+      <td>${p.conv}</td><td>${p.com}</td>
+      <td>${c('s1')}</td><td>${c('f1')}</td><td>${c('e1')}</td><td>${c('p1')}</td>
+      <td>${c('fp')}</td>
+      <td>${p.rev||'—'}</td>
+      <td>${c('s2')}</td><td>${c('f2')}</td><td>${c('e2')}</td><td>${c('p2')}</td>
+    </tr>`;
+  }).join('');
+}
+
+// ═══════ CARRERA PROFESIONAL: EVENTOS E IMPORTACIÓN ═══════
+function bindCarreraEvents(){
+  const refInput = document.getElementById('car-ref-date');
+  if(refInput){
+    refInput.value = STATE_CAR.ref;
+    refInput.addEventListener('change', ()=>{
+      STATE_CAR.ref = refInput.value || new Date().toISOString().slice(0,10);
+      STATE_CAR.calMonth = null;
+      renderCarAll();
+    });
+  }
+  const btnToday = document.getElementById('car-ref-today');
+  if(btnToday){
+    btnToday.addEventListener('click', ()=>{
+      STATE_CAR.ref = new Date().toISOString().slice(0,10);
+      STATE_CAR.calMonth = null;
+      if(refInput) refInput.value = STATE_CAR.ref;
+      renderCarAll();
+    });
+  }
+
+  const btnImp = document.getElementById('btn-import-car');
+  const mdl = document.getElementById('mdl-import-car');
+  if(btnImp && mdl){ btnImp.addEventListener('click', ()=>{ mdl.classList.add('open'); }); }
+  const closeModal = ()=>{ if(mdl) mdl.classList.remove('open'); };
+  const btnClose = document.getElementById('mdl-close-car');
+  const btnCancel = document.getElementById('btn-cancel-car');
+  if(btnClose) btnClose.addEventListener('click', closeModal);
+  if(btnCancel) btnCancel.addEventListener('click', closeModal);
+  if(mdl){ mdl.addEventListener('click', e=>{ if(e.target===mdl) closeModal(); }); }
+
+  const dz = document.getElementById('dz-car');
+  const dzInput = document.getElementById('dz-car-input');
+  if(dz && dzInput){
+    dz.addEventListener('click', ()=> dzInput.click());
+    dz.addEventListener('dragover', e=>{ e.preventDefault(); dz.classList.add('drag'); });
+    dz.addEventListener('dragleave', ()=> dz.classList.remove('drag'));
+    dz.addEventListener('drop', e=>{
+      e.preventDefault(); dz.classList.remove('drag');
+      const f = e.dataTransfer.files && e.dataTransfer.files[0];
+      if(f) handleFileCarrera(f);
+    });
+    dzInput.addEventListener('change', e=>{
+      const f = e.target.files && e.target.files[0];
+      if(f) handleFileCarrera(f);
+      dzInput.value = '';
+    });
+  }
+
+  const btnReset = document.getElementById('btn-reset-car');
+  if(btnReset){
+    btnReset.addEventListener('click', ()=>{
+      if(!confirm('¿Restaurar los datos por defecto de Carrera Profesional? Se eliminarán los datos importados.')) return;
+      try{ localStorage.removeItem(LS_KEY_CAR); }catch(e){}
+      closeModal();
+      toast('🔄 Restaurando datos por defecto...', 2000);
+      setTimeout(()=>location.reload(), 600);
+    });
+  }
+
+  const calPrev = document.getElementById('car-cal-prev');
+  const calNext = document.getElementById('car-cal-next');
+  const calToday = document.getElementById('car-cal-today');
+  if(calPrev) calPrev.addEventListener('click', ()=>{ carCalShift(-1); });
+  if(calNext) calNext.addEventListener('click', ()=>{ carCalShift(1); });
+  if(calToday) calToday.addEventListener('click', ()=>{ STATE_CAR.calMonth=null; renderCarCal(); });
+}
+function handleFileCarrera(file){
+  const name = file.name.toLowerCase();
+  const validExt = /\.(ods|xlsx|xls|csv)$/i.test(name);
+  if(!validExt){ toast('❌ Formato no soportado. Usa .ods, .xlsx, .xls o .csv', 4000); return; }
+  toast('⏳ Procesando archivo...', 2000);
+  const reader = new FileReader();
+  reader.onload = function(e){
+    try{
+      const data = new Uint8Array(e.target.result);
+      const wb = XLSX.read(data, {type:'array', cellDates:true});
+      const ws = wb.Sheets[wb.SheetNames[0]];
+      const arr = XLSX.utils.sheet_to_json(ws, {header:1, defval:null, raw:true});
+      const procsRaw = parseCarreraSheet(arr);
+      if(!procsRaw.length){ toast('❌ No se reconoció ninguna fila de convocatoria/comisión', 4500); return; }
+
+      try{
+        localStorage.setItem(LS_KEY_CAR, JSON.stringify({ rows: arr, filename: file.name, imported: new Date().toISOString() }));
+      }catch(err){ toast('⚠️ Datos cargados pero no se pudieron guardar (LS lleno)', 4000); }
+
+      RAW_ROWS_CAR = arr;
+      DATA_CAR = processCarreraRows(procsRaw, file.name);
+      STATE_CAR.conv = 'all'; STATE_CAR.com = 'all';
+      populateCarFilters();
+      renderCarAll();
+
+      const mdl = document.getElementById('mdl-import-car');
+      if(mdl) mdl.classList.remove('open');
+      toast(`✅ ${DATA_CAR.procs.length} procesos importados desde "${file.name}"`, 4000);
+    }catch(err){
+      console.error(err);
+      toast('❌ Error procesando el archivo: ' + (err.message||err), 5000);
+    }
+  };
+  reader.onerror = function(){ toast('❌ Error leyendo el archivo', 3500); };
+  reader.readAsArrayBuffer(file);
+}
+
+// ═══════════════════════════════════════════════
+// MÓDULO: FORMACIÓN
+// ═══════════════════════════════════════════════
+function forFmtHoras(h){ return (h % 1 === 0) ? String(h) : String(h).replace('.', ','); }
+function processFormacionRows(courses, source){
+  const dirOrder = []; const dirLabels = {}; const dirColors = {};
+  courses.forEach(c=>{
+    if(!dirOrder.includes(c.dir)){
+      dirOrder.push(c.dir);
+      dirLabels[c.dir] = c.dirName || c.dir;
+      dirColors[c.dir] = FOR_DIR_COLORS_POOL[(dirOrder.length-1)%FOR_DIR_COLORS_POOL.length];
+    }
+  });
+  return { courses, dirOrder, dirLabels, dirColors, source };
+}
+function forMatches(c){
+  if(forActiveDir!=='ALL' && c.dir!==forActiveDir) return false;
+  if(forModFilter && c.modalidad!==forModFilter) return false;
+  if(forSearchTerm){
+    const t=(c.title+' '+c.code).toLowerCase();
+    if(!t.includes(forSearchTerm.toLowerCase())) return false;
+  }
+  return true;
+}
+function forModPillClass(m){ if(m==='Online') return 'mod-online'; if(m==='Mixto') return 'mod-mixto'; return 'mod-presencial'; }
+function forCardHTML(c, dirColors){
+  return `<div class="for-crd" style="--dirc:${dirColors[c.dir]}">
+    <div class="code mono">${c.code}</div>
+    <h4>${c.title}</h4>
+    <div class="meta">
+      <span class="for-pill horas">⏱ ${forFmtHoras(c.horas)} h</span>
+      <span class="for-pill plazas">👥 ${c.plazas} plazas</span>
+      <span class="for-pill ${forModPillClass(c.modalidad)}">${c.modalidad}</span>
+    </div>
+  </div>`;
+}
+function buildFormStats(){
+  if(!DATA_FOR) return;
+  const courses = DATA_FOR.courses;
+  const totalCursos = courses.length;
+  const totalHoras = courses.reduce((s,c)=>s+c.horas,0);
+  const totalPlazas = courses.reduce((s,c)=>s+c.plazas,0);
+  const totalDirs = DATA_FOR.dirOrder.length;
+  const stats = [
+    {v:totalCursos, l:'Actividades formativas'},
+    {v:Math.round(totalHoras).toLocaleString('es-ES'), l:'Horas de formación programadas'},
+    {v:totalPlazas.toLocaleString('es-ES'), l:'Plazas ofertadas'},
+    {v:totalDirs, l:'Direcciones / servicios participantes'},
+  ];
+  const el = document.getElementById('for-stat-grid');
+  if(el) el.innerHTML = stats.map(s=>`<div class="kpi"><div class="kpi-v">${s.v}</div><div class="kpi-l">${s.l}</div></div>`).join('');
+}
+function buildFormDistro(){
+  if(!DATA_FOR) return;
+  const courses = DATA_FOR.courses, total = courses.length;
+  const totalEl = document.getElementById('for-distro-total');
+  if(totalEl) totalEl.textContent = `${total} actividades en total`;
+  const bar = document.getElementById('for-distro-bar'), legend = document.getElementById('for-distro-legend');
+  if(!bar || !legend) return;
+  bar.innerHTML=''; legend.innerHTML='';
+  DATA_FOR.dirOrder.forEach(d=>{
+    const n = courses.filter(c=>c.dir===d).length;
+    const pct = total>0 ? (n/total*100).toFixed(1) : 0;
+    const seg=document.createElement('div');
+    seg.style.width=pct+'%'; seg.style.background=DATA_FOR.dirColors[d]; seg.title=`${DATA_FOR.dirLabels[d]}: ${n} cursos`;
+    bar.appendChild(seg);
+    const item=document.createElement('div'); item.className='item';
+    item.innerHTML = `<span class="dot" style="background:${DATA_FOR.dirColors[d]}"></span> ${DATA_FOR.dirLabels[d]} <b>${n}</b>`;
+    legend.appendChild(item);
+  });
+}
+const FOR_MOD_COLORS = {Presencial:'#0B2D5F', Online:'#1A8080', Mixto:'#C89B2A'};
+function buildFormCharts(){
+  if(!DATA_FOR) return;
+  const courses = DATA_FOR.courses;
+
+  // Modalidad de impartición (quesito)
+  const modOrder = ['Presencial','Online','Mixto'].filter(m=>courses.some(c=>c.modalidad===m));
+  const modCounts = modOrder.map(m=>courses.filter(c=>c.modalidad===m).length);
+  mkChart('for-c-modalidad',{type:'doughnut',
+    data:{labels:modOrder, datasets:[{data:modCounts, backgroundColor:modOrder.map(m=>FOR_MOD_COLORS[m]||'#8592A6'), borderWidth:3, borderColor:'#fff'}]},
+    options:{responsive:true, maintainAspectRatio:false, cutout:'65%',
+      plugins:{
+        legend:{position:'bottom', labels:{padding:12, usePointStyle:true, pointStyle:'rect', font:{size:11}}},
+        tooltip:{callbacks:{label:c=>` ${fmtN(c.parsed)} (${courses.length>0?(c.parsed/courses.length*100).toFixed(1):0}%)`}}
+      }}
+  });
+
+  // Horas y plazas por dirección (barras horizontales, ordenadas de mayor a menor)
+  const dirStats = DATA_FOR.dirOrder.map(d=>{
+    const cs = courses.filter(c=>c.dir===d);
+    return { d, label: DATA_FOR.dirLabels[d], horas: cs.reduce((s,c)=>s+c.horas,0), plazas: cs.reduce((s,c)=>s+c.plazas,0), color: DATA_FOR.dirColors[d] };
+  });
+  const nDirs = dirStats.length;
+  const wrapH = Math.max(160, nDirs*34+40);
+  const horasWrap = document.getElementById('for-c-horas-dir-wrap'); if(horasWrap) horasWrap.style.height = wrapH+'px';
+  const plazasWrap = document.getElementById('for-c-plazas-dir-wrap'); if(plazasWrap) plazasWrap.style.height = wrapH+'px';
+
+  const byHoras = [...dirStats].sort((a,b)=>b.horas-a.horas);
+  mkChart('for-c-horas-dir',{type:'bar',
+    data:{labels:byHoras.map(s=>s.label), datasets:[{data:byHoras.map(s=>Math.round(s.horas)), backgroundColor:byHoras.map(s=>s.color), borderRadius:4, borderSkipped:false, barPercentage:0.7}]},
+    options:{indexAxis:'y', responsive:true, maintainAspectRatio:false,
+      plugins:{legend:{display:false}, tooltip:{callbacks:{label:c=>` ${fmtN(c.parsed.x)} h`}}},
+      scales:{
+        x:{grid:{color:GC}, border:{display:false}, beginAtZero:true, ticks:{precision:0}},
+        y:{grid:{display:false}, border:{display:false}, ticks:{font:{size:10.5}}}
+      }}
+  });
+
+  const byPlazas = [...dirStats].sort((a,b)=>b.plazas-a.plazas);
+  mkChart('for-c-plazas-dir',{type:'bar',
+    data:{labels:byPlazas.map(s=>s.label), datasets:[{data:byPlazas.map(s=>s.plazas), backgroundColor:byPlazas.map(s=>s.color), borderRadius:4, borderSkipped:false, barPercentage:0.7}]},
+    options:{indexAxis:'y', responsive:true, maintainAspectRatio:false,
+      plugins:{legend:{display:false}, tooltip:{callbacks:{label:c=>` ${fmtN(c.parsed.x)} plazas`}}},
+      scales:{
+        x:{grid:{color:GC}, border:{display:false}, beginAtZero:true, ticks:{precision:0}},
+        y:{grid:{display:false}, border:{display:false}, ticks:{font:{size:10.5}}}
+      }}
+  });
+}
+function buildFormTabs(){
+  if(!DATA_FOR) return;
+  const tabs = document.getElementById('for-tabs');
+  if(!tabs) return;
+  tabs.innerHTML='';
+  tabs.appendChild(forTabEl('ALL','Todas', DATA_FOR.courses.length));
+  DATA_FOR.dirOrder.forEach(d=>{
+    const n = DATA_FOR.courses.filter(c=>c.dir===d).length;
+    tabs.appendChild(forTabEl(d, DATA_FOR.dirLabels[d], n));
+  });
+}
+function forTabEl(key,label,count){
+  const b=document.createElement('button');
+  b.type='button';
+  b.className='for-tab'+(key===forActiveDir?' active':'');
+  b.innerHTML = `${label} <span class="count">${count}</span>`;
+  b.onclick = ()=>{ forActiveDir=key; renderFormacion(); };
+  b.dataset.key=key;
+  return b;
+}
+function forToggleDir(d){
+  if(forExpandedDirs.has(d)) forExpandedDirs.delete(d); else forExpandedDirs.add(d);
+  renderFormacion();
+}
+function renderFormacion(){
+  if(!DATA_FOR) return;
+  buildFormStats();
+  buildFormDistro();
+  buildFormCharts();
+  document.querySelectorAll('#app-formacion .for-tab').forEach(t=>t.classList.toggle('active', t.dataset.key===forActiveDir));
+
+  const filtered = DATA_FOR.courses.filter(forMatches);
+  const main = document.getElementById('for-main');
+  const toggleAllBtn = document.getElementById('for-toggle-all');
+  if(!main) return;
+  if(!filtered.length){
+    main.innerHTML = '<div class="car-empty">Sin resultados. Prueba con otro término de búsqueda o cambia de dirección.</div>';
+    if(toggleAllBtn) toggleAllBtn.style.display='none';
+    return;
+  }
+  const groupKeys = forActiveDir==='ALL' ? DATA_FOR.dirOrder.filter(d=>filtered.some(c=>c.dir===d)) : [forActiveDir];
+  if(forActiveDir==='ALL' && groupKeys.length>1){
+    if(toggleAllBtn){
+      toggleAllBtn.style.display='';
+      const allOpen = groupKeys.every(d=>forExpandedDirs.has(d));
+      toggleAllBtn.textContent = allOpen ? 'Colapsar todas' : 'Expandir todas';
+    }
+  } else if(toggleAllBtn) toggleAllBtn.style.display='none';
+
+  if(forActiveDir!=='ALL'){
+    const d = forActiveDir, items = filtered;
+    main.innerHTML = `
+      <div style="display:flex;align-items:baseline;gap:10px;margin:6px 0 16px">
+        <h3 style="font-size:16px;margin:0;color:var(--navy)">${DATA_FOR.dirLabels[d]}</h3>
+        <span style="font-size:12px;color:var(--g400)">${items.length} actividad${items.length===1?'':'es'}</span>
+      </div>
+      <div class="for-grid">${items.map(c=>forCardHTML(c,DATA_FOR.dirColors)).join('')}</div>`;
+    return;
+  }
+
+  main.innerHTML = groupKeys.map(d=>{
+    const items = filtered.filter(c=>c.dir===d);
+    const isOpen = forExpandedDirs.has(d);
+    return `<div class="for-acc-item ${isOpen?'open':''}" data-dir="${d}">
+      <button type="button" class="for-acc-head" style="--dirc:${DATA_FOR.dirColors[d]}" data-toggle="${d}">
+        <div style="display:flex;align-items:center"><h3>${DATA_FOR.dirLabels[d]}</h3><span class="n">${items.length} actividad${items.length===1?'':'es'}</span></div>
+        <svg class="for-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <div class="for-acc-body"><div class="for-acc-body-inner"><div class="for-grid">${items.map(c=>forCardHTML(c,DATA_FOR.dirColors)).join('')}</div></div></div>
+    </div>`;
+  }).join('');
+
+  main.querySelectorAll('.for-acc-item').forEach(item=>{
+    const d = item.dataset.dir;
+    const body = item.querySelector('.for-acc-body');
+    body.style.maxHeight = forExpandedDirs.has(d) ? body.scrollHeight+'px' : '0px';
+    item.querySelector('.for-acc-head').addEventListener('click', ()=> forToggleDir(d));
+  });
+}
+function forRowsToCourses(rows){
+  return rows.map(r=>{
+    const get = (...keys)=>{ for(const k of keys){ if(r[k]!=null && r[k]!=='') return r[k]; } return null; };
+    const dir = get('dir','DIR','Dirección','direccion') || '';
+    const dirName = get('dirName','dirname','DirName','Dirección','direccion') || dir;
+    return {
+      dir: String(dir).trim(),
+      dirName: String(dirName).trim(),
+      code: String(get('code','CODE','Código','codigo')||'').trim(),
+      title: String(get('title','TITLE','Título','titulo')||'').trim(),
+      horas: parseFloat(get('horas','HORAS'))||0,
+      plazas: parseInt(get('plazas','PLAZAS'),10)||0,
+      modalidad: String(get('modalidad','MODALIDAD')||'Presencial').trim(),
+    };
+  }).filter(c=>c.dir && c.code && c.title);
+}
+function bindFormacionEvents(){
+  const q = document.getElementById('for-q');
+  if(q) q.addEventListener('input', ()=>{ forSearchTerm=q.value; renderFormacion(); });
+  const mf = document.getElementById('for-mod-filter');
+  if(mf) mf.addEventListener('change', ()=>{ forModFilter=mf.value; renderFormacion(); });
+  const ta = document.getElementById('for-toggle-all');
+  if(ta){
+    ta.addEventListener('click', ()=>{
+      const filtered = DATA_FOR.courses.filter(forMatches);
+      const groupKeys = DATA_FOR.dirOrder.filter(d=>filtered.some(c=>c.dir===d));
+      const allOpen = groupKeys.every(d=>forExpandedDirs.has(d));
+      if(allOpen) groupKeys.forEach(d=>forExpandedDirs.delete(d)); else groupKeys.forEach(d=>forExpandedDirs.add(d));
+      renderFormacion();
+    });
+  }
+
+  const btnImp = document.getElementById('btn-import-for');
+  const mdl = document.getElementById('mdl-import-for');
+  if(btnImp && mdl){ btnImp.addEventListener('click', ()=>{ mdl.classList.add('open'); }); }
+  const closeModal = ()=>{ if(mdl) mdl.classList.remove('open'); };
+  const btnClose = document.getElementById('mdl-close-for');
+  const btnCancel = document.getElementById('btn-cancel-for');
+  if(btnClose) btnClose.addEventListener('click', closeModal);
+  if(btnCancel) btnCancel.addEventListener('click', closeModal);
+  if(mdl){ mdl.addEventListener('click', e=>{ if(e.target===mdl) closeModal(); }); }
+
+  const dz = document.getElementById('dz-for');
+  const dzInput = document.getElementById('dz-for-input');
+  if(dz && dzInput){
+    dz.addEventListener('click', ()=> dzInput.click());
+    dz.addEventListener('dragover', e=>{ e.preventDefault(); dz.classList.add('drag'); });
+    dz.addEventListener('dragleave', ()=> dz.classList.remove('drag'));
+    dz.addEventListener('drop', e=>{ e.preventDefault(); dz.classList.remove('drag'); const f=e.dataTransfer.files&&e.dataTransfer.files[0]; if(f) handleFileFormacion(f); });
+    dzInput.addEventListener('change', e=>{ const f=e.target.files&&e.target.files[0]; if(f) handleFileFormacion(f); dzInput.value=''; });
+  }
+  const btnReset = document.getElementById('btn-reset-for');
+  if(btnReset){
+    btnReset.addEventListener('click', ()=>{
+      if(!confirm('¿Restaurar el catálogo de Formación por defecto? Se eliminarán los datos importados.')) return;
+      try{ localStorage.removeItem(LS_KEY_FOR); }catch(e){}
+      closeModal();
+      toast('🔄 Restaurando datos por defecto...', 2000);
+      setTimeout(()=>location.reload(), 600);
+    });
+  }
+}
+function handleFileFormacion(file){
+  const name = file.name.toLowerCase();
+  const validExt = /\.(ods|xlsx|xls|csv)$/i.test(name);
+  if(!validExt){ toast('❌ Formato no soportado. Usa .ods, .xlsx, .xls o .csv', 4000); return; }
+  toast('⏳ Procesando archivo...', 2000);
+  const reader = new FileReader();
+  reader.onload = function(e){
+    try{
+      const data = new Uint8Array(e.target.result);
+      const wb = XLSX.read(data, {type:'array', cellDates:false});
+      const ws = wb.Sheets[wb.SheetNames[0]];
+      const rows = XLSX.utils.sheet_to_json(ws, {defval:null});
+      const courses = forRowsToCourses(rows);
+      if(!courses.length){ toast('❌ No se reconocieron columnas válidas (dir, code, title, horas, plazas, modalidad)', 5000); return; }
+
+      try{ localStorage.setItem(LS_KEY_FOR, JSON.stringify({ courses, filename:file.name, imported:new Date().toISOString() })); }
+      catch(err){ toast('⚠️ Datos cargados pero no se pudieron guardar (LS lleno)', 4000); }
+
+      DATA_FOR = processFormacionRows(courses, file.name);
+      forActiveDir='ALL'; forSearchTerm=''; forModFilter=''; forExpandedDirs=new Set();
+      const q=document.getElementById('for-q'); if(q) q.value='';
+      const mf=document.getElementById('for-mod-filter'); if(mf) mf.value='';
+      buildFormTabs();
+      renderFormacion();
+
+      const mdl = document.getElementById('mdl-import-for');
+      if(mdl) mdl.classList.remove('open');
+      toast(`✅ ${courses.length} actividades importadas desde "${file.name}"`, 4000);
+    }catch(err){
+      console.error(err);
+      toast('❌ Error procesando el archivo: ' + (err.message||err), 5000);
+    }
+  };
+  reader.onerror = function(){ toast('❌ Error leyendo el archivo', 3500); };
+  reader.readAsArrayBuffer(file);
+}
+
+// ═══════ DATOS POR DEFECTO — CARRERA PROFESIONAL ═══════
+// Generado automáticamente (Carrera Profesional) el 21/09/2026 12:01 · 6 procesos (convocatoria × comisión)
+(function initDefaultCarrera(){
+  const carreraGrid = [["CARRERA ",null,"PROVISIONAL",null,null,null,null,null,"DEFINITIVA",null,null,null],["CONVOCATORIA","COMISIÓN ","1º SESIÓN","FIRMAS7 días","ENVÍO  PUB.Fecha","PUB. T.A.Fecha","PLAZO 10 días hábiles","REV T.A. 7-14 días","2º SESIÓN","FIRMAS 7 días","ENVÍO PUB.Fecha","PUB. (10-15 días)"],["Grado 5","Dip Sanitario",null,null,null,null,null,null,"2026-09-03","2026-09-07","2026-09-15","2026-09-25"],["Grado 5","FP Sanitario","2026-07-23","2026-07-23","2026-08-11","2026-08-24","2026-09-07","2 semanas","2026-09-21","2026-09-25","2026-09-28","2026-10-12"],["Grado 5","Gestión","2026-09-03","2026-09-03",null,"2026-09-17","2026-10-01","2 semanas","2026-10-16","2026-10-23","2026-10-26","2026-11-10"],["CARRERA ",null,"PROVISIONAL",null,null,null,null,null,"DEFINITIVA",null,null,null],["CONVOCATORIA","COMISIÓN ","1º SESIÓN","FIRMAS7 días","ENVÍO  PUB.Fecha","PUB. T.A.Fecha","PLAZO 10 días hábiles","REV T.A. 7-14 días","2º SESIÓN","FIRMAS 7 días","ENVÍO PUB.Fecha","PUB. (10-15 días)"],["Ord 2025","Dip Sanitario","2026-09-03",null,null,"2026-09-25","2026-10-09","10 días","2026-10-19","2026-10-23","2026-10-26","2026-11-10"],["Ord 2025","FP Sanitario","2026-09-21","2026-09-25","2026-09-28","2026-10-12","2026-10-26","10 días","2026-11-10","2026-11-16","2026-11-17","2026-12-01"],["Ord 2025","Gestión","2026-10-16","2026-10-23","2026-10-26","2026-10-27","2026-11-11","14 dias","2026-11-25","2026-12-02","2026-12-03","2026-12-17"]];
+
+  let activeRows = carreraGrid;
+  let activeSource = 'CARRERA_PREVISION.ods (datos por defecto)';
+  try{
+    const stored = localStorage.getItem(LS_KEY_CAR);
+    if(stored){
+      const parsed = JSON.parse(stored);
+      if(parsed && Array.isArray(parsed.rows) && parsed.rows.length){
+        activeRows = parsed.rows;
+        activeSource = parsed.filename || 'datos importados';
+      }
+    }
+  }catch(e){ console.warn('LS restore (Carrera Profesional) fallo', e); }
+
+  RAW_ROWS_CAR = activeRows;
+  const procsRaw = parseCarreraSheet(activeRows);
+  DATA_CAR = processCarreraRows(procsRaw, activeSource);
+  STATE_CAR.ref = new Date().toISOString().slice(0,10);
+  const refInput = document.getElementById('car-ref-date');
+  if(refInput) refInput.value = STATE_CAR.ref;
+  populateCarFilters();
+  bindCarreraEvents();
+  renderCarAll();
+})();
+
+// ═══════ DATOS POR DEFECTO — FORMACIÓN ═══════
+// Generado a partir de programa_formacion_2026_10.html el 21/09/2026 · 191 actividades
+(function initDefaultFormacion(){
+  const formacionCourses = [{"dir":"GER","dirName":"Dirección Gerencia","code":"GER26001","title":"Atención centrada en la persona: Avances en humanización en el SCS","horas":1.5,"plazas":60,"modalidad":"Presencial"},{"dir":"GER","dirName":"Dirección Gerencia","code":"GER26002","title":"Atención centrada en la persona, para residentes: Avances en Humanización en el SCS","horas":1.5,"plazas":60,"modalidad":"Presencial"},{"dir":"GER","dirName":"Dirección Gerencia","code":"GER26003","title":"Control documental en la norma ISO 9001:2015","horas":2,"plazas":60,"modalidad":"Presencial"},{"dir":"GER","dirName":"Dirección Gerencia","code":"GER26004","title":"Día mundial de seguridad del paciente","horas":4,"plazas":60,"modalidad":"Presencial"},{"dir":"GER","dirName":"Dirección Gerencia","code":"GER26005","title":"Introducción al sistema de gestión de calidad","horas":2,"plazas":35,"modalidad":"Presencial"},{"dir":"GER","dirName":"Dirección Gerencia","code":"GER26006","title":"Novedades en la ISO 9001","horas":2,"plazas":60,"modalidad":"Presencial"},{"dir":"GER","dirName":"Dirección Gerencia","code":"GER26007","title":"Fundamentos básicos en seguridad del paciente para profesionales sanitarios del CHUC","horas":2,"plazas":60,"modalidad":"Presencial"},{"dir":"GER","dirName":"Dirección Gerencia","code":"GER26008","title":"XVI Jornada de calidad y seguridad del HUC","horas":6,"plazas":150,"modalidad":"Presencial"},{"dir":"GER","dirName":"Dirección Gerencia","code":"GER26009","title":"Conceptos básicos sanitarios en lengua de signos española","horas":20,"plazas":16,"modalidad":"Presencial"},{"dir":"GER","dirName":"Dirección Gerencia","code":"GER26010","title":"Lengua de signos española 360º: Reactiva tus signos","horas":20,"plazas":20,"modalidad":"Presencial"},{"dir":"MED","dirName":"Dirección Médica","code":"MED26001","title":"VI Actualización en radiología pediátrica. Consensos, controversias, innovación y aprendizaje basado en la práctica habitual","horas":8,"plazas":150,"modalidad":"Presencial"},{"dir":"MED","dirName":"Dirección Médica","code":"MED26002","title":"Anatomía quirúrgica y disección del hueso temporal, ORL CHUC 2026","horas":30,"plazas":4,"modalidad":"Presencial"},{"dir":"MED","dirName":"Dirección Médica","code":"MED26003","title":"Simulación en cuidados intensivos pediátricos y neonatales","horas":8,"plazas":20,"modalidad":"Presencial"},{"dir":"MED","dirName":"Dirección Médica","code":"MED26004","title":"Uso básico de analizadores POCT GEM 4000","horas":1,"plazas":15,"modalidad":"Presencial"},{"dir":"MED","dirName":"Dirección Médica","code":"MED26005","title":"Trastornos destructivos del control de los impulsos y de la conducta (Teórico-práctico)","horas":8,"plazas":30,"modalidad":"Presencial"},{"dir":"MED","dirName":"Dirección Médica","code":"MED26006","title":"Anatomía quirúrgica y disección del hueso temporal, ORL CHUC 2026","horas":30,"plazas":4,"modalidad":"Presencial"},{"dir":"MED","dirName":"Dirección Médica","code":"MED26007","title":"Simulación clínica para soporte vital inmediato en planta de hospitalización 2026","horas":10,"plazas":12,"modalidad":"Presencial"},{"dir":"MED","dirName":"Dirección Médica","code":"MED26008","title":"Simulación clínica para soporte vital inmediato en sala de radiodiagnóstico 2026","horas":10,"plazas":12,"modalidad":"Presencial"},{"dir":"MED","dirName":"Dirección Médica","code":"MED26009","title":"I Jornada canaria de actualización en gastroenterología y hepatología","horas":8,"plazas":50,"modalidad":"Presencial"},{"dir":"MED","dirName":"Dirección Médica","code":"MED26010","title":"I Curso síndrome cardiorenal Hospital Universitario de Canarias","horas":12,"plazas":25,"modalidad":"Presencial"},{"dir":"MED","dirName":"Dirección Médica","code":"MED26011","title":"Seminario de introducción al marco de poder, amenaza y significado","horas":10,"plazas":30,"modalidad":"Presencial"},{"dir":"MED","dirName":"Dirección Médica","code":"MED26012","title":"Trastornos destructivos del control de los impulsos y de la conducta (Teórico-práctico)","horas":8,"plazas":30,"modalidad":"Presencial"},{"dir":"MED","dirName":"Dirección Médica","code":"MED26013","title":"Diagnóstico y tratamiento de la infección fúngica invasiva (IFI)","horas":4,"plazas":50,"modalidad":"Presencial"},{"dir":"MED","dirName":"Dirección Médica","code":"MED26014","title":"Aplicaciones clínicas de los elementos traza en el laboratorio clínico","horas":2,"plazas":40,"modalidad":"Presencial"},{"dir":"MED","dirName":"Dirección Médica","code":"MED26015","title":"Enfermedad de Wilson y determinación de cobre: Abordaje clínico y aplicación analítica en el laboratorio","horas":2,"plazas":40,"modalidad":"Presencial"},{"dir":"MED","dirName":"Dirección Médica","code":"MED26016","title":"Conociendo el laboratorio central","horas":3.5,"plazas":20,"modalidad":"Presencial"},{"dir":"MED","dirName":"Dirección Médica","code":"MED26017","title":"Elementos traza y nutrición: Metabolismo, diagnóstico y aplicaciones clínicas","horas":2,"plazas":40,"modalidad":"Presencial"},{"dir":"MED","dirName":"Dirección Médica","code":"MED26018","title":"Elementos traza en el laboratorio clínico: Fundamentos, fisiología y aplicación","horas":2,"plazas":40,"modalidad":"Presencial"},{"dir":"MED","dirName":"Dirección Médica","code":"MED26019","title":"Sostenibilidad y liderazgo: Del compromiso individual al cambio colectivo","horas":2,"plazas":50,"modalidad":"Presencial"},{"dir":"MED","dirName":"Dirección Médica","code":"MED26020","title":"Sostenibilidad en el laboratorio clínico: Hacia una cultura verde en el CHUC","horas":2,"plazas":50,"modalidad":"Presencial"},{"dir":"MED","dirName":"Dirección Médica","code":"MED26021","title":"Ecografía básica en la valoración del paciente crítico y perioperatorio","horas":4,"plazas":25,"modalidad":"Presencial"},{"dir":"MED","dirName":"Dirección Médica","code":"MED26022","title":"Seguridad clínica en cuidados postoperatorios","horas":14,"plazas":24,"modalidad":"Presencial"},{"dir":"MED","dirName":"Dirección Médica","code":"MED26023","title":"Seguridad clínica en el bloque quirúrgico","horas":14,"plazas":24,"modalidad":"Presencial"},{"dir":"MED","dirName":"Dirección Médica","code":"MED26024","title":"Habilidades no técnicas y seguridad del paciente en el hospital de día (simulación clínica)","horas":4,"plazas":32,"modalidad":"Presencial"},{"dir":"MED","dirName":"Dirección Médica","code":"MED26025","title":"Higiene de manos en la atención sanitaria como pilar en la prevención de infecciones relacionadas con la asistencia sanitaria 2026","horas":12,"plazas":25,"modalidad":"Mixto"},{"dir":"MED","dirName":"Dirección Médica","code":"MED26026","title":"Prevención de las infecciones relacionadas con la asistencia sanitaria (básico)","horas":5,"plazas":60,"modalidad":"Presencial"},{"dir":"MED","dirName":"Dirección Médica","code":"MED26027","title":"Inmunizaciones preferentes en el ámbito hospitalario (básico)","horas":2,"plazas":30,"modalidad":"Presencial"},{"dir":"MED","dirName":"Dirección Médica","code":"MED26028","title":"Gestión de solicitudes de mesa de transporte","horas":4,"plazas":6,"modalidad":"Presencial"},{"dir":"MED","dirName":"Dirección Médica","code":"MED26029","title":"Taller gestión administrativa de pacientes en urgencias y hospitalización del CHUC","horas":20,"plazas":7,"modalidad":"Presencial"},{"dir":"MED","dirName":"Dirección Médica","code":"MED26030","title":"Taller gestión administrativa en el servicio de admisión central y documentación clínica","horas":20,"plazas":7,"modalidad":"Presencial"},{"dir":"MED","dirName":"Dirección Médica","code":"MED26031","title":"II Jornadas de innovación sanitaria del CHUC","horas":8,"plazas":150,"modalidad":"Presencial"},{"dir":"MED","dirName":"Dirección Médica","code":"MED26032","title":"Programa de formación en experiencia del paciente y gestión sanitaria basada en valor","horas":8,"plazas":20,"modalidad":"Presencial"},{"dir":"MED","dirName":"Dirección Médica","code":"MED26033","title":"Deprescripción de inhibidores de la bomba de protones (IBP) 2026","horas":25,"plazas":40,"modalidad":"Presencial"},{"dir":"MED","dirName":"Dirección Médica","code":"MED26034","title":"Actualización de farmacología y terapéutica en el anciano 2026","horas":15,"plazas":40,"modalidad":"Mixto"},{"dir":"MED","dirName":"Dirección Médica","code":"MED26035","title":"Buenas prácticas clínicas para investigadores 2026","horas":15,"plazas":40,"modalidad":"Presencial"},{"dir":"MED","dirName":"Dirección Médica","code":"MED26036","title":"Capacitación para directores de instalaciones de rayos X con fines de diagnóstico médico","horas":30,"plazas":24,"modalidad":"Presencial"},{"dir":"MED","dirName":"Dirección Médica","code":"MED26037","title":"Jornada de formación en protección radiológica para personal expuesto en la instalación radiactiva (facultativos), área de radioterapia","horas":2,"plazas":20,"modalidad":"Presencial"},{"dir":"MED","dirName":"Dirección Médica","code":"MED26038","title":"Jornada de formación en protección radiológica para personal expuesto en la instalación radiactiva (facultativos), área de medicina nuclear","horas":2,"plazas":20,"modalidad":"Presencial"},{"dir":"MED","dirName":"Dirección Médica","code":"MED26039","title":"Protección radiológica (2º nivel) para radiología intervencionista","horas":25,"plazas":12,"modalidad":"Presencial"},{"dir":"MED","dirName":"Dirección Médica","code":"MED26040","title":"Actualización en patología infecciosa 2026: Infección intraabdominal","horas":4.5,"plazas":60,"modalidad":"Presencial"},{"dir":"MED","dirName":"Dirección Médica","code":"MED26041","title":"Investigar con impacto: De la idea a la publicación en digestivo","horas":3,"plazas":40,"modalidad":"Presencial"},{"dir":"MED","dirName":"Dirección Médica","code":"MED26042","title":"Presentar con impacto: Taller de comunicación científica para digestivo","horas":3,"plazas":40,"modalidad":"Presencial"},{"dir":"MED","dirName":"Dirección Médica","code":"MED26043","title":"Taller simulación obstetricia","horas":10,"plazas":50,"modalidad":"Presencial"},{"dir":"MED","dirName":"Dirección Médica","code":"MED26044","title":"V Jornada de tutores de formación sanitaria especializada del CHUC","horas":5,"plazas":50,"modalidad":"Presencial"},{"dir":"MED","dirName":"Dirección Médica","code":"MED26045","title":"Nuevos materiales para el tratamiento infrapoplíteo","horas":1,"plazas":10,"modalidad":"Presencial"},{"dir":"MED","dirName":"Dirección Médica","code":"MED26046","title":"Nuevos enfoques en la recanalización ultradistal (Teórico-práctico)","horas":4,"plazas":10,"modalidad":"Presencial"},{"dir":"MED","dirName":"Dirección Médica","code":"MED26047","title":"Simulación de despliegue de endoprótesis Nexus (Endospan)","horas":2,"plazas":10,"modalidad":"Presencial"},{"dir":"MED","dirName":"Dirección Médica","code":"MED26048","title":"Manejo del drenaje torácico. Teórico-práctico 2026","horas":12,"plazas":20,"modalidad":"Presencial"},{"dir":"MED","dirName":"Dirección Médica","code":"MED26049","title":"Fortaleciendo la comunicación con las familias","horas":4.5,"plazas":35,"modalidad":"Presencial"},{"dir":"MED","dirName":"Dirección Médica","code":"MED26050","title":"Introducción a la ecografía cardiaca en pediatría 2026","horas":12.5,"plazas":8,"modalidad":"Presencial"},{"dir":"MED","dirName":"Dirección Médica","code":"MED26051","title":"Aprendizaje de técnicas quirúrgicas básicas de enclavado elástico intramedular (TENS) (Teórico-práctico)","horas":4,"plazas":30,"modalidad":"Presencial"},{"dir":"MED","dirName":"Dirección Médica","code":"MED26052","title":"Dermatología para todos: La importancia de la piel en medicina","horas":4,"plazas":150,"modalidad":"Presencial"},{"dir":"MED","dirName":"Dirección Médica","code":"MED26053","title":"Patient Blood Management (PBM) para atención primaria","horas":10,"plazas":100,"modalidad":"Presencial"},{"dir":"MED","dirName":"Dirección Médica","code":"MED26054","title":"Metodología Lean. Certificado Lean Yellow Belt Practitioner","horas":20,"plazas":20,"modalidad":"Presencial"},{"dir":"MED","dirName":"Dirección Médica","code":"MED26055","title":"Soporte vital avanzado 2026","horas":20,"plazas":15,"modalidad":"Mixto"},{"dir":"MED","dirName":"Dirección Médica","code":"MED26056","title":"Simulación clínica avanzada en situaciones urgentes en unidades especiales","horas":15,"plazas":10,"modalidad":"Presencial"},{"dir":"MED","dirName":"Dirección Médica","code":"MED26057","title":"Simulación clínica avanzada en urgencias","horas":5,"plazas":10,"modalidad":"Presencial"},{"dir":"MED","dirName":"Dirección Médica","code":"MED26058","title":"Simulación clínica avanzada en shock cardiogénico","horas":5,"plazas":10,"modalidad":"Presencial"},{"dir":"MED","dirName":"Dirección Médica","code":"MED26059","title":"Traumatología de urgencias 2026","horas":20,"plazas":15,"modalidad":"Presencial"},{"dir":"MED","dirName":"Dirección Médica","code":"MED26060","title":"RCP Avanzada","horas":16,"plazas":20,"modalidad":"Presencial"},{"dir":"MED","dirName":"Dirección Médica","code":"MED26061","title":"Ecografía del acceso vascular para hemodiálisis","horas":12,"plazas":30,"modalidad":"Presencial"},{"dir":"MED","dirName":"Dirección Médica","code":"MED26062","title":"Escuela de pacientes de dermatitis atópica","horas":2,"plazas":60,"modalidad":"Presencial"},{"dir":"MED","dirName":"Dirección Médica","code":"MED26063","title":"Soporte vital básico: Atención inicial a la parada cardiorrespiratoria del paciente psiquiátrico","horas":9,"plazas":45,"modalidad":"Presencial"},{"dir":"MED","dirName":"Dirección Médica","code":"MED26064","title":"Cuidados al final de la vida para personal de la unidad de cuidados intensivos pediátricos 2026","horas":4,"plazas":60,"modalidad":"Presencial"},{"dir":"RES","dirName":"Dirección Médica (Residentes)","code":"RES26001","title":"Tratamiento con fármacos antivitamina K","horas":2,"plazas":30,"modalidad":"Presencial"},{"dir":"RES","dirName":"Dirección Médica (Residentes)","code":"RES26002","title":"Reanimación cardiopulmonar avanzada pediátrica y neonatal","horas":20,"plazas":20,"modalidad":"Mixto"},{"dir":"RES","dirName":"Dirección Médica (Residentes)","code":"RES26003","title":"Herramientas de persuasión estratégica y oratoria práctica: Una aproximación al liderazgo sanitario","horas":2,"plazas":25,"modalidad":"Presencial"},{"dir":"RES","dirName":"Dirección Médica (Residentes)","code":"RES26004","title":"Anatomía quirúrgica y disección cervical, ORL CHUC 2026","horas":18,"plazas":2,"modalidad":"Presencial"},{"dir":"RES","dirName":"Dirección Médica (Residentes)","code":"RES26005","title":"III curso de ginecología y obstetricia para residentes","horas":12,"plazas":45,"modalidad":"Presencial"},{"dir":"RES","dirName":"Dirección Médica (Residentes)","code":"RES26006","title":"Introducción del residente de FSE en docencia de la intranet","horas":1.5,"plazas":40,"modalidad":"Presencial"},{"dir":"RES","dirName":"Dirección Médica (Residentes)","code":"RES26007","title":"Introducción a la patología cardiológica aguda de urgencias para R1","horas":9,"plazas":40,"modalidad":"Presencial"},{"dir":"RES","dirName":"Dirección Médica (Residentes)","code":"RES26008","title":"Atención a las complicaciones urgentes en enfermedades avanzadas","horas":12,"plazas":50,"modalidad":"Presencial"},{"dir":"RES","dirName":"Dirección Médica (Residentes)","code":"RES26009","title":"Accesos vasculares ecoguiados","horas":4,"plazas":20,"modalidad":"Presencial"},{"dir":"RES","dirName":"Dirección Médica (Residentes)","code":"RES26010","title":"VI jornada de orientación profesional post residencia","horas":4,"plazas":75,"modalidad":"Presencial"},{"dir":"RES","dirName":"Dirección Médica (Residentes)","code":"RES26011","title":"Taller de reanimación cardiopulmonar para residentes","horas":4.5,"plazas":30,"modalidad":"Presencial"},{"dir":"RES","dirName":"Dirección Médica (Residentes)","code":"RES26012","title":"Seminario sobre aspectos jurídicos básicos de la relación médico-paciente","horas":10,"plazas":35,"modalidad":"Presencial"},{"dir":"RES","dirName":"Dirección Médica (Residentes)","code":"RES26013","title":"Lectura crítica de artículos. Medicina basada en la evidencia. Búsquedas bibliográficas","horas":12,"plazas":20,"modalidad":"Presencial"},{"dir":"RES","dirName":"Dirección Médica (Residentes)","code":"RES26014","title":"Actualización de la formación en protección radiológica para residentes (2º, 3º, 4º y 5º año)","horas":2,"plazas":20,"modalidad":"Presencial"},{"dir":"RES","dirName":"Dirección Médica (Residentes)","code":"RES26015","title":"Uso racional del medicamento en la formación de médicos internos residentes","horas":12,"plazas":100,"modalidad":"Online"},{"dir":"RES","dirName":"Dirección Médica (Residentes)","code":"RES26016","title":"Seminario/taller de habilidades de comunicación en la práctica clínica","horas":10,"plazas":25,"modalidad":"Presencial"},{"dir":"RES","dirName":"Dirección Médica (Residentes)","code":"RES26017","title":"Calidad y seguridad para residentes","horas":10,"plazas":30,"modalidad":"Presencial"},{"dir":"RES","dirName":"Dirección Médica (Residentes)","code":"RES26018","title":"Legislación y derecho sanitario. Secreto profesional. Ley de eutanasia","horas":10,"plazas":35,"modalidad":"Presencial"},{"dir":"RES","dirName":"Dirección Médica (Residentes)","code":"RES26019","title":"Prestación farmacéutica en el Sistema Nacional de Salud. Visado de recetas","horas":12,"plazas":100,"modalidad":"Online"},{"dir":"RES","dirName":"Dirección Médica (Residentes)","code":"RES26020","title":"Elaboración de un proyecto de investigación y estadística básica","horas":20,"plazas":30,"modalidad":"Presencial"},{"dir":"RES","dirName":"Dirección Médica (Residentes)","code":"RES26021","title":"Gestión clínica para residentes","horas":10,"plazas":45,"modalidad":"Presencial"},{"dir":"RES","dirName":"Dirección Médica (Residentes)","code":"RES26022","title":"Básico de investigación","horas":30,"plazas":40,"modalidad":"Presencial"},{"dir":"RES","dirName":"Dirección Médica (Residentes)","code":"RES26023","title":"Bioética para residentes","horas":20,"plazas":30,"modalidad":"Presencial"},{"dir":"RES","dirName":"Dirección Médica (Residentes)","code":"RES26024","title":"XXV curso básico de urgencias generales y psiquiátricas para residentes de primer año","horas":8,"plazas":95,"modalidad":"Presencial"},{"dir":"RES","dirName":"Dirección Médica (Residentes)","code":"RES26025","title":"Elaboración de historia clínica, SAP e interpretación de estudios diagnósticos en el entorno hospitalario","horas":15,"plazas":95,"modalidad":"Presencial"},{"dir":"RES","dirName":"Dirección Médica (Residentes)","code":"RES26026","title":"Recepción y orientación de médicos residentes 2026","horas":8,"plazas":95,"modalidad":"Presencial"},{"dir":"RES","dirName":"Dirección Médica (Residentes)","code":"RES26027","title":"Formación de residentes en protección radiológica (nivel básico)","horas":6,"plazas":95,"modalidad":"Presencial"},{"dir":"RES","dirName":"Dirección Médica (Residentes)","code":"RES26028","title":"Acogida de R1: Manejo de paciente DM hospitalizado","horas":2,"plazas":95,"modalidad":"Presencial"},{"dir":"RES","dirName":"Dirección Médica (Residentes)","code":"RES26029","title":"Seminario sobre seguridad en la administración del tratamiento y las órdenes médicas (Farmatools)","horas":2,"plazas":20,"modalidad":"Presencial"},{"dir":"RES","dirName":"Dirección Médica (Residentes)","code":"RES26030","title":"Colocación y retirada de los EPI","horas":1.5,"plazas":30,"modalidad":"Presencial"},{"dir":"RES","dirName":"Dirección Médica (Residentes)","code":"RES26031","title":"Patología vascular en urgencias","horas":2,"plazas":30,"modalidad":"Presencial"},{"dir":"RES","dirName":"Dirección Médica (Residentes)","code":"RES26032","title":"Taller de simulación en técnicas y material de sutura","horas":3,"plazas":9,"modalidad":"Presencial"},{"dir":"RES","dirName":"Dirección Médica (Residentes)","code":"RES26033","title":"Gestión de cuidados enfermeros en el sistema de información SAP","horas":3,"plazas":12,"modalidad":"Presencial"},{"dir":"RES","dirName":"Dirección Médica (Residentes)","code":"RES26034","title":"IV curso procesos administrativos del servicio de urgencias","horas":3,"plazas":40,"modalidad":"Presencial"},{"dir":"RES","dirName":"Dirección Médica (Residentes)","code":"RES26035","title":"Taller de higiene de manos para residentes","horas":1.5,"plazas":30,"modalidad":"Presencial"},{"dir":"RES","dirName":"Dirección Médica (Residentes)","code":"RES26036","title":"Seminario sobre prescripción electrónica intrahospitalaria (Farmatools)","horas":2,"plazas":80,"modalidad":"Presencial"},{"dir":"RES","dirName":"Dirección Médica (Residentes)","code":"RES26037","title":"Taller práctico de patología infecciosa y PROA (Programa de Optimización del Tratamiento Antimicrobiano) en el CHUC","horas":8,"plazas":95,"modalidad":"Presencial"},{"dir":"RES","dirName":"Dirección Médica (Residentes)","code":"RES26038","title":"Taller de simulación virtual en laparoscopia abdominal para cirugía general","horas":6,"plazas":10,"modalidad":"Presencial"},{"dir":"RES","dirName":"Dirección Médica (Residentes)","code":"RES26039","title":"Simulación clínica en manejo de arritmias agudas","horas":4,"plazas":8,"modalidad":"Presencial"},{"dir":"RES","dirName":"Dirección Médica (Residentes)","code":"RES26040","title":"Taller de simulación virtual de ecografía obstétrica y ginecológica","horas":8,"plazas":8,"modalidad":"Presencial"},{"dir":"RES","dirName":"Dirección Médica (Residentes)","code":"RES26041","title":"Taller de simulación virtual en laparoscopia abdomino-pélvica para R1 (laparoscopia básica)","horas":8,"plazas":10,"modalidad":"Presencial"},{"dir":"RES","dirName":"Dirección Médica (Residentes)","code":"RES26042","title":"Taller de simulación virtual de introducción a la artroscopia","horas":6,"plazas":10,"modalidad":"Presencial"},{"dir":"RES","dirName":"Dirección Médica (Residentes)","code":"RES26043","title":"Simulación clínica para residentes de primer año","horas":4,"plazas":12,"modalidad":"Presencial"},{"dir":"RES","dirName":"Dirección Médica (Residentes)","code":"RES26044","title":"Taller de simulación virtual de introducción a la ecocardiografía","horas":9,"plazas":8,"modalidad":"Presencial"},{"dir":"RES","dirName":"Dirección Médica (Residentes)","code":"RES26045","title":"Taller de simulación virtual de introducción básica a la ecografía","horas":8,"plazas":10,"modalidad":"Presencial"},{"dir":"RES","dirName":"Dirección Médica (Residentes)","code":"RES26046","title":"Taller de simulación virtual de introducción a la ecografía torácica","horas":8,"plazas":10,"modalidad":"Presencial"},{"dir":"RES","dirName":"Dirección Médica (Residentes)","code":"RES26047","title":"Taller de simulación virtual de introducción a las técnicas endovasculares guiadas por fluoroscopia","horas":5,"plazas":10,"modalidad":"Presencial"},{"dir":"RES","dirName":"Dirección Médica (Residentes)","code":"RES26048","title":"Taller de simulación virtual en laparoscopia pélvica para urología","horas":6,"plazas":6,"modalidad":"Presencial"},{"dir":"RES","dirName":"Dirección Médica (Residentes)","code":"RES26049","title":"Taller de simulación virtual de broncoscopia en vía aérea","horas":6,"plazas":10,"modalidad":"Presencial"},{"dir":"RES","dirName":"Dirección Médica (Residentes)","code":"RES26050","title":"Taller de simulación virtual de laparoscopia pélvica para obstetricia y ginecología","horas":8,"plazas":10,"modalidad":"Presencial"},{"dir":"RES","dirName":"Dirección Médica (Residentes)","code":"RES26051","title":"Básico de técnicas de inmovilización, yesos y vendajes en cirugía ortopédica y traumatología","horas":8,"plazas":30,"modalidad":"Presencial"},{"dir":"RES","dirName":"Dirección Médica (Residentes)","code":"RES26052","title":"Optimización de tratamientos farmacológicos para R1","horas":1,"plazas":95,"modalidad":"Presencial"},{"dir":"RES","dirName":"Dirección Médica (Residentes)","code":"RES26053","title":"Ecografía básica para residentes. La ecografía aplicada a la práctica clínica","horas":12,"plazas":15,"modalidad":"Presencial"},{"dir":"RES","dirName":"Dirección Médica (Residentes)","code":"RES26054","title":"Traumatología de urgencias para rotantes COT","horas":20,"plazas":15,"modalidad":"Presencial"},{"dir":"RES","dirName":"Dirección Médica (Residentes)","code":"RES26055","title":"Manejo de crisis en anestesiología y reanimación para residentes (febrero 2026)","horas":4,"plazas":13,"modalidad":"Presencial"},{"dir":"PGRE","dirName":"Dirección de Planificación y Gestión de Recursos Económicos","code":"PGRE2601","title":"Obtención de título de manipulación de carretillas elevadoras","horas":10,"plazas":15,"modalidad":"Presencial"},{"dir":"PGRE","dirName":"Dirección de Planificación y Gestión de Recursos Económicos","code":"PGRE2602","title":"Selección del adjudicatario y ejecución del contrato: Doctrina del Tribunal Administrativo de Contratos Públicos","horas":10,"plazas":20,"modalidad":"Presencial"},{"dir":"PGRE","dirName":"Dirección de Planificación y Gestión de Recursos Económicos","code":"PGRE2603","title":"Manejo práctico del PLACE (Plataforma de Contratación del Estado)","horas":4,"plazas":20,"modalidad":"Presencial"},{"dir":"PGRE","dirName":"Dirección de Planificación y Gestión de Recursos Económicos","code":"PGRE2604","title":"Técnicas de humanización","horas":1.5,"plazas":15,"modalidad":"Presencial"},{"dir":"PGRE","dirName":"Dirección de Planificación y Gestión de Recursos Económicos","code":"PGRE2605","title":"Actualización de las herramientas y procedimientos administrativos en SAP","horas":1.5,"plazas":15,"modalidad":"Presencial"},{"dir":"IIT","dirName":"Dirección de Ingeniería, Infraestructuras y Tecnologías","code":"IIT26001","title":"Programa de software de mediciones, presupuestos y certificaciones Arquímedes","horas":15,"plazas":10,"modalidad":"Presencial"},{"dir":"IIT","dirName":"Dirección de Ingeniería, Infraestructuras y Tecnologías","code":"IIT26002","title":"Accesibilidad universal y diseño para todas las personas en espacios urbanos y edificaciones","horas":25,"plazas":10,"modalidad":"Presencial"},{"dir":"IIT","dirName":"Dirección de Ingeniería, Infraestructuras y Tecnologías","code":"IIT26003","title":"Formación para la operación segura de plataformas elevadoras","horas":6,"plazas":10,"modalidad":"Presencial"},{"dir":"IIT","dirName":"Dirección de Ingeniería, Infraestructuras y Tecnologías","code":"IIT26004","title":"Trabajos en altura","horas":6,"plazas":10,"modalidad":"Presencial"},{"dir":"IIT","dirName":"Dirección de Ingeniería, Infraestructuras y Tecnologías","code":"IIT26005","title":"Seguridad y salud en proyecto y licitaciones","horas":10,"plazas":10,"modalidad":"Presencial"},{"dir":"IIT","dirName":"Dirección de Ingeniería, Infraestructuras y Tecnologías","code":"IIT26006","title":"Actuación ante incidentes de riesgo de contaminación biológica para personal técnico de mantenimiento","horas":4,"plazas":6,"modalidad":"Presencial"},{"dir":"IIT","dirName":"Dirección de Ingeniería, Infraestructuras y Tecnologías","code":"IIT26007","title":"Formación técnica cicloergómetro reclinable y la estación de trabajo ECG Stress","horas":4,"plazas":3,"modalidad":"Presencial"},{"dir":"IIT","dirName":"Dirección de Ingeniería, Infraestructuras y Tecnologías","code":"IIT26008","title":"Protección radiológica para personal de ingeniería biomédica","horas":4,"plazas":6,"modalidad":"Presencial"},{"dir":"IIT","dirName":"Dirección de Ingeniería, Infraestructuras y Tecnologías","code":"IIT26009","title":"Formación técnica equipos de rayos X GEH Digital Discovery XR656","horas":10,"plazas":6,"modalidad":"Presencial"},{"dir":"IIT","dirName":"Dirección de Ingeniería, Infraestructuras y Tecnologías","code":"IIT26010","title":"Formación técnica respiradores Hamilton C6","horas":6,"plazas":3,"modalidad":"Presencial"},{"dir":"IIT","dirName":"Dirección de Ingeniería, Infraestructuras y Tecnologías","code":"IIT26011","title":"Huella de carbono en el sector sanitario","horas":6,"plazas":20,"modalidad":"Presencial"},{"dir":"IIT","dirName":"Dirección de Ingeniería, Infraestructuras y Tecnologías","code":"IIT26012","title":"Utilización de equipos simuladores de constantes vitales","horas":10,"plazas":6,"modalidad":"Presencial"},{"dir":"IIT","dirName":"Dirección de Ingeniería, Infraestructuras y Tecnologías","code":"IIT26013","title":"Realización de test de seguridad eléctrica sobre equipos electromédicos","horas":10,"plazas":6,"modalidad":"Presencial"},{"dir":"IIT","dirName":"Dirección de Ingeniería, Infraestructuras y Tecnologías","code":"IIT26014","title":"Esterilizadores de vapor Steelco","horas":2,"plazas":12,"modalidad":"Presencial"},{"dir":"IIT","dirName":"Dirección de Ingeniería, Infraestructuras y Tecnologías","code":"IIT26015","title":"Formación técnica de equipamiento electromédico de la marca Dräger","horas":9,"plazas":5,"modalidad":"Presencial"},{"dir":"SSGG","dirName":"Dirección de Servicios Generales","code":"SSGG2601","title":"Normas a seguir para el buen funcionamiento de trenes de lavado y lavavajillas","horas":1,"plazas":25,"modalidad":"Presencial"},{"dir":"SSGG","dirName":"Dirección de Servicios Generales","code":"SSGG2602","title":"Cómo elaborar un potaje","horas":1,"plazas":10,"modalidad":"Presencial"},{"dir":"SSGG","dirName":"Dirección de Servicios Generales","code":"SSGG2603","title":"Normas de evacuación y emergencias. Coordinador sanitario de emergencias (Subdirectores Médicos y Supervisores de Guardia)","horas":1,"plazas":70,"modalidad":"Presencial"},{"dir":"SSGG","dirName":"Dirección de Servicios Generales","code":"SSGG2604","title":"Elaboraciones con el horno Rational i-Combi","horas":1,"plazas":10,"modalidad":"Presencial"},{"dir":"SSGG","dirName":"Dirección de Servicios Generales","code":"SSGG2605","title":"Funcionamiento y porcionado en el cuarto frío","horas":1,"plazas":10,"modalidad":"Presencial"},{"dir":"SSGG","dirName":"Dirección de Servicios Generales","code":"SSGG2606","title":"Jefe de emergencia (jefe de día y jefe de noche): Actuaciones y procedimientos a seguir en caso de emergencia","horas":1,"plazas":50,"modalidad":"Presencial"},{"dir":"SSGG","dirName":"Dirección de Servicios Generales","code":"SSGG2607","title":"Formación práctica en el manejo de equipos de extinción (HUC)","horas":2,"plazas":25,"modalidad":"Presencial"},{"dir":"SSGG","dirName":"Dirección de Servicios Generales","code":"SSGG2608","title":"Normas de evacuación y emergencias. Responsables de Servicios/Unidades de Enfermería","horas":1,"plazas":70,"modalidad":"Presencial"},{"dir":"SSGG","dirName":"Dirección de Servicios Generales","code":"SSGG2609","title":"Actualización y reciclaje: Normas y procedimientos de trabajo de celadores/ordenanzas de oficina","horas":1,"plazas":10,"modalidad":"Presencial"},{"dir":"SSGG","dirName":"Dirección de Servicios Generales","code":"SSGG2610","title":"Actualización y reciclaje: Normas y procedimientos de trabajo de celadores/ordenanzas de puerta","horas":1,"plazas":10,"modalidad":"Presencial"},{"dir":"SSGG","dirName":"Dirección de Servicios Generales","code":"SSGG2611","title":"Actualización y reciclaje: Normas y procedimientos de trabajo de telefonistas","horas":1,"plazas":10,"modalidad":"Presencial"},{"dir":"SSGG","dirName":"Dirección de Servicios Generales","code":"SSGG2612","title":"Normas y procedimientos de actuación para el personal del parque móvil","horas":1,"plazas":10,"modalidad":"Presencial"},{"dir":"SSGG","dirName":"Dirección de Servicios Generales","code":"SSGG2613","title":"Actualización y reciclaje: Normas y procedimientos de limpieza de mobiliario","horas":1,"plazas":20,"modalidad":"Presencial"},{"dir":"SSGG","dirName":"Dirección de Servicios Generales","code":"SSGG2614","title":"Actualización y reciclaje: Normas y procedimientos de limpieza del edificio de actividades ambulatorias y consultas externas","horas":1,"plazas":10,"modalidad":"Presencial"},{"dir":"SSGG","dirName":"Dirección de Servicios Generales","code":"SSGG2615","title":"Actualización y reciclaje: Normas y procedimientos de limpieza de hospitalización","horas":1,"plazas":20,"modalidad":"Presencial"},{"dir":"SSGG","dirName":"Dirección de Servicios Generales","code":"SSGG2616","title":"Actualización y reciclaje: Normas y procedimientos de limpieza en el área quirúrgica","horas":1,"plazas":20,"modalidad":"Presencial"},{"dir":"SSGG","dirName":"Dirección de Servicios Generales","code":"SSGG2617","title":"Actualización y reciclaje: Normas y procedimientos de limpieza de servicios especiales","horas":1,"plazas":10,"modalidad":"Presencial"},{"dir":"SSGG","dirName":"Dirección de Servicios Generales","code":"SSGG2618","title":"Actualización y reciclaje: Normas y procedimientos de limpieza de zonas exteriores","horas":1,"plazas":20,"modalidad":"Presencial"},{"dir":"SSGG","dirName":"Dirección de Servicios Generales","code":"SSGG2619","title":"¿Qué hacer en caso de emergencias? Edificio de Actividades Ambulatorias (EAA)","horas":1,"plazas":70,"modalidad":"Presencial"},{"dir":"SSGG","dirName":"Dirección de Servicios Generales","code":"SSGG2620","title":"¿Qué hacer en caso de emergencias? Edificio de Hospitalización","horas":1,"plazas":70,"modalidad":"Presencial"},{"dir":"SSGG","dirName":"Dirección de Servicios Generales","code":"SSGG2621","title":"¿Qué hacer en caso de emergencias? Edificio NEA","horas":1,"plazas":70,"modalidad":"Presencial"},{"dir":"SSGG","dirName":"Dirección de Servicios Generales","code":"SSGG2622","title":"Actualización y reciclaje: Normas y procedimientos de recepción y entrega de mercancías","horas":1,"plazas":10,"modalidad":"Presencial"},{"dir":"SSGG","dirName":"Dirección de Servicios Generales","code":"SSGG2623","title":"Reciclaje en dietas vegetarianas","horas":1,"plazas":10,"modalidad":"Presencial"},{"dir":"RRHH","dirName":"Dirección de Recursos Humanos","code":"RRHH2601","title":"Convocatorias urgentes de listas de empleo supletorias (SUPLE), procedimientos y aspectos técnicos","horas":2,"plazas":20,"modalidad":"Presencial"},{"dir":"RRHH","dirName":"Dirección de Recursos Humanos","code":"RRHH2602","title":"Automatización masiva de gestión de archivos (MD, REN, BATCH, .BAT y CMD)","horas":2,"plazas":15,"modalidad":"Presencial"},{"dir":"RRHH","dirName":"Dirección de Recursos Humanos","code":"RRHH2603","title":"FLOR Básico – Supervisores de Unidad o Área de FLOR","horas":6,"plazas":12,"modalidad":"Presencial"},{"dir":"RRHH","dirName":"Dirección de Recursos Humanos","code":"RRHH2604","title":"Expurgo de documentación","horas":10,"plazas":20,"modalidad":"Presencial"},{"dir":"RRHH","dirName":"Dirección de Recursos Humanos","code":"RRHH2605","title":"Inteligencia artificial aplicada a la gestión de RRHH","horas":15,"plazas":50,"modalidad":"Presencial"},{"dir":"RRHH","dirName":"Dirección de Recursos Humanos","code":"RRHH2606","title":"Riesgo biológico. Actuación ante cortes, pinchazos y salpicaduras","horas":2,"plazas":20,"modalidad":"Presencial"},{"dir":"RRHH","dirName":"Dirección de Recursos Humanos","code":"RRHH2607","title":"Riesgos en embarazo y lactancia en el ámbito sanitario","horas":2,"plazas":20,"modalidad":"Presencial"},{"dir":"RRHH","dirName":"Dirección de Recursos Humanos","code":"RRHH2608","title":"Actualización en elaboración de partes de notificación de accidente, incidente y situación de riesgo vía SAP","horas":2,"plazas":20,"modalidad":"Presencial"},{"dir":"RRHH","dirName":"Dirección de Recursos Humanos","code":"RRHH2609","title":"Mediación en la gestión de conflictos para mandos hospitalarios","horas":2,"plazas":20,"modalidad":"Presencial"},{"dir":"RRHH","dirName":"Dirección de Recursos Humanos","code":"RRHH2610","title":"Riesgos y medidas preventivas en el manejo manual de cargas para personal de la Dirección de Ingeniería, Infraestructura y Tecnología","horas":2,"plazas":40,"modalidad":"Presencial"},{"dir":"RRHH","dirName":"Dirección de Recursos Humanos","code":"RRHH2611","title":"Primeros auxilios básicos","horas":3,"plazas":20,"modalidad":"Presencial"},{"dir":"RRHH","dirName":"Dirección de Recursos Humanos","code":"RRHH2612","title":"Factores organizacionales y presentación de la evaluación de riesgos psicosociales en urgencias","horas":1,"plazas":20,"modalidad":"Presencial"},{"dir":"RRHH","dirName":"Dirección de Recursos Humanos","code":"RRHH2613","title":"Factores organizacionales en almacén central","horas":1,"plazas":20,"modalidad":"Presencial"},{"dir":"RRHH","dirName":"Dirección de Recursos Humanos","code":"RRHH2614","title":"Habilidades en gestión de mando","horas":3,"plazas":30,"modalidad":"Presencial"},{"dir":"RRHH","dirName":"Dirección de Recursos Humanos","code":"RRHH2615","title":"Actuaciones preventivas ante los accidentes in itínere y en misión","horas":2,"plazas":40,"modalidad":"Presencial"},{"dir":"RRHH","dirName":"Dirección de Recursos Humanos","code":"RRHH2616","title":"Riesgos y medidas preventivas para el personal de limpieza","horas":2,"plazas":40,"modalidad":"Presencial"},{"dir":"RRHH","dirName":"Dirección de Recursos Humanos","code":"RRHH2617","title":"Procedimiento de acoso laboral y su aplicación","horas":3,"plazas":40,"modalidad":"Presencial"},{"dir":"RRHH","dirName":"Dirección de Recursos Humanos","code":"RRHH2618","title":"Riesgos específicos del personal de urgencias, medidas de emergencia","horas":3,"plazas":40,"modalidad":"Presencial"},{"dir":"RRHH","dirName":"Dirección de Recursos Humanos","code":"RRHH2619","title":"Riesgos y medidas preventivas para la realización de trabajos en altura","horas":3,"plazas":20,"modalidad":"Presencial"}];
+
+  let activeCourses = formacionCourses;
+  let activeSource = 'programa_formacion_2026_10.html (datos por defecto)';
+  try{
+    const stored = localStorage.getItem(LS_KEY_FOR);
+    if(stored){
+      const parsed = JSON.parse(stored);
+      if(parsed && Array.isArray(parsed.courses) && parsed.courses.length){
+        activeCourses = parsed.courses;
+        activeSource = parsed.filename || 'datos importados';
+      }
+    }
+  }catch(e){ console.warn('LS restore (Formacion) fallo', e); }
+
+  DATA_FOR = processFormacionRows(activeCourses, activeSource);
+  bindFormacionEvents();
+  buildFormTabs();
+  renderFormacion();
+})();
+
 // ═══════ SERVICE WORKER (PWA) ═══════
 if('serviceWorker' in navigator){
   const sw=`
@@ -3193,5 +4522,6 @@ if('serviceWorker' in navigator){
 }
 </script>
 <script>(function(){fetch("CONTROL_SUPLES.ods",{cache:"no-store"}).then(function(r){if(!r.ok)throw new Error("No se encontro CONTROL_SUPLES.ods");return r.arrayBuffer();}).then(function(buf){var wb=XLSX.read(buf,{type:"array",cellDates:true});var sheetName=wb.SheetNames.includes("1_Datos_generales")?"1_Datos_generales":wb.SheetNames[0];var rows=XLSX.utils.sheet_to_json(wb.Sheets[sheetName],{defval:null});RAW_ROWS=rows;DATA=processRows(rows,"CONTROL_SUPLES.ods");populateYearSelect();renderAll();}).catch(function(err){console.error("Auto-carga de CONTROL_SUPLES.ods fallo:",err);});})();</script>
-<script>(function(){fetch("Indicadores.ods",{cache:"no-store"}).then(function(r){if(!r.ok)throw new Error("No se encontro Indicadores.ods");return r.arrayBuffer();}).then(function(buf){var wb=XLSX.read(buf,{type:"array",cellDates:false});var ws=wb.Sheets[wb.SheetNames[0]];var arr=XLSX.utils.sheet_to_json(ws,{header:1,defval:null,raw:true});var rows=parseAccionWideSheet(arr);if(!rows.length)throw new Error("Indicadores.ods sin columnas de año reconocibles");RAW_ROWS_ACC=rows;DATA_ACC=processAccionRows(rows,"Indicadores.ods");populateYearSelectAcc();renderAccAll();}).catch(function(err){console.error("Auto-carga de Indicadores.ods fallo:",err);});})();</script></body>
+<script>(function(){fetch("Indicadores.ods",{cache:"no-store"}).then(function(r){if(!r.ok)throw new Error("No se encontro Indicadores.ods");return r.arrayBuffer();}).then(function(buf){var wb=XLSX.read(buf,{type:"array",cellDates:false});var ws=wb.Sheets[wb.SheetNames[0]];var arr=XLSX.utils.sheet_to_json(ws,{header:1,defval:null,raw:true});var rows=parseAccionWideSheet(arr);if(!rows.length)throw new Error("Indicadores.ods sin columnas de año reconocibles");RAW_ROWS_ACC=rows;DATA_ACC=processAccionRows(rows,"Indicadores.ods");populateYearSelectAcc();renderAccAll();}).catch(function(err){console.error("Auto-carga de Indicadores.ods fallo:",err);});})();</script>
+<script>(function(){fetch("CARRERA_PREVISION.ods",{cache:"no-store"}).then(function(r){if(!r.ok)throw new Error("No se encontro CARRERA_PREVISION.ods");return r.arrayBuffer();}).then(function(buf){var wb=XLSX.read(buf,{type:"array",cellDates:true});var ws=wb.Sheets[wb.SheetNames[0]];var arr=XLSX.utils.sheet_to_json(ws,{header:1,defval:null,raw:true});var procsRaw=parseCarreraSheet(arr);if(!procsRaw.length)throw new Error("CARRERA_PREVISION.ods sin filas de convocatoria/comision reconocibles");RAW_ROWS_CAR=arr;DATA_CAR=processCarreraRows(procsRaw,"CARRERA_PREVISION.ods");populateCarFilters();renderCarAll();}).catch(function(err){console.error("Auto-carga de CARRERA_PREVISION.ods fallo:",err);});})();</script></body>
 </html>
