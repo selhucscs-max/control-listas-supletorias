@@ -6,6 +6,7 @@ on:
     paths:
       - "CONTROL_SUPLES.ods"
       - "Indicadores.ods"
+      - "CARRERA_PREVISION.ods"
   workflow_dispatch: {}
 
 permissions:
@@ -32,6 +33,9 @@ jobs:
       - name: Regenerar datos por defecto (Acción Social) desde Indicadores.ods
         run: python3 scripts/generate_accion_data.py
 
+      - name: Regenerar datos por defecto (Carrera Profesional) desde CARRERA_PREVISION.ods
+        run: python3 scripts/generate_carrera_data.py
+
       - name: Commitear cambios si los hay
         run: |
           git config user.name "github-actions[bot]"
@@ -40,6 +44,6 @@ jobs:
             echo "index.html sin cambios, nada que commitear."
           else
             git add index.html
-            git commit -m "Actualiza datos del dashboard desde CONTROL_SUPLES.ods / Indicadores.ods [skip ci]"
+            git commit -m "Actualiza datos del dashboard desde CONTROL_SUPLES.ods / Indicadores.ods / CARRERA_PREVISION.ods [skip ci]"
             git push
           fi
