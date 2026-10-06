@@ -38,6 +38,7 @@ jobs:
 
       - name: Sincronizar SUPLES con Google Calendar
         if: always()
+        continue-on-error: true
         env:
           GOOGLE_CALENDAR_CREDENTIALS: ${{ secrets.GOOGLE_CALENDAR_CREDENTIALS }}
           GOOGLE_CALENDAR_ID: ${{ secrets.GOOGLE_CALENDAR_ID }}
@@ -45,6 +46,7 @@ jobs:
 
       - name: Sincronizar Carrera Profesional con Google Calendar
         if: always()
+        continue-on-error: true
         env:
           GOOGLE_CALENDAR_CREDENTIALS: ${{ secrets.GOOGLE_CALENDAR_CREDENTIALS }}
           GOOGLE_CALENDAR_ID: ${{ secrets.GOOGLE_CALENDAR_ID }}
