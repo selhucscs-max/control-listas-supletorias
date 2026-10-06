@@ -25,7 +25,7 @@ jobs:
           python-version: "3.11"
 
       - name: Instalar dependencias
-        run: pip install pandas odfpy
+        run: pip install pandas odfpy google-auth-oauthlib google-auth-httplib2 google-api-python-client
 
       - name: Regenerar datos por defecto (SUPLE) desde CONTROL_SUPLES.ods
         run: python3 scripts/generate_data.py
@@ -35,6 +35,13 @@ jobs:
 
       - name: Regenerar datos por defecto (Carrera Profesional) desde CARRERA_PREVISION.ods
         run: python3 scripts/generate_carrera_data.py
+
+      - name: Sincronizar con Google Calendar
+        if: always()
+        env:
+          GOOGLE_CALENDAR_CREDENTIALS: ${{ secrets.GOOGLE_CALENDAR_CREDENTIALS }}
+          GOOGLE_CALENDAR_ID: ${{ secrets.GOOGLE_CALENDAR_ID }}
+        run: python3 scripts/sync_google_calendar.py
 
       - name: Commitear cambios si los hay
         run: |
