@@ -515,6 +515,8 @@ tbody td{padding:8px 10px}
 .sup-cell.today{border-color:var(--teal);box-shadow:0 0 0 1px var(--teal)}
 .sup-cell .n{font-size:10px;color:var(--g600);font-weight:600}
 .sup-chip{font-size:9.5px;line-height:1.3;padding:2px 4px;border-radius:4px;border-left:3px solid var(--c);background:var(--white);color:var(--navy);overflow-wrap:anywhere}
+.sup-chip.g{background:#E8F0FE;border-left-color:#1A73E8}
+.sup-cal-chk{display:inline-flex;align-items:center;gap:4px;font-size:11px;color:var(--g600);cursor:pointer}
 .sup-more{font-size:9.5px;border:none;background:none;color:var(--teal);cursor:pointer;text-align:left;padding:1px 2px;font-family:inherit;font-weight:600}
 
 /* ═══════════════════════════════════════════════
@@ -1367,7 +1369,7 @@ tbody td{padding:8px 10px}
           </button>
         </div>
       </div>
-      <div class="car-cal-grid" id="car-cal-grid"></div>
+      <div class="sup-cal-wrap"><div class="sup-cal-grid" id="car-cal-grid"></div></div>
       <div class="car-cal-list" id="car-cal-list"></div>
     </div>
   </div>
@@ -1580,6 +1582,7 @@ const STATE = {
   barGroup: 'all',      // filtro bloque en Baremación: all | fea | otras
   calMonth: null,       // mes visible en Calendario (UTC ms del día 1)
   calOpen: null,        // día (AAAA-MM-DD) con todos sus hitos desplegados
+  calGoogle: true,      // mostrar eventos de Google Calendar en Calendario
 };
 const LS_KEY = 'suples_chuc_data_v1';
 
@@ -1593,7 +1596,7 @@ const LS_KEY_ACC = 'accion_social_chuc_data_v1';
 // ═══════ ESTADO GLOBAL (CARRERA PROFESIONAL) ═══════
 let DATA_CAR = null;      // {procs, comOrder, convOrder, source}
 let RAW_ROWS_CAR = null;  // filas crudas (grid ancho) para reprocesar
-const STATE_CAR = { tab: 'resumen', conv: 'all', com: 'all', ref: new Date().toISOString().slice(0,10), calMonth: null };
+const STATE_CAR = { tab: 'resumen', conv: 'all', com: 'all', ref: new Date().toISOString().slice(0,10), calMonth: null, calOpen: null };
 const LS_KEY_CAR = 'carrera_prof_chuc_data_v1';
 const CAR_DAY = 86400000;
 const CAR_MS = [
@@ -2361,6 +2364,37 @@ function supCalLast(){
   renderCalendario();
 }
 function supCalOpen(key){ STATE.calOpen = (STATE.calOpen===key ? null : key); renderCalendario(); }
+function supCalGoogle(on){ STATE.calGoogle = !!on; renderCalendario(); }
+
+// Eventos escritos a mano en Google Calendar (los vuelca el robot en calendar_events.json)
+let SUP_GCAL = [];
+function supGcalRange(e){
+  const a = Date.parse(e.inicio+'T00:00:00Z');
+  if(isNaN(a)) return null;
+  let b = e.fin ? Date.parse(e.fin+'T00:00:00Z') : a+SUP_DAY;   // fin exclusivo
+  if(!(b>a)) b = a+SUP_DAY;
+  return {a, last:Math.min(b-SUP_DAY, a+59*SUP_DAY)};
+}
+function supGcalByDay(){
+  const m = {};
+  if(!STATE.calGoogle) return m;
+  SUP_GCAL.forEach(e=>{
+    const r = supGcalRange(e); if(!r) return;
+    for(let t=r.a; t<=r.last; t+=SUP_DAY){ (m[supKey(t)] = m[supKey(t)]||[]).push(e); }
+  });
+  return m;
+}
+function loadSupGcal(){
+  fetch('calendar_events.json',{cache:'no-store'})
+    .then(r=>r.ok?r.json():null)
+    .then(j=>{
+      if(j && Array.isArray(j.eventos)){
+        SUP_GCAL = j.eventos.filter(e=>e && e.inicio && e.titulo);
+        if(STATE.tab==='calendario' && DATA) renderCalendario();
+      }
+    }).catch(()=>{});
+}
+loadSupGcal();
 
 function renderCalendario(){
   if(!DATA) return;
@@ -2368,13 +2402,15 @@ function renderCalendario(){
   const byDay = {};
   DATA.records.forEach(r=>supPoints(r).forEach(p=>{ (byDay[supKey(p.t)] = byDay[supKey(p.t)]||[]).push({r,p}); }));
   Object.keys(byDay).forEach(k=>byDay[k].sort((a,b)=>SUP_ORDER[a.p.k]-SUP_ORDER[b.p.k] || a.r.cat.localeCompare(b.r.cat,'es')));
+  const gDay = supGcalByDay();
 
   const mDate = new Date(STATE.calMonth), y = mDate.getUTCFullYear(), m = mDate.getUTCMonth();
   const title = new Intl.DateTimeFormat('es-ES',{month:'long',year:'numeric',timeZone:'UTC'}).format(mDate);
   const tEl = document.getElementById('sup-cal-title'); if(tEl) tEl.textContent = title.charAt(0).toUpperCase()+title.slice(1);
 
   const lg = document.getElementById('sup-cal-lgd');
-  if(lg) lg.innerHTML = Object.keys(SUP_PT).map(k=>`<span class="lgd-i"><span class="lgd-d" style="background:${SUP_PT[k].c}"></span>${SUP_PT[k].n}</span>`).join('');
+  if(lg) lg.innerHTML = Object.keys(SUP_PT).map(k=>`<span class="lgd-i"><span class="lgd-d" style="background:${SUP_PT[k].c}"></span>${SUP_PT[k].n}</span>`).join('')+
+    `<label class="sup-cal-chk"><input type="checkbox" ${STATE.calGoogle?'checked':''} onchange="supCalGoogle(this.checked)"><span class="lgd-d" style="background:#1A73E8"></span>Google Calendar (${SUP_GCAL.length})</label>`;
 
   const startDow = (new Date(Date.UTC(y,m,1)).getUTCDay()+6)%7;   // lunes = 0
   const dim = new Date(Date.UTC(y,m+1,0)).getUTCDate();
@@ -2384,10 +2420,11 @@ function renderCalendario(){
   for(let i=0;i<startDow;i++) html += '<div class="sup-cell empty"></div>';
   for(let day=1; day<=dim; day++){
     const key = supKey(Date.UTC(y,m,day));
-    const its = byDay[key]||[];
+    const its = (byDay[key]||[]).map(it=>({g:false, c:SUP_PT[it.p.k].c, txt:SUP_PT[it.p.k].s+' · '+it.r.cat, title:SUP_PT[it.p.k].n+' · '+supLbl(it.r)}))
+      .concat((gDay[key]||[]).map(e=>({g:true, c:'#1A73E8', txt:e.titulo, title:'Google Calendar · '+e.titulo})));
     const open = STATE.calOpen===key;
     const shown = open ? its : its.slice(0,MAXC);
-    let chips = shown.map(it=>`<div class="sup-chip" style="--c:${SUP_PT[it.p.k].c}" title="${supEsc(SUP_PT[it.p.k].n+' · '+supLbl(it.r))}">${SUP_PT[it.p.k].s} · ${supEsc(it.r.cat)}</div>`).join('');
+    let chips = shown.map(it=>`<div class="sup-chip${it.g?' g':''}" style="--c:${it.c}" title="${supEsc(it.title)}">${supEsc(it.txt)}</div>`).join('');
     if(its.length>MAXC) chips += `<button type="button" class="sup-more" onclick="supCalOpen('${key}')">${open?'ver menos':'+'+(its.length-MAXC)+' más'}</button>`;
     html += `<div class="sup-cell${key===todayKey?' today':''}"><div class="n">${day}</div>${chips}</div>`;
   }
@@ -2396,7 +2433,13 @@ function renderCalendario(){
   const items = [];
   for(let day=1; day<=dim; day++){
     const key = supKey(Date.UTC(y,m,day));
-    (byDay[key]||[]).forEach(it=>items.push({day, ttl:SUP_PT[it.p.k].n, sub:supLbl(it.r)}));
+    (byDay[key]||[]).forEach(it=>items.push({day, ttl:SUP_PT[it.p.k].n, sub:supLbl(it.r), g:false}));
+    // un evento de Google de varios días se lista una sola vez (el día que empieza, o el 1 si venía del mes anterior)
+    (gDay[key]||[]).forEach(e=>{
+      if(key!==e.inicio && day!==1) return;
+      const r = supGcalRange(e), f = t => new Date(t).toLocaleDateString('es-ES',{day:'2-digit',month:'2-digit',timeZone:'UTC'});
+      items.push({day, ttl:e.titulo, sub:'Google Calendar'+(r && r.last>r.a ? ' · del '+f(r.a)+' al '+f(r.last) : ''), g:true});
+    });
   }
   const MES = new Intl.DateTimeFormat('es-ES',{month:'short',timeZone:'UTC'}).format(mDate);
   const list = document.getElementById('sup-cal-list');
@@ -2408,6 +2451,7 @@ function renderCalendario(){
         <div class="car-agenda-item">
           <div class="car-agenda-date"><div class="d">${it.day}</div><div class="m">${MES}</div></div>
           <div class="car-agenda-body"><div class="car-agenda-t">${supEsc(it.ttl)}</div><div class="car-agenda-s">${supEsc(it.sub)}</div></div>
+          ${it.g?'<span class="tag fut">Google</span>':''}
         </div>`).join('');
     }
   }
@@ -4083,7 +4127,9 @@ function renderCarAgenda(){
     </div>`;
   }).join('');
 }
+function carCalOpen(key){ STATE_CAR.calOpen = (STATE_CAR.calOpen===key ? null : key); renderCarCal(); }
 function carCalShift(n){
+  STATE_CAR.calOpen = null;
   if(STATE_CAR.calMonth==null){ const REF=carP(STATE_CAR.ref); const d=new Date(REF); STATE_CAR.calMonth=Date.UTC(d.getUTCFullYear(),d.getUTCMonth(),1); }
   const d = new Date(STATE_CAR.calMonth);
   STATE_CAR.calMonth = Date.UTC(d.getUTCFullYear(), d.getUTCMonth()+n, 1);
@@ -4111,14 +4157,18 @@ function renderCarCal(){
 
   const dows = ['Lu','Ma','Mi','Ju','Vi','Sá','Do'];
   let html = dows.map(d=>`<div class="car-cal-dow">${d}</div>`).join('');
-  for(let i=0;i<startDow;i++) html += '<div class="car-cal-cell empty"></div>';
+  for(let i=0;i<startDow;i++) html += '<div class="sup-cell empty"></div>';
+  const MAXC = 3;
   for(let day=1; day<=daysInMonth; day++){
     const t = Date.UTC(y,m,day);
     const key = carF(t);
     const items = milestonesByDay[key]||[];
-    const dots = items.slice(0,6).map(it=>`<i style="background:${it.p.color[0]}" title="${it.x.m.t} · ${it.p.conv} · ${it.p.com}"></i>`).join('');
+    const open = STATE_CAR.calOpen===key;
+    const shown = open ? items : items.slice(0,MAXC);
+    let chips = shown.map(it=>`<div class="sup-chip" style="--c:${it.p.color[0]}" title="${it.x.m.t} · ${it.p.conv} · ${it.p.com}">${it.x.m.t} · ${it.p.conv} · ${it.p.com}</div>`).join('');
+    if(items.length>MAXC) chips += `<button type="button" class="sup-more" onclick="carCalOpen('${key}')">${open?'ver menos':'+'+(items.length-MAXC)+' más'}</button>`;
     const isToday = key===todayKey;
-    html += `<div class="car-cal-cell${isToday?' today':''}"><div class="n">${day}</div><div class="car-cal-dots">${dots}</div></div>`;
+    html += `<div class="sup-cell${isToday?' today':''}"><div class="n">${day}</div>${chips}</div>`;
   }
   const grid = document.getElementById('car-cal-grid');
   if(grid) grid.innerHTML = html;
