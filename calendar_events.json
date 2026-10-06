@@ -1,1 +1,574 @@
-{"eventos": []}
+{
+ "eventos": [
+  {
+   "id": "377ur6lcfl8jepvlq574n2q7du",
+   "titulo": "1ª SESIÓN - FEA GERIATRÍA",
+   "inicio": "2026-06-11",
+   "hora": "12:30",
+   "fin": "2026-06-12"
+  },
+  {
+   "id": "2e6582rjah57les9cr37l3dneg",
+   "titulo": "1ª SESIÓN - FEA ORL",
+   "inicio": "2026-06-11",
+   "hora": "12:45",
+   "fin": "2026-06-12"
+  },
+  {
+   "id": "1hovp0f947elftpv00muavdhif",
+   "titulo": "1ª SESIÓN - MATRÓN / A",
+   "inicio": "2026-06-12",
+   "hora": "10:00",
+   "fin": "2026-06-13"
+  },
+  {
+   "id": "5rjrjmfioq4ucc2gssqoe7tc0e",
+   "titulo": "1ª SESIÓN - ENFERMERA/O PEDIATRIA",
+   "inicio": "2026-06-12",
+   "hora": "10:00",
+   "fin": "2026-06-13"
+  },
+  {
+   "id": "5rqcm67v2087tc6gse0slig2pt",
+   "titulo": "1ª SESIÓN - ENFERMERA/O GERIATRÍA",
+   "inicio": "2026-06-12",
+   "hora": "10:15",
+   "fin": "2026-06-13"
+  },
+  {
+   "id": "3c920hvkb6o1vehpgggql9prda",
+   "titulo": "2ª SESIÓN - ENFERMERA/O TRABAJO",
+   "inicio": "2026-06-12",
+   "hora": "10:30",
+   "fin": "2026-06-13"
+  },
+  {
+   "id": "5mkvoge0igrm30s8ptvh75594u",
+   "titulo": "ENFERMERO/A_Publicación Bases",
+   "inicio": "2026-06-16",
+   "fin": "2026-06-17"
+  },
+  {
+   "id": "7abbg57c750lslprrmv23allpi",
+   "titulo": "ENFERMERO/A- (Plazo de presentación de solicitudes)",
+   "inicio": "2026-06-17",
+   "fin": "2026-07-17"
+  },
+  {
+   "id": "6un8ec60rj7samo2pt3l74cil2",
+   "titulo": "MATRÓN/A (AD&EX Prov)",
+   "inicio": "2026-06-18",
+   "fin": "2026-06-19"
+  },
+  {
+   "id": "0sv40tvj67gb5ti70jcs06ktmp",
+   "titulo": "MATRÓN/A- (Plazo de reclamaciones AD&EX)",
+   "inicio": "2026-06-19",
+   "fin": "2026-06-24"
+  },
+  {
+   "id": "0skaoebue9d37kq2hngl7ljm0n",
+   "titulo": "FEA - GERIATRÍA (AD&EX Def y BAREMACIÓN Prov)",
+   "inicio": "2026-06-22",
+   "fin": "2026-06-23"
+  },
+  {
+   "id": "2lkn3o6vbjbmcjbge59f4jd5e5",
+   "titulo": "FEA - ORL (AD&EX Def y BAREMACIÓN Prov)",
+   "inicio": "2026-06-22",
+   "fin": "2026-06-23"
+  },
+  {
+   "id": "3sh40mc58k358lqau35g6iclfa",
+   "titulo": "REUNIÓN CALIDAD SGC_FOR",
+   "inicio": "2026-06-22",
+   "hora": "09:00",
+   "fin": "2026-06-23"
+  },
+  {
+   "id": "724emlhpip4hl3a21qs4b7qor4",
+   "titulo": "FEA - ORL_ (Plazo de reclamaciones Prov)",
+   "inicio": "2026-06-23",
+   "fin": "2026-06-26"
+  },
+  {
+   "id": "7f7aaoo7uag3vf890pu4mfvusg",
+   "titulo": "FEA - GERIATRÍA_ (Plazo de reclamaciones Prov)",
+   "inicio": "2026-06-23",
+   "fin": "2026-06-26"
+  },
+  {
+   "id": "06dqfse1t7udspt42s1ojj00rl",
+   "titulo": "ENF ESPECIALISTA GERIATRÍA (AD&EX Def y BAREMACIÓN prov)",
+   "inicio": "2026-06-24",
+   "fin": "2026-06-25"
+  },
+  {
+   "id": "5mb8rpl1abu5vki9plff9ssumh",
+   "titulo": "ENF ESPECIALISTA PEDIATRÍA (AD&EX Def y BAREMACIÓN Prov)",
+   "inicio": "2026-06-24",
+   "fin": "2026-06-25"
+  },
+  {
+   "id": "5sfpfs44kb6m8ld2857gh027e1",
+   "titulo": "ENF ESPECIALISTA SALUD MENTAL (AD&EX Def y BAREMACIÓN Prov))",
+   "inicio": "2026-06-24",
+   "fin": "2026-06-25"
+  },
+  {
+   "id": "7hbpv8ki3tahmg0pegofph2nl4",
+   "titulo": "ENF ESPECIALISTA TRABAJO (AD&EX Def y BAREMACIÓN Prov)",
+   "inicio": "2026-06-24",
+   "fin": "2026-06-25"
+  },
+  {
+   "id": "3qus5gpfj7rhs2r90o1dn6kkdv",
+   "titulo": "1ª SESIÓN - MATRONA",
+   "inicio": "2026-06-24",
+   "hora": "12:30",
+   "fin": "2026-06-25"
+  },
+  {
+   "id": "2bps72muid6a4ueqnpacjfka0q",
+   "titulo": "ENF_GERIÁTRICA_ (Plazo de reclamaciones  Rel_Prov)",
+   "inicio": "2026-06-25",
+   "fin": "2026-06-30"
+  },
+  {
+   "id": "2ppqd0jsr69qq6hgjanp0nr57g",
+   "titulo": "ENF_TRABAJO_ (Plazo de reclamaciones  Rel_Prov)",
+   "inicio": "2026-06-25",
+   "fin": "2026-06-30"
+  },
+  {
+   "id": "5fpqolkvhvrm2dvv6g3vvq74dm",
+   "titulo": "ENF_SALUD MENTAL_ (Plazo de reclamaciones  Rel_Prov)",
+   "inicio": "2026-06-25",
+   "fin": "2026-06-30"
+  },
+  {
+   "id": "7meqbuhsovnhps54jvmhcn4j2p",
+   "titulo": "ENF_PEDIÁTRICA_ (Plazo de reclamaciones  Rel_Prov)",
+   "inicio": "2026-06-25",
+   "fin": "2026-06-30"
+  },
+  {
+   "id": "2jga3aq1ktinmk0qhudpmn9t72",
+   "titulo": "2ª SESIÓN - FEA GERIATRÍA",
+   "inicio": "2026-06-29",
+   "hora": "12:15",
+   "fin": "2026-06-30"
+  },
+  {
+   "id": "6jb98o2mm4ptsmgse1qkt4a49q",
+   "titulo": "2ª SESIÓN - FEA ORL",
+   "inicio": "2026-06-29",
+   "hora": "12:30",
+   "fin": "2026-06-30"
+  },
+  {
+   "id": "3u7kghk1prr3963u9s78c6sdos",
+   "titulo": "CALEFACTOR  (Lista Definitiva)",
+   "inicio": "2026-06-30",
+   "fin": "2026-07-01"
+  },
+  {
+   "id": "2v2r93b4a1fceji2fhirb1r41c",
+   "titulo": "2ª SESIÓN - ENFERMERA/O PEDIATRIA",
+   "inicio": "2026-07-03",
+   "hora": "09:30",
+   "fin": "2026-07-04"
+  },
+  {
+   "id": "0dfi1tf7f0188tdg8rfrekfu2o",
+   "titulo": "2ª SESIÓN - ENFERMERA/O TRABAJO",
+   "inicio": "2026-07-03",
+   "hora": "09:45",
+   "fin": "2026-07-04"
+  },
+  {
+   "id": "616p2kk4mbjb25i19t6q9v8s1k",
+   "titulo": "2ª SESIÓN - ENFERMERA/O GERIATRÍA",
+   "inicio": "2026-07-03",
+   "hora": "09:45",
+   "fin": "2026-07-04"
+  },
+  {
+   "id": "6scaiq156fa5akphr8hduhs0k2",
+   "titulo": "1ª SESIÓN - ENFERMERA/O SALUD MENTAL",
+   "inicio": "2026-07-03",
+   "hora": "10:00",
+   "fin": "2026-07-04"
+  },
+  {
+   "id": "0ckomutgilsvtdu5fiq8ii29eh",
+   "titulo": "AMPLIACIÓN PLAZO_ENFERMERO/A_Publicación Bases",
+   "inicio": "2026-07-07",
+   "fin": "2026-07-08"
+  },
+  {
+   "id": "0t379fhjks9tgidi3pn1mhsmpd",
+   "titulo": "MATRON (AD&EX Def y BAREMACIÓN Prov)",
+   "inicio": "2026-07-14",
+   "fin": "2026-07-15"
+  },
+  {
+   "id": "1koj0re7epch41k7idgmln4ace",
+   "titulo": "ENF ESP SALUD MENTAL (Lista Definitiva)",
+   "inicio": "2026-07-14",
+   "fin": "2026-07-15"
+  },
+  {
+   "id": "1uf7gmq2q1f3tr3rkijapf0c5p",
+   "titulo": "ENF ESP GERIATRÍA (Lista Definitiva)",
+   "inicio": "2026-07-14",
+   "fin": "2026-07-15"
+  },
+  {
+   "id": "2jcfcefqu9pb0o5v252je2oojm",
+   "titulo": "ENF ESP PEDIATRÍA (Lista Definitiva)",
+   "inicio": "2026-07-14",
+   "fin": "2026-07-15"
+  },
+  {
+   "id": "4pp0m7ifobscfc6an35c9phgqh",
+   "titulo": "FEA ORL (Lista Definitiva)",
+   "inicio": "2026-07-14",
+   "fin": "2026-07-15"
+  },
+  {
+   "id": "4qq76sbnbksi2gp8hfubmva1s1",
+   "titulo": "FEA GERIATRÍA (Lista Definitiva)",
+   "inicio": "2026-07-14",
+   "fin": "2026-07-15"
+  },
+  {
+   "id": "7v4bo1esmr8ns5kcc0or3j6gve",
+   "titulo": "ENF ESP TRABAJO (Lista Definitiva)",
+   "inicio": "2026-07-14",
+   "fin": "2026-07-15"
+  },
+  {
+   "id": "668vsekolig46dlq5ifeptt412",
+   "titulo": "MATRON_ (Plazo de reclamaciones Prov)",
+   "inicio": "2026-07-15",
+   "fin": "2026-07-18"
+  },
+  {
+   "id": "35vmq81e51hotq948msn3hr0m1",
+   "titulo": "2ª SESIÓN - MATRONA",
+   "inicio": "2026-07-20",
+   "hora": "12:00",
+   "fin": "2026-07-21"
+  },
+  {
+   "id": "6kt30hrfpqacfqdojc5okee17f",
+   "titulo": "GOBERNANTA_Publicación Bases",
+   "inicio": "2026-07-21",
+   "fin": "2026-07-22"
+  },
+  {
+   "id": "674buc33sp10lqrst66hjsi5h9",
+   "titulo": "GOBERNANTA- (Plazo de presentación de solicitudes)",
+   "inicio": "2026-07-22",
+   "fin": "2026-07-25"
+  },
+  {
+   "id": "4100smdrtrvj3qodu9qmc8aior",
+   "titulo": "MATRÓN/A  (Lista Definitiva)",
+   "inicio": "2026-07-23",
+   "fin": "2026-07-24"
+  },
+  {
+   "id": "2eqhofmb46l7kfonsovdb1n3su",
+   "titulo": "FEA Medicina Nuclear_Publicación Bases",
+   "inicio": "2026-08-05",
+   "fin": "2026-08-06"
+  },
+  {
+   "id": "34pfrs4pe1p2eaa4alncnn8q4c",
+   "titulo": "FEA Radiodiagnóstico_Publicación Bases",
+   "inicio": "2026-08-05",
+   "fin": "2026-08-06"
+  },
+  {
+   "id": "4s9c8aebv20e1836u8tp78u7st",
+   "titulo": "FEA Ostetricia y Ginecología_Publicación Bases",
+   "inicio": "2026-08-05",
+   "fin": "2026-08-06"
+  },
+  {
+   "id": "5cgs2m77a0vdkm7a67l8un0n9i",
+   "titulo": "FEA Geriatría_Publicación Bases",
+   "inicio": "2026-08-05",
+   "fin": "2026-08-06"
+  },
+  {
+   "id": "0r3qc9lq5c4t9lq59eflmip044",
+   "titulo": "FEA Geriatría - (Plazo de presentación de solicitudes)",
+   "inicio": "2026-08-06",
+   "fin": "2026-08-13"
+  },
+  {
+   "id": "0vh1ggc8vhcuuqg1tg3bu2c0ln",
+   "titulo": "FEA Obstetricia y Ginecología - (Plazo de presentación de solicitudes)",
+   "inicio": "2026-08-06",
+   "fin": "2026-08-13"
+  },
+  {
+   "id": "1glrc4jps8s7vufo5ek731kan3",
+   "titulo": "FEA Radiodiagnóstico - (Plazo de presentación de solicitudes)",
+   "inicio": "2026-08-06",
+   "fin": "2026-08-13"
+  },
+  {
+   "id": "35t44jrrt63j4k8v4facokpg9v",
+   "titulo": "FEA Medicina Nuclear - (Plazo de presentación de solicitudes)",
+   "inicio": "2026-08-06",
+   "fin": "2026-08-13"
+  },
+  {
+   "id": "7mqq3v6kpfjo5ert1ongc14nho",
+   "titulo": "Elaboración Informe Mantenimiento SGC-FOR 1º Semestre",
+   "inicio": "2026-08-10",
+   "fin": "2026-08-11"
+  },
+  {
+   "id": "0i48003e0f6q0l39ph8msbmr3a",
+   "titulo": "TE Anatomía Patológica_Publicación Bases",
+   "inicio": "2026-08-12",
+   "fin": "2026-08-13"
+  },
+  {
+   "id": "1st36jafjoaf7tfjfvenp13dg5",
+   "titulo": "FEA Radiofarmacia_Publicación Bases",
+   "inicio": "2026-08-12",
+   "fin": "2026-08-13"
+  },
+  {
+   "id": "07poice848aq8qg18c3fcid0fu",
+   "titulo": "FEA Radiofarmacia - (Plazo de presentación de solicitudes)",
+   "inicio": "2026-08-13",
+   "fin": "2026-08-20"
+  },
+  {
+   "id": "29gqf4oad6lm1fj7n84midlru8",
+   "titulo": "TE Anatomía Patológica - (Plazo de presentación de solicitudes)",
+   "inicio": "2026-08-13",
+   "fin": "2026-08-20"
+  },
+  {
+   "id": "01ptahd7fii8mfo3bf50pieo1o",
+   "titulo": "DELINEANTE_Publicación Bases",
+   "inicio": "2026-08-25",
+   "fin": "2026-08-26"
+  },
+  {
+   "id": "1vupkmkq6ikufli0aqhvp1fquh",
+   "titulo": "FEA-OBST_Y_GINECOLOGIA (AD&EX Prov)",
+   "inicio": "2026-08-25",
+   "fin": "2026-08-26"
+  },
+  {
+   "id": "5262hdi6ipm48q3e5e9jj95flf",
+   "titulo": "PINTOR_Publicación Bases",
+   "inicio": "2026-08-25",
+   "fin": "2026-08-26"
+  },
+  {
+   "id": "1dmsl0ad803l8sod3gkvb1qimf",
+   "titulo": "PINTOR - (Plazo de presentación de solicitudes)",
+   "inicio": "2026-08-26",
+   "fin": "2026-09-09"
+  },
+  {
+   "id": "62bj61e91frjaonl152585lc2d",
+   "titulo": "DELINEANTE - (Plazo de presentación de solicitudes)",
+   "inicio": "2026-08-26",
+   "fin": "2026-08-29"
+  },
+  {
+   "id": "7abvape414v214kaqr5e874t1n",
+   "titulo": "FEA_OBS-GINEC_ (Plazo de reclamaciones  Rel_Prov)",
+   "inicio": "2026-08-26",
+   "fin": "2026-09-02"
+  },
+  {
+   "id": "1pi4gq75jmu394kcpdbpojipgm",
+   "titulo": "FEA OBST Y GINE_Publicación Modificación de CV",
+   "inicio": "2026-09-01",
+   "fin": "2026-09-02"
+  },
+  {
+   "id": "1r0u3sbul26knjp02htt72tfuj",
+   "titulo": "INGENIERO TEC INDUSTRIAL_Publicación Bases",
+   "inicio": "2026-09-01",
+   "fin": "2026-09-02"
+  },
+  {
+   "id": "52s09gek60drl5aud7alvmfqbb",
+   "titulo": "FEA RADIOFARMACIA  (AD&EX Prov)",
+   "inicio": "2026-09-01",
+   "fin": "2026-09-02"
+  },
+  {
+   "id": "7qmuirruovu2nbtlkc1hqf910f",
+   "titulo": "INGENIRO TEC TELECOMUNICACIONES  (AD&EX Prov)",
+   "inicio": "2026-09-01",
+   "fin": "2026-09-02"
+  },
+  {
+   "id": "0n5a3t5gmvmgepr18btvfl9j68",
+   "titulo": "INGENIERO TEC INDUSTRIAL_ (Plazo de presentación de solicitudes)",
+   "inicio": "2026-09-02",
+   "fin": "2026-09-09"
+  },
+  {
+   "id": "1g7todt6ivdkpeuoje4v9ph8cl",
+   "titulo": "FEA RADIOFARMACIA_ (Plazo de reclamaciones  AD&EX_Prov)",
+   "inicio": "2026-09-02",
+   "fin": "2026-09-09"
+  },
+  {
+   "id": "7egaeraq83s6jmqo870dijpf3v",
+   "titulo": "INGENIERO TEC TELECOMUNICACIONES_ (Plazo de reclamaciones  AD&EX_Prov)",
+   "inicio": "2026-09-02",
+   "fin": "2026-09-05"
+  },
+  {
+   "id": "355ki8bslvt24veaavmsrotqgn",
+   "titulo": "FEA - PSICOLOGO CLÍNICO_Publicación Bases",
+   "inicio": "2026-09-09",
+   "fin": "2026-09-10"
+  },
+  {
+   "id": "68bkrjso6oam4c4ldtjh5de5gm",
+   "titulo": "FEA - PSIQUIATRÍA_Publicación Bases",
+   "inicio": "2026-09-09",
+   "fin": "2026-09-10"
+  },
+  {
+   "id": "4g04qlrvgc6ffkg25bh7je4dj5",
+   "titulo": "FEA - PSICOLOGO CLINICO - (Plazo de presentación de solicitudes)",
+   "inicio": "2026-09-10",
+   "fin": "2026-09-17"
+  },
+  {
+   "id": "6ged24q23ri3oav6m0dvqtc726",
+   "titulo": "FEA - PSIQUIATRIA - (Plazo de presentación de solicitudes)",
+   "inicio": "2026-09-10",
+   "fin": "2026-09-17"
+  },
+  {
+   "id": "59os256t8fj0dhnu5r8fgtseoa",
+   "titulo": "1ª SESIÓN - FEA GERIATRÍA",
+   "inicio": "2026-09-16",
+   "hora": "11:30",
+   "fin": "2026-09-17"
+  },
+  {
+   "id": "57bbocfvjgco6fdcflhqp0um4b",
+   "titulo": "1ª SESIÓN - FEA RADIOFARMACIA",
+   "inicio": "2026-09-16",
+   "hora": "11:45",
+   "fin": "2026-09-17"
+  },
+  {
+   "id": "4278sht6bvqbhdb5lthec6dqge",
+   "titulo": "1ª SESIÓN - FEA OBS Y GINECOLOGÍA",
+   "inicio": "2026-09-16",
+   "hora": "12:00",
+   "fin": "2026-09-17"
+  },
+  {
+   "id": "5202ofg2bbbjugci9l8n7ju3bv",
+   "titulo": "LIMPIADOR/A_Publicación Bases",
+   "inicio": "2026-09-22",
+   "fin": "2026-09-23"
+  },
+  {
+   "id": "5faijolnf4b95vqtgeaku11hlt",
+   "titulo": "LIMPIADOR/A- (Plazo de presentación de solicitudes)",
+   "inicio": "2026-09-23",
+   "fin": "2026-09-26"
+  },
+  {
+   "id": "11egsi0996ondmmjluk8b5bumm",
+   "titulo": "FEA OBSTETRICIA Y GINECOLOGIA (AD&EX Def y BAREMACIÓN prov)",
+   "inicio": "2026-09-24",
+   "fin": "2026-09-25"
+  },
+  {
+   "id": "6ng3g7d2kj1f4mmh0hri0j9up8",
+   "titulo": "FEA RADIOFARMACIA (AD&EX Def y BAREMACIÓN prov)",
+   "inicio": "2026-09-24",
+   "fin": "2026-09-25"
+  },
+  {
+   "id": "5ut6th1b3seg7br1gv6igdm9ge",
+   "titulo": "FEA RADIOFARMACIA- (Plazo de reclamaciones prov)",
+   "inicio": "2026-09-25",
+   "fin": "2026-10-02"
+  },
+  {
+   "id": "6aplammifdk4c2g9o4gt30lu37",
+   "titulo": "FEA OBSTETRICIA Y GINECOLOGÍA - (Plazo de reclamaciones prov)",
+   "inicio": "2026-09-25",
+   "fin": "2026-10-02"
+  },
+  {
+   "id": "41u6vcke4i8kfl0uvqmsc5foek",
+   "titulo": "CARPINTERO_Publicación Bases",
+   "inicio": "2026-09-28",
+   "fin": "2026-09-29"
+  },
+  {
+   "id": "4a3tu1h84k7nhdaj6fc8ojlugd",
+   "titulo": "PLANCHADOR/A_Publicación Bases",
+   "inicio": "2026-09-28",
+   "fin": "2026-09-29"
+  },
+  {
+   "id": "56j394jfc5p0se377ggd87fu1b",
+   "titulo": "FEA GERIATRIA (AD&EX Def y BAREMACIÓN prov)",
+   "inicio": "2026-09-28",
+   "fin": "2026-09-29"
+  },
+  {
+   "id": "62hq9fico96sddjf0vq8037gsa",
+   "titulo": "FEA PEDIATRIA_Publicación Bases",
+   "inicio": "2026-09-28",
+   "fin": "2026-09-29"
+  },
+  {
+   "id": "0fc3qb0bnuqmh1t31sheruce6u",
+   "titulo": "FEA GERIATRIA- (Plazo de reclamaciones prov)",
+   "inicio": "2026-09-29",
+   "fin": "2026-10-06"
+  },
+  {
+   "id": "14hd61sj065bmeqcked2sbto8h",
+   "titulo": "FEA PEDIATRIA - (Plazo de presentación de solicitudes)",
+   "inicio": "2026-09-29",
+   "fin": "2026-10-06"
+  },
+  {
+   "id": "1ia9fmfj3s7lvv6b1hrlq6v5se",
+   "titulo": "CARPINTERO- (Plazo de presentación de solicitudes)",
+   "inicio": "2026-09-29",
+   "fin": "2026-10-02"
+  },
+  {
+   "id": "31539805s29icgp5719977a22p",
+   "titulo": "PLANCHADOR/A- (Plazo de presentación de solicitudes)",
+   "inicio": "2026-09-29",
+   "fin": "2026-10-02"
+  },
+  {
+   "id": "53i9mm1lujgdso7lrjf8gi71qd_20270101",
+   "titulo": "INHÁBIL SEDE ELECTRÓNICA",
+   "inicio": "2027-01-01",
+   "fin": "2027-01-02"
+  }
+ ]
+}
