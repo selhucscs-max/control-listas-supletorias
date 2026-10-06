@@ -7,9 +7,6 @@ on:
       - "CONTROL_SUPLES.ods"
       - "Indicadores.ods"
       - "CARRERA_PREVISION.ods"
-  schedule:
-    # Cada día a las 06:00 UTC: refresca los eventos manuales de Google Calendar
-    - cron: "0 6 * * *"
   workflow_dispatch: {}
 
 permissions:
@@ -55,22 +52,14 @@ jobs:
           GOOGLE_CALENDAR_ID: ${{ secrets.GOOGLE_CALENDAR_ID }}
         run: python3 scripts/sync_carrera_google_calendar.py
 
-      - name: Exportar eventos manuales de Google Calendar (para la pestaña Calendario)
-        if: always()
-        continue-on-error: true
-        env:
-          GOOGLE_CALENDAR_CREDENTIALS: ${{ secrets.GOOGLE_CALENDAR_CREDENTIALS }}
-          GOOGLE_CALENDAR_ID: ${{ secrets.GOOGLE_CALENDAR_ID }}
-        run: python3 scripts/export_calendar_events.py
-
       - name: Commitear cambios si los hay
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add index.html calendar_events.json
-          if git diff --cached --quiet; then
-            echo "Sin cambios en index.html ni calendar_events.json, nada que commitear."
+          if git diff --quiet -- index.html; then
+            echo "index.html sin cambios, nada que commitear."
           else
+            git add index.html
             git commit -m "Actualiza datos del dashboard desde CONTROL_SUPLES.ods / Indicadores.ods / CARRERA_PREVISION.ods [skip ci]"
             git push
           fi

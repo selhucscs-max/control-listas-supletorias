@@ -506,12 +506,6 @@ tbody td{padding:8px 10px}
 .car-issue.warn{color:#8a5b12}
 .car-issue.info{color:var(--g600)}
 .car-empty{text-align:center;padding:40px 20px;color:var(--g400);font-size:13px}
-/* SUPLES: Cronograma · Plazos · Calendario */
-@media(max-width:767px){#app-suple .bot-nav{overflow-x:auto}#app-suple .bot-btn{flex:1 0 66px}}
-.car-issue.info .dot{background:var(--g400)}
-.sup-cal-dots i.g{border-radius:2px}
-.sup-cal-chk{display:inline-flex;align-items:center;gap:4px;font-size:11px;color:var(--g600);cursor:pointer}
-.sup-pl-sev{font-size:11px;font-weight:700;color:var(--navy);margin:12px 0 2px;text-transform:uppercase;letter-spacing:.5px}
 
 /* ═══════════════════════════════════════════════
    MÓDULO: FORMACIÓN
@@ -1024,57 +1018,6 @@ tbody td{padding:8px 10px}
     </div>
   </div>
 
-  <!-- TAB: CRONOGRAMA -->
-  <div class="pane" id="pane-cronograma">
-    <div class="filters" id="cr-filter" style="gap:8px">
-      <button class="btn-sec active" data-f="curso" onclick="setCronoFilter('curso')">En curso</button>
-      <button class="btn-sec" data-f="reciente" onclick="setCronoFilter('reciente')">Últimos 12 meses</button>
-      <button class="btn-sec" data-f="all" onclick="setCronoFilter('all')">Todas</button>
-    </div>
-    <div class="card" style="margin-bottom:0">
-      <div class="card-t">Cronograma por convocatoria</div>
-      <div class="card-s" id="cr-sub"></div>
-      <div class="lgd" id="cr-lgd"></div>
-      <div class="chart-w" id="cr-wrap" style="height:320px;overflow-x:auto"><canvas id="cr-chart"></canvas></div>
-    </div>
-  </div>
-
-  <!-- TAB: PLAZOS -->
-  <div class="pane" id="pane-plazos">
-    <div id="pl-kpis" class="kpis" style="grid-template-columns:repeat(3,1fr)"></div>
-    <div class="card">
-      <div class="card-t">Plazos de referencia</div>
-      <div class="card-s">Tiempo habitual entre fases, calculado con las convocatorias ya resueltas. No son plazos legales.</div>
-      <div id="pl-ref"></div>
-    </div>
-    <div class="card" style="margin-bottom:0">
-      <div class="card-t">Avisos por convocatoria</div>
-      <div class="card-s" id="pl-sub"></div>
-      <div id="pl-issues"></div>
-    </div>
-  </div>
-
-  <!-- TAB: CALENDARIO -->
-  <div class="pane" id="pane-calendario">
-    <div class="card" style="margin-bottom:0">
-      <div class="car-cal-head">
-        <div class="car-cal-title" id="sup-cal-title" style="text-transform:none"></div>
-        <div class="car-cal-nav">
-          <button type="button" aria-label="Mes anterior" onclick="supCalShift(-1)">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
-          </button>
-          <button type="button" aria-label="Mes actual" style="width:auto;padding:0 10px;font-size:11px" onclick="supCalToday()">Hoy</button>
-          <button type="button" aria-label="Mes siguiente" onclick="supCalShift(1)">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
-          </button>
-        </div>
-      </div>
-      <div class="lgd" id="sup-cal-lgd"></div>
-      <div class="car-cal-grid sup-cal-dots" id="sup-cal-grid"></div>
-      <div class="car-cal-list" id="sup-cal-list"></div>
-    </div>
-  </div>
-
 </div><!-- /scroll-area -->
 
 <!-- BOTTOM NAV -->
@@ -1106,18 +1049,6 @@ tbody td{padding:8px 10px}
   <button class="bot-btn" id="nb-estado" onclick="showPane('estado',this)">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
     <span class="bot-lbl">Estado</span>
-  </button>
-  <button class="bot-btn" id="nb-cronograma" onclick="showPane('cronograma',this)">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="14" y2="6"/><line x1="8" y1="12" x2="19" y2="12"/><line x1="5" y1="18" x2="21" y2="18"/></svg>
-    <span class="bot-lbl">Cronograma</span>
-  </button>
-  <button class="bot-btn" id="nb-plazos" onclick="showPane('plazos',this)">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-    <span class="bot-lbl">Plazos</span>
-  </button>
-  <button class="bot-btn" id="nb-calendario" onclick="showPane('calendario',this)">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-    <span class="bot-lbl">Calendario</span>
   </button>
   <button class="bot-btn" id="nb-baremacion" onclick="showPane('baremacion',this)">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>
@@ -1612,9 +1543,6 @@ const STATE = {
   phase: 'all',         // filtro fase en Estado actual
   estadoSort: 'idle',   // idle | recent | conv
   barGroup: 'all',      // filtro bloque en Baremación: all | fea | otras
-  cronoFilter: 'curso', // filtro en Cronograma: curso | reciente | all
-  calMonth: null,       // mes visible en Calendario (UTC ms del día 1)
-  calGoogle: true,      // mostrar eventos de Google Calendar en Calendario
 };
 const LS_KEY = 'suples_chuc_data_v1';
 
@@ -1725,9 +1653,6 @@ function showPane(id, btn){
     if(id==='buscar') renderBuscar();
     if(id==='estado') renderEstado();
     if(id==='baremacion') renderBaremacion();
-    if(id==='cronograma') renderCronograma();
-    if(id==='plazos') renderPlazos();
-    if(id==='calendario') renderCalendario();
   }
 }
 
@@ -1906,7 +1831,6 @@ function processRows(rows, fname){
       recl1: n(r['N.º RECL 1']||r['Nº RECL 1']||0),
       recl2: n(r['N.º RECL 2']||r['Nº RECL 2']||0),
       dias: n(r['TIEMPO EN RESOLVER (días)'])||null,
-      dBases, dAdEx, dProv, dDef,   // Date reales (Cronograma/Plazos/Calendario)
       fechaBases: fmtDate(dBases),
       fechaAdEx:  fmtDate(dAdEx),
       fechaListaProv: fmtDate(dProv),
@@ -2129,9 +2053,6 @@ function renderAll(){
     if(id==='buscar') renderBuscar();
     if(id==='estado') renderEstado();
     if(id==='baremacion') renderBaremacion();
-    if(id==='cronograma') renderCronograma();
-    if(id==='plazos') renderPlazos();
-    if(id==='calendario') renderCalendario();
   }
 }
 
@@ -2359,309 +2280,6 @@ function renderCategorias(){
     <td>${pillHtml(c.tasa)}</td>
   </tr>`).join('') : `<tr><td colspan="7" style="text-align:center;padding:20px;color:var(--g400)">Sin resultados para "${qLower}"</td></tr>`;
 }
-
-// ═══════ SUPLES: CRONOGRAMA · PLAZOS · CALENDARIO ═══════
-const SUP_DAY = 86400000;
-const SUP_PT = {
-  bases:{n:'Bases',               c:'#3296D2'},
-  adex: {n:'Ad&Ex provisional',   c:'#C89B2A'},
-  prov: {n:'Lista provisional',   c:'#7952B3'},
-  def:  {n:'Lista definitiva',    c:'#2E9E5B'},
-  wait: {n:'Sin avance (hasta hoy)', c:'rgba(192,57,43,.55)'},
-};
-const SUP_SEG_NAME = {adex:'Hasta Ad&Ex provisional', prov:'Hasta Lista provisional', def:'Hasta Lista definitiva', wait:'Sin avance (hasta hoy)'};
-const SUP_TRANS = [
-  {k:'ba', n:'Bases → Ad&Ex provisional',        a:'dBases', b:'dAdEx'},
-  {k:'ap', n:'Ad&Ex → Lista provisional',         a:'dAdEx',  b:'dProv'},
-  {k:'pd', n:'Lista provisional → definitiva',    a:'dProv',  b:'dDef'},
-  {k:'bd', n:'Total: Bases → Lista definitiva',   a:'dBases', b:'dDef'},
-];
-let SUP_GCAL = [];   // eventos manuales de Google Calendar (calendar_events.json)
-
-const supDay = d => d ? Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()) : null;
-const supKey = t => new Date(t).toISOString().slice(0,10);
-const supToday = () => { const n=new Date(); return Date.UTC(n.getFullYear(), n.getMonth(), n.getDate()); };
-const supDs = t => new Date(t).toLocaleDateString('es-ES',{day:'2-digit',month:'2-digit',year:'numeric',timeZone:'UTC'});
-const supEsc = s => String(s==null?'':s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const supLbl = r => r.año+'/'+r.id+' · '+r.cat;
-
-function supPoints(r){
-  return [['bases',r.dBases],['adex',r.dAdEx],['prov',r.dProv],['def',r.dDef]]
-    .filter(x=>x[1]).map(x=>({k:x[0], t:supDay(x[1])}));
-}
-function supSegs(r){
-  const P = supPoints(r), segs = [];
-  for(let i=0;i<P.length-1;i++){
-    if(P[i+1].t>=P[i].t) segs.push({ph:P[i+1].k, a:P[i].t, b:P[i+1].t});
-  }
-  if(r.estado.fase!=='def' && P.length){
-    const last = Math.max.apply(null, P.map(p=>p.t)), td = supToday();
-    if(td>last) segs.push({ph:'wait', a:last, b:td});
-  }
-  if(!segs.length && P.length===1){
-    segs.push({ph:P[0].k==='bases'?'adex':P[0].k, a:P[0].t, b:P[0].t+SUP_DAY});
-  }
-  return segs;
-}
-
-// ── Cronograma ──
-function setCronoFilter(f){ STATE.cronoFilter = f; renderCronograma(); }
-function supCronoRows(){
-  const D = getScoped(); if(!D) return [];
-  const td = supToday();
-  let rs = D.records.filter(r=>supPoints(r).length);
-  if(STATE.cronoFilter==='curso') rs = rs.filter(r=>r.estado.fase!=='def');
-  else if(STATE.cronoFilter==='reciente') rs = rs.filter(r=>r.lastDate && (td-supDay(r.lastDate))<=365*SUP_DAY);
-  const withFirst = rs.map(r=>({r, first:Math.min.apply(null, supPoints(r).map(p=>p.t))}));
-  withFirst.sort((a,b)=> STATE.cronoFilter==='curso' ? a.first-b.first : b.first-a.first);
-  return withFirst.map(x=>x.r);
-}
-function renderCronograma(){
-  document.querySelectorAll('#cr-filter .btn-sec').forEach(b=>b.classList.toggle('active', b.dataset.f===STATE.cronoFilter));
-  const all = supCronoRows(), rows = all.slice(0,60);
-  const wrap = document.getElementById('cr-wrap');
-  if(wrap) wrap.style.height = Math.max(200, rows.length*30+80)+'px';
-  const lgd = document.getElementById('cr-lgd');
-  if(lgd) lgd.innerHTML = ['adex','prov','def','wait'].map(k=>`<span class="lgd-i"><span class="lgd-d" style="background:${SUP_PT[k].c}"></span>${SUP_SEG_NAME[k]}</span>`).join('');
-  const sub = document.getElementById('cr-sub');
-  if(sub) sub.textContent = rows.length
-    ? 'Cada barra va de una publicación a la siguiente. La línea roja es hoy.'+(all.length>rows.length?(' Mostrando '+rows.length+' de '+all.length+'.'):'')
-    : 'Sin convocatorias para este filtro.';
-  if(!rows.length){
-    if(charts['cr-chart']){ charts['cr-chart'].destroy(); delete charts['cr-chart']; }
-    return;
-  }
-  const td = supToday(), off = t => Math.round((t-td)/SUP_DAY);
-  const segsOf = rows.map(supSegs);
-  const flat = [].concat.apply([], segsOf);
-  let minOff = flat.length ? Math.min.apply(null, flat.map(s=>off(s.a))) : -30;
-  let maxOff = flat.length ? Math.max.apply(null, flat.map(s=>off(s.b))) : 30;
-  minOff = Math.min(minOff,0)-10; maxOff = Math.max(maxOff,0)+15;
-
-  const MESES = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
-  const span = maxOff-minOff;
-  const step = span>1500 ? 12 : span>700 ? 6 : span>300 ? 3 : 1;   // meses entre marcas
-  const ticks = [];
-  const s0 = new Date(td + minOff*SUP_DAY);
-  const cur = new Date(Date.UTC(s0.getUTCFullYear(), s0.getUTCMonth(), 1));
-  while(cur.getTime() <= td + maxOff*SUP_DAY){
-    ticks.push({v:Math.round((cur.getTime()-td)/SUP_DAY), l:MESES[cur.getUTCMonth()]+String(cur.getUTCFullYear()).slice(2)});
-    cur.setUTCMonth(cur.getUTCMonth()+step);
-  }
-  const phases = ['adex','prov','def','wait'];
-  const labels = rows.map(r=>{ const l=supLbl(r); return l.length>34?l.slice(0,33)+'…':l; });
-  const datasets = phases.map(ph=>({
-    label: SUP_SEG_NAME[ph],
-    data: segsOf.map(ss=>{ const s=ss.find(x=>x.ph===ph); return s ? [off(s.a), Math.max(off(s.b), off(s.a)+1)] : null; }),
-    backgroundColor: SUP_PT[ph].c, borderRadius:5, barPercentage:0.6, categoryPercentage:0.85, grouped:false,
-  }));
-  mkChart('cr-chart',{
-    type:'bar', data:{labels, datasets},
-    plugins:[{ id:'supHoy', afterDatasetsDraw(chart){
-      const ctx=chart.ctx, x=chart.scales.x, y=chart.scales.y; ctx.save();
-      const px = x.getPixelForValue(0);
-      ctx.strokeStyle='#C0392B'; ctx.setLineDash([4,3]); ctx.lineWidth=1.5;
-      ctx.beginPath(); ctx.moveTo(px,y.top); ctx.lineTo(px,y.bottom); ctx.stroke(); ctx.restore();
-    }}],
-    options:{
-      indexAxis:'y', responsive:true, maintainAspectRatio:false,
-      plugins:{ legend:{display:false}, tooltip:{callbacks:{
-        title:items=>{ const r=rows[items[0].dataIndex]; return r?supLbl(r):''; },
-        label:c=>{
-          if(c.raw==null) return null;
-          const ph = phases[c.datasetIndex];
-          const s = segsOf[c.dataIndex].find(x=>x.ph===ph);
-          return s ? ' '+SUP_SEG_NAME[ph]+': '+supDs(s.a)+' → '+(ph==='wait'?'hoy':supDs(s.b)) : '';
-        }
-      }}},
-      scales:{
-        x:{ min:minOff, max:maxOff, grid:{color:GC}, border:{display:false},
-            afterBuildTicks: axis => { axis.ticks = ticks.map(t=>({value:t.v})); },
-            ticks:{ font:{size:10}, callback: v => { const t=ticks.find(t=>t.v===v); return t?t.l:''; } } },
-        y:{ grid:{display:false}, border:{display:false}, ticks:{font:{size:10}, autoSkip:false} }
-      }
-    }
-  });
-}
-
-// ── Plazos ──
-function supQ(arr,q){
-  if(!arr.length) return null;
-  const s = arr.slice().sort((x,y)=>x-y), i=(s.length-1)*q, lo=Math.floor(i), hi=Math.ceil(i);
-  return s[lo]+(s[hi]-s[lo])*(i-lo);
-}
-function supRefStats(){
-  const out = {};
-  SUP_TRANS.forEach(t=>{
-    const v = [];
-    DATA.records.forEach(r=>{
-      if(r[t.a] && r[t.b]){ const d=Math.round((supDay(r[t.b])-supDay(r[t.a]))/SUP_DAY); if(d>=0) v.push(d); }
-    });
-    out[t.k] = {n:v.length, med:supQ(v,.5), p75:supQ(v,.75), p90:supQ(v,.9)};
-  });
-  return out;
-}
-function supIssues(recs, ref){
-  const td = supToday(), out = [];
-  recs.forEach(r=>{
-    const P = supPoints(r);
-    // 1) fechas en orden incoherente
-    for(let i=1;i<P.length;i++){
-      if(P[i].t < P[i-1].t) out.push({lv:'crit', r, w:0, txt:SUP_PT[P[i].k].n+' ('+supDs(P[i].t)+') es anterior a '+SUP_PT[P[i-1].k].n+' ('+supDs(P[i-1].t)+')'});
-    }
-    // 2) en curso: espera actual frente al plazo habitual de esa fase
-    if(r.estado.fase!=='def'){
-      let tr=null, from=null;
-      if(r.dProv){ tr='pd'; from=r.dProv; } else if(r.dAdEx){ tr='ap'; from=r.dAdEx; } else if(r.dBases){ tr='ba'; from=r.dBases; }
-      if(tr){
-        const st = ref[tr], wait = Math.round((td-supDay(from))/SUP_DAY);
-        const name = SUP_TRANS.find(t=>t.k===tr).n;
-        if(st && st.n>=5 && wait>st.p90) out.push({lv:'crit', r, w:wait, txt:wait+' días esperando · '+name+' (habitual '+Math.round(st.med)+' d, 9 de cada 10 acaban en ≤ '+Math.round(st.p90)+' d)'});
-        else if(st && st.n>=5 && wait>st.p75) out.push({lv:'warn', r, w:wait, txt:wait+' días esperando · '+name+' (habitual '+Math.round(st.med)+' d, 3 de cada 4 acaban en ≤ '+Math.round(st.p75)+' d)'});
-      }
-    }
-    // 3) publicaciones recientes en festivo o fin de semana
-    P.forEach(p=>{
-      if(td-p.t > 365*SUP_DAY) return;
-      const hol = (typeof CAR_HOL!=='undefined') ? CAR_HOL[supKey(p.t)] : null;
-      const wd = new Date(p.t).getUTCDay();
-      if(hol) out.push({lv:'info', r, w:0, txt:SUP_PT[p.k].n+' ('+supDs(p.t)+') cae en festivo: '+hol});
-      else if(wd===0||wd===6) out.push({lv:'info', r, w:0, txt:SUP_PT[p.k].n+' ('+supDs(p.t)+') cae en fin de semana'});
-    });
-  });
-  const rank = {crit:0, warn:1, info:2};
-  out.sort((a,b)=> rank[a.lv]-rank[b.lv] || b.w-a.w);
-  return out;
-}
-function renderPlazos(){
-  const D = getScoped(); if(!D) return;
-  const ref = supRefStats();
-  const refEl = document.getElementById('pl-ref');
-  if(refEl) refEl.innerHTML = SUP_TRANS.map(t=>{
-    const s = ref[t.k];
-    const exp = s.n ? 'mediana <b>'+Math.round(s.med)+' d</b> · 3 de cada 4 ≤ '+Math.round(s.p75)+' d · n = '+s.n : 'sin datos suficientes';
-    return `<div class="car-rule-row"><span class="car-rule-lbl">${t.n}</span><span class="car-rule-exp">${exp}</span></div>`;
-  }).join('');
-
-  const issues = supIssues(D.records, ref);
-  const nCrit = issues.filter(i=>i.lv==='crit').length;
-  const nWarn = issues.filter(i=>i.lv==='warn').length;
-  const nInfo = issues.filter(i=>i.lv==='info').length;
-  const enCurso = D.records.filter(r=>r.estado.fase!=='def' && supPoints(r).length).length;
-  const k = document.getElementById('pl-kpis');
-  if(k) k.innerHTML =
-    `<div class="kpi"><div class="kpi-v">${enCurso}</div><div class="kpi-l">En curso</div><div class="kpi-s">sin lista definitiva</div></div>`+
-    `<div class="kpi${nCrit?' red':''}"><div class="kpi-v">${nCrit}</div><div class="kpi-l">Muy fuera de plazo</div><div class="kpi-s">${nWarn} más algo fuera</div></div>`+
-    `<div class="kpi"><div class="kpi-v">${nInfo}</div><div class="kpi-l">Datos a revisar</div><div class="kpi-s">festivo o fin de semana</div></div>`;
-
-  const sub = document.getElementById('pl-sub');
-  if(sub) sub.textContent = 'Comparadas con el plazo habitual de cada fase. Respeta el filtro de año de arriba.';
-  const el = document.getElementById('pl-issues');
-  if(!el) return;
-  if(!issues.length){ el.innerHTML='<div class="car-empty">Sin avisos para el filtro actual.</div>'; return; }
-  const LIM = 80, shown = issues.slice(0,LIM);
-  const SEV = {crit:'Muy fuera de plazo / incoherente', warn:'Fuera del plazo habitual', info:'Datos a revisar'};
-  let html = '', cur = null;
-  shown.forEach(i=>{
-    if(i.lv!==cur){ cur=i.lv; html += `<div class="sup-pl-sev">${SEV[i.lv]}</div>`; }
-    html += `<div class="car-issue ${i.lv}"><span class="dot"></span><span><b>${supEsc(supLbl(i.r))}</b> — ${supEsc(i.txt)}</span></div>`;
-  });
-  if(issues.length>LIM) html += `<div class="car-empty" style="padding:14px">… y ${issues.length-LIM} avisos más (usa el filtro de año para acotar)</div>`;
-  el.innerHTML = html;
-}
-
-// ── Calendario ──
-function supCalShift(n){
-  if(STATE.calMonth==null) supCalToday(true);
-  const d = new Date(STATE.calMonth);
-  STATE.calMonth = Date.UTC(d.getUTCFullYear(), d.getUTCMonth()+n, 1);
-  renderCalendario();
-}
-function supCalToday(silent){
-  const d = new Date(supToday());
-  STATE.calMonth = Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), 1);
-  if(!silent) renderCalendario();
-}
-function supCalLast(){
-  if(!DATA || !DATA.lastGlobal) return;
-  const d = DATA.lastGlobal;
-  STATE.calMonth = Date.UTC(d.getFullYear(), d.getMonth(), 1);
-  renderCalendario();
-}
-function supCalGoogle(on){ STATE.calGoogle = !!on; renderCalendario(); }
-function supGcalByDay(){
-  const m = {};
-  if(!STATE.calGoogle) return m;
-  SUP_GCAL.forEach(e=>{
-    const a = Date.parse(e.inicio+'T00:00:00Z');
-    if(isNaN(a)) return;
-    let b = e.fin ? Date.parse(e.fin+'T00:00:00Z') : a+SUP_DAY;
-    if(!(b>a)) b = a+SUP_DAY;
-    for(let t=a; t<b && t<a+60*SUP_DAY; t+=SUP_DAY){ (m[supKey(t)] = m[supKey(t)]||[]).push(e); }
-  });
-  return m;
-}
-function renderCalendario(){
-  if(!DATA) return;
-  if(STATE.calMonth==null) supCalToday(true);
-  const byDay = {};
-  DATA.records.forEach(r=>supPoints(r).forEach(p=>{ (byDay[supKey(p.t)] = byDay[supKey(p.t)]||[]).push({r,p}); }));
-  const gDay = supGcalByDay();
-
-  const mDate = new Date(STATE.calMonth), y = mDate.getUTCFullYear(), m = mDate.getUTCMonth();
-  const title = new Intl.DateTimeFormat('es-ES',{month:'long',year:'numeric',timeZone:'UTC'}).format(mDate);
-  const tEl = document.getElementById('sup-cal-title'); if(tEl) tEl.textContent = title.charAt(0).toUpperCase()+title.slice(1);
-
-  const lg = document.getElementById('sup-cal-lgd');
-  if(lg) lg.innerHTML = ['bases','adex','prov','def'].map(k=>`<span class="lgd-i"><span class="lgd-d" style="background:${SUP_PT[k].c};border-radius:50%"></span>${SUP_PT[k].n}</span>`).join('')+
-    `<label class="sup-cal-chk"><input type="checkbox" ${STATE.calGoogle?'checked':''} onchange="supCalGoogle(this.checked)"><span class="lgd-d" style="background:#1A73E8"></span>Google Calendar (${SUP_GCAL.length})</label>`;
-
-  const startDow = (new Date(Date.UTC(y,m,1)).getUTCDay()+6)%7;   // lunes = 0
-  const dim = new Date(Date.UTC(y,m+1,0)).getUTCDate();
-  const todayKey = supKey(supToday());
-  let html = ['Lu','Ma','Mi','Ju','Vi','Sá','Do'].map(d=>`<div class="car-cal-dow">${d}</div>`).join('');
-  for(let i=0;i<startDow;i++) html += '<div class="car-cal-cell empty"></div>';
-  for(let day=1; day<=dim; day++){
-    const key = supKey(Date.UTC(y,m,day));
-    const ms = byDay[key]||[], gs = gDay[key]||[];
-    const dots = ms.slice(0,6).map(it=>`<i style="background:${SUP_PT[it.p.k].c}" title="${supEsc(SUP_PT[it.p.k].n+' · '+supLbl(it.r))}"></i>`).join('')
-      + gs.slice(0,3).map(e=>`<i class="g" style="background:#1A73E8" title="${supEsc(e.titulo)}"></i>`).join('');
-    html += `<div class="car-cal-cell${key===todayKey?' today':''}"><div class="n">${day}</div><div class="car-cal-dots">${dots}</div></div>`;
-  }
-  const grid = document.getElementById('sup-cal-grid'); if(grid) grid.innerHTML = html;
-
-  const items = [];
-  for(let day=1; day<=dim; day++){
-    const key = supKey(Date.UTC(y,m,day));
-    (byDay[key]||[]).forEach(it=>items.push({day, key, ttl:SUP_PT[it.p.k].n, sub:supLbl(it.r), g:false}));
-    (gDay[key]||[]).forEach(e=>items.push({day, key, ttl:e.titulo, sub:'Google Calendar'+(e.hora?' · '+e.hora:''), g:true}));
-  }
-  const MES = new Intl.DateTimeFormat('es-ES',{month:'short',timeZone:'UTC'}).format(mDate);
-  const list = document.getElementById('sup-cal-list');
-  if(list){
-    if(!items.length){
-      list.innerHTML = '<div class="car-empty">Sin hitos este mes.'+(DATA.lastGlobal?'<br><button class="btn-sec" style="margin-top:10px" onclick="supCalLast()">Ir a la última publicación</button>':'')+'</div>';
-    } else {
-      list.innerHTML = '<div class="sec-t">Hitos del mes ('+items.length+')</div>' + items.map(it=>`
-        <div class="car-agenda-item">
-          <div class="car-agenda-date"><div class="d">${it.day}</div><div class="m">${MES}</div></div>
-          <div class="car-agenda-body"><div class="car-agenda-t">${supEsc(it.ttl)}</div><div class="car-agenda-s">${supEsc(it.sub)}</div></div>
-          ${it.g?'<span class="tag fut">Google</span>':''}
-        </div>`).join('');
-    }
-  }
-}
-function loadSupGcal(){
-  fetch('calendar_events.json',{cache:'no-store'})
-    .then(r=>r.ok?r.json():null)
-    .then(j=>{
-      if(j && Array.isArray(j.eventos)){
-        SUP_GCAL = j.eventos.filter(e=>e && e.inicio && e.titulo);
-        if(STATE.tab==='calendario' && DATA) renderCalendario();
-      }
-    }).catch(()=>{});
-}
-loadSupGcal();
 
 // ═══════ ESTADO ACTUAL ═══════
 function renderEstadoActual(query){
