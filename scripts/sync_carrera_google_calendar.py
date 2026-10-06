@@ -29,6 +29,9 @@ from googleapiclient.errors import HttpError
 
 SHEET_NAME = "Procesos"
 
+# Solo se sincronizan fechas recientes o futuras (por defecto, últimos 60 días)
+CUTOFF = datetime.now().date() - timedelta(days=int(os.getenv("CALENDAR_DAYS_BACK", "60")))
+
 # Los hitos que sincronizaremos (basados en columnas de CARRERA_PREVISION.ods)
 MILESTONE_EVENTS = {
     "1ª sesión de la comisión": "🎤",
@@ -118,6 +121,9 @@ def load_events_from_ods(ods_path: Path):
                 else:
                     fecha = pd.to_datetime(fecha_raw).date()
             except:
+                continue
+
+            if fecha < CUTOFF:
                 continue
 
             # Construir evento
