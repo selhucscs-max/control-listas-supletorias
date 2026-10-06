@@ -16,10 +16,11 @@ Este script:
 4. Se ejecuta automáticamente en el workflow de GitHub Actions
 """
 
+import hashlib
 import json
 import os
 import sys
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 
 import pandas as pd
@@ -100,11 +101,14 @@ def load_events_from_ods(ods_path: Path):
 
                 # Construir evento
                 event = {
-                    "id": f"suple-{año}-{convocatoria_id}-{date_col.lower().replace(' ', '_')}",
+                    # Google solo admite ids con 0-9 a-v (base32hex); sha1 en hex lo cumple
+                    "id": hashlib.sha1(
+                        f"suple-{año}-{convocatoria_id}-{date_col}".encode("utf-8")
+                    ).hexdigest(),
                     "summary": f"{event_type} - {categoria}",
                     "description": f"Convocatoria {año}/{convocatoria_id}\n{categoria}",
                     "start": {"date": str(fecha)},
-                    "end": {"date": str(fecha)},  # Evento de un día
+                    "end": {"date": str(fecha + timedelta(days=1))},  # fin exclusivo
                     "colorId": get_color_for_event_type(date_col),
                     "transparency": "transparent",  # No bloquea tiempo
                 }

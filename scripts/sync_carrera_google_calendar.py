@@ -14,10 +14,11 @@ Crea eventos para:
 - Publicación definitiva
 """
 
+import hashlib
 import json
 import os
 import sys
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 
 import pandas as pd
@@ -121,11 +122,14 @@ def load_events_from_ods(ods_path: Path):
 
             # Construir evento
             event = {
-                "id": f"carrera-{process_id}-{milestone_name.lower().replace(' ', '_')}",
+                # Google solo admite ids con 0-9 a-v (base32hex); sha1 en hex lo cumple
+                "id": hashlib.sha1(
+                    f"carrera-{process_id}-{milestone_name}".encode("utf-8")
+                ).hexdigest(),
                 "summary": f"{emoji} {milestone_name} — {comision} ({convocatoria})",
                 "description": f"Convocatoria: {convocatoria}\nComisión: {comision}\nProceso: {proceso_name}",
                 "start": {"date": str(fecha)},
-                "end": {"date": str(fecha)},
+                "end": {"date": str(fecha + timedelta(days=1))},  # fin exclusivo
                 "colorId": get_color_for_phase(milestone_name),
                 "transparency": "transparent",
             }
