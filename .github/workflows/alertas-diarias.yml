@@ -1,0 +1,32 @@
+name: Alertas Diarias SUPLES
+
+on:
+  schedule:
+    # Cada día a las 9:00 AM (UTC+1 = Canarias)
+    - cron: "0 8 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  enviar-alertas:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Instalar dependencias
+        run: pip install pandas odfpy
+
+      - name: Revisar alertas y enviar notificaciones
+        env:
+          ALERT_EMAIL: ${{ secrets.ALERT_EMAIL }}
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_PASSWORD: ${{ secrets.GMAIL_PASSWORD }}
+        run: python3 scripts/send_alerts.py
