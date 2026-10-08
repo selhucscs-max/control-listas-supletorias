@@ -7,8 +7,8 @@ on:
       - "CONTROL_SUPLES.ods"
       - "Indicadores.ods"
       - "CARRERA_PREVISION.ods"
+      - "FORMACION_EXTERNA.xlsx"
   schedule:
-    # Cada día a las 06:00 UTC: refresca los eventos manuales de Google Calendar
     - cron: "0 6 * * *"
   workflow_dispatch: {}
 
@@ -28,16 +28,20 @@ jobs:
           python-version: "3.11"
 
       - name: Instalar dependencias
-        run: pip install pandas odfpy google-auth-oauthlib google-auth-httplib2 google-api-python-client
+        run: pip install pandas odfpy openpyxl google-auth-oauthlib google-auth-httplib2 google-api-python-client
 
-      - name: Regenerar datos por defecto (SUPLE) desde CONTROL_SUPLES.ods
+      - name: Regenerar datos SUPLE
         run: python3 scripts/generate_data.py
 
-      - name: Regenerar datos por defecto (Acción Social) desde Indicadores.ods
+      - name: Regenerar datos Acción Social
         run: python3 scripts/generate_accion_data.py
 
-      - name: Regenerar datos por defecto (Carrera Profesional) desde CARRERA_PREVISION.ods
+      - name: Regenerar datos Carrera Profesional
         run: python3 scripts/generate_carrera_data.py
+
+      - name: Regenerar datos Formación Externa
+        if: hashFiles('FORMACION_EXTERNA.xlsx') != ''
+        run: python3 scripts/generate_formacion_externa_data.py
 
       - name: Sincronizar SUPLES con Google Calendar
         if: always()
@@ -55,7 +59,7 @@ jobs:
           GOOGLE_CALENDAR_ID: ${{ secrets.GOOGLE_CALENDAR_ID }}
         run: python3 scripts/sync_carrera_google_calendar.py
 
-      - name: Exportar eventos manuales de Google Calendar (para la pestaña Calendario)
+      - name: Exportar eventos manuales de Google Calendar
         if: always()
         continue-on-error: true
         env:
@@ -63,14 +67,14 @@ jobs:
           GOOGLE_CALENDAR_ID: ${{ secrets.GOOGLE_CALENDAR_ID }}
         run: python3 scripts/export_calendar_events.py
 
-      - name: Commitear cambios si los hay
+      - name: Commitear cambios
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add index.html calendar_events.json
           if git diff --cached --quiet; then
-            echo "Sin cambios en index.html ni calendar_events.json, nada que commitear."
+            echo "Sin cambios, nada que commitear."
           else
-            git commit -m "Actualiza datos del dashboard desde CONTROL_SUPLES.ods / Indicadores.ods / CARRERA_PREVISION.ods [skip ci]"
+            git commit -m "Actualiza datos dashboard [skip ci]"
             git push
           fi
