@@ -178,7 +178,7 @@ def procesar(ruta):
         'inversion':     inversion,
         'participacion': participacion,
         'lugares':       lugares,
-        'actividades':   actividades[:400],
+        'actividades':   actividades,
     }
 
 
