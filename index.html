@@ -559,6 +559,182 @@ tbody td{padding:8px 10px}
 .for-pill.mod-online{background:var(--amberp);color:#8a5b12}
 .for-pill.mod-mixto{background:var(--g100);color:var(--g600)}
 </style>
+<style id="fext-styles">
+/* ── Sub-tabs Formación ── */
+.form-subtab-nav {
+  display: flex;
+  gap: 4px;
+  padding: 0 0 16px 0;
+  border-bottom: 2px solid #e5e7eb;
+  margin-bottom: 20px;
+}
+.form-subtab-btn {
+  padding: 8px 20px;
+  border: none;
+  border-radius: 8px 8px 0 0;
+  background: #f3f4f6;
+  color: #6b7280;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all .18s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.form-subtab-btn:hover { background: #e0e7ff; color: #3730a3; }
+.form-subtab-btn.active {
+  background: #0055A5;
+  color: #fff;
+  font-weight: 600;
+}
+.form-subtab-pane { display: none; }
+.form-subtab-pane.active { display: block; }
+
+/* ── KPI strip ── */
+.fext-kpis {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+  margin-bottom: 22px;
+}
+.fext-kpi {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px 18px;
+  position: relative;
+  overflow: hidden;
+}
+.fext-kpi::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--kpi-color, #0055A5);
+}
+.fext-kpi-val {
+  font-size: 26px;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1;
+  margin-bottom: 5px;
+  letter-spacing: -0.5px;
+}
+.fext-kpi-lbl {
+  font-size: 11px;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  font-weight: 600;
+}
+.fext-kpi-sub { font-size: 12px; color: #9ca3af; margin-top: 3px; }
+
+/* ── Sección ── */
+.fext-section-title {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .8px;
+  color: #9ca3af;
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+/* ── Grid cards ── */
+.fext-grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+.fext-grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+@media(max-width: 900px) { .fext-grid2, .fext-grid3 { grid-template-columns: 1fr; } }
+
+/* ── Chart card ── */
+.fext-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 18px 20px;
+  box-shadow: 0 1px 8px rgba(0,0,0,.05);
+  margin-bottom: 16px;
+}
+.fext-card-title { font-size: 14px; font-weight: 600; color: #0f172a; margin-bottom: 3px; }
+.fext-card-sub { font-size: 12px; color: #9ca3af; margin-bottom: 12px; }
+
+/* ── Tabla actividades ── */
+.fext-search-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+.fext-search-bar input, .fext-search-bar select {
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 7px 12px;
+  font-size: 13px;
+  font-family: inherit;
+  outline: none;
+  background: #f9fafb;
+  transition: border-color .15s;
+}
+.fext-search-bar input { flex: 1; min-width: 180px; }
+.fext-search-bar input:focus, .fext-search-bar select:focus {
+  border-color: #0055A5;
+  background: #fff;
+}
+.fext-table-wrap { overflow-x: auto; max-height: 460px; overflow-y: auto; }
+#fext-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+#fext-table thead th {
+  position: sticky;
+  top: 0;
+  background: #0055A5;
+  color: #fff;
+  padding: 9px 11px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 11px;
+  white-space: nowrap;
+  letter-spacing: .3px;
+}
+#fext-table tbody tr { border-bottom: 1px solid #f3f4f6; transition: background .1s; }
+#fext-table tbody tr:hover { background: #eff6ff; }
+#fext-table tbody td { padding: 8px 11px; color: #374151; }
+.fext-dir-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+/* ── Barra progreso inline ── */
+.fext-bar-wrap { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.fext-bar-lbl { font-size: 12px; color: #4b5563; width: 160px; flex-shrink: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.fext-bar-track { flex: 1; height: 8px; background: #f3f4f6; border-radius: 4px; overflow: hidden; }
+.fext-bar-fill { height: 100%; border-radius: 4px; transition: width .6s ease; }
+.fext-bar-val { font-size: 12px; color: #6b7280; min-width: 70px; text-align: right; font-variant-numeric: tabular-nums; }
+
+/* ── Insight box ── */
+.fext-insight {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 10px;
+  padding: 13px 16px;
+  font-size: 13px;
+  color: #1e3a5f;
+  margin-bottom: 16px;
+  display: flex;
+  gap: 10px;
+}
+.fext-insight-ico { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+/* subtabs Formación: paneles en flex */
+#fext-interna.active,#fext-externa.active{display:flex;flex-direction:column;flex:1;min-height:0}
+#fext-interna > .scroll-area,#fext-externa > .scroll-area{flex:1;min-height:0;overflow-y:auto}
+</style>
 </head>
 <body><div class="modal-overlay open" id="pinGateOverlay" style="z-index:9999;"><div class="modal-box"><div class="modal-title">Acceso restringido</div><div class="modal-sub">Introduce la clave de acceso para continuar</div><div style="display:flex;gap:8px;justify-content:center;margin:16px 0;"><input type="password" inputmode="numeric" maxlength="1" class="pin-digit" data-i="0"><input type="password" inputmode="numeric" maxlength="1" class="pin-digit" data-i="1"><input type="password" inputmode="numeric" maxlength="1" class="pin-digit" data-i="2"><input type="password" inputmode="numeric" maxlength="1" class="pin-digit" data-i="3"><input type="password" inputmode="numeric" maxlength="1" class="pin-digit" data-i="4"><input type="password" inputmode="numeric" maxlength="1" class="pin-digit" data-i="5"></div><div class="pin-error-msg" id="pinErrorMsg" style="display:none;">Clave incorrecta. Intentalo de nuevo.</div><div class="modal-btns"><button class="btn-confirm" id="pinConfirmBtn">Entrar</button></div></div></div><script>(function(){var PIN="255623";var KEY="suple_pin_ok";function ready(fn){document.readyState!=="loading"?fn():document.addEventListener("DOMContentLoaded",fn);}ready(function(){var overlay=document.getElementById("pinGateOverlay");try{if(sessionStorage.getItem(KEY)==="1"){overlay.classList.remove("open");return;}}catch(e){}var ds=Array.from(overlay.querySelectorAll(".pin-digit"));function tryUnlock(){var val=ds.map(function(i){return i.value||"";}).join("");if(val===PIN){try{sessionStorage.setItem(KEY,"1");}catch(e){}overlay.classList.remove("open");}else if(val.length===PIN.length){var box=overlay.querySelector(".modal-box");box.classList.add("error");document.getElementById("pinErrorMsg").style.display="block";ds.forEach(function(i){i.classList.add("error");i.value="";});ds[0].focus();setTimeout(function(){box.classList.remove("error");},500);}}ds.forEach(function(inp,idx){inp.addEventListener("input",function(){inp.value=inp.value.replace(/[^0-9]/g,"").slice(0,1);inp.classList.remove("error");if(inp.value&&ds[idx+1])ds[idx+1].focus();tryUnlock();});inp.addEventListener("keydown",function(e){if(e.key==="Backspace"&&!inp.value&&ds[idx-1])ds[idx-1].focus();});});document.getElementById("pinConfirmBtn").addEventListener("click",tryUnlock);ds[0].focus();});})();</script>
 
@@ -1485,6 +1661,11 @@ tbody td{padding:8px 10px}
 </div>
 
 <!-- CONTENIDO FORMACIÓN -->
+<div class="form-subtab-nav" style="margin:0 0 12px;padding:10px 16px 0;background:#fff">
+  <button class="form-subtab-btn active" id="btn-form-interna" onclick="switchFormTab('interna')">🏥 Formación Interna</button>
+  <button class="form-subtab-btn" id="btn-form-externa" onclick="switchFormTab('externa')">🌐 Formación Externa</button>
+</div>
+<div class="form-subtab-pane active" id="fext-interna">
 <div class="scroll-area" id="scroll-area-for" style="padding-bottom:32px">
 
   <div id="for-file-info"></div>
@@ -1532,6 +1713,98 @@ tbody td{padding:8px 10px}
   <div id="for-main"></div>
 
 </div><!-- /scroll-area-for -->
+</div>
+<div class="form-subtab-pane" id="fext-externa">
+<div class="scroll-area" style="padding:16px 16px 32px">
+
+  <!-- KPIs -->
+  <div class="fext-kpis" id="fext-kpis-row"></div>
+
+  <!-- Insight -->
+  <div class="fext-insight" id="fext-insight">
+    <span class="fext-insight-ico">💡</span>
+    <span id="fext-insight-text">Cargando análisis…</span>
+  </div>
+
+  <!-- Fila 1: Expedientes donut + Inversión barras -->
+  <div class="fext-grid2">
+    <div class="fext-card">
+      <div class="fext-card-title">Resultado de expedientes por dirección</div>
+      <div class="fext-card-sub">Presentados · Autorizados · Denegados · Anulados — 2025</div>
+      <div style="position:relative;height:230px"><canvas id="fext-c-exp-donut"></canvas></div>
+    </div>
+    <div class="fext-card">
+      <div class="fext-card-title">Inversión total por dirección</div>
+      <div class="fext-card-sub">Ayuda económica + coste indirecto — €</div>
+      <div style="position:relative;height:230px"><canvas id="fext-c-inv-bar"></canvas></div>
+    </div>
+  </div>
+
+  <!-- Fila 2: Tasa autorización + Horas permiso -->
+  <div class="fext-grid2">
+    <div class="fext-card">
+      <div class="fext-card-title">Tasa de autorización por dirección</div>
+      <div class="fext-card-sub">% autorizados sobre presentados</div>
+      <div id="fext-tasa-bars" style="padding-top:6px"></div>
+    </div>
+    <div class="fext-card">
+      <div class="fext-card-title">Horas de permiso por dirección</div>
+      <div class="fext-card-sub">Total de horas concedidas para formación externa</div>
+      <div style="position:relative;height:200px"><canvas id="fext-c-horas"></canvas></div>
+    </div>
+  </div>
+
+  <!-- Fila 3: Participación stacked + Lugares inversión -->
+  <div class="fext-grid2">
+    <div class="fext-card">
+      <div class="fext-card-title">Tipo de participación por dirección</div>
+      <div class="fext-card-sub">Asistente · Ponencia · Comunicación · Poster · Otros · Distancia</div>
+      <div style="position:relative;height:240px"><canvas id="fext-c-part-stacked"></canvas></div>
+    </div>
+    <div class="fext-card">
+      <div class="fext-card-title">Top 15 servicios/unidades por inversión</div>
+      <div class="fext-card-sub">Horas permiso + ayuda + coste indirecto — €</div>
+      <div id="fext-lugares-bars" style="padding-top:4px;max-height:320px;overflow-y:auto"></div>
+    </div>
+  </div>
+
+  <!-- Tabla actividades -->
+  <div class="fext-card">
+    <div class="fext-card-title">Actividades formativas autorizadas 2025</div>
+    <div class="fext-card-sub">Búsqueda en tiempo real · <span id="fext-act-count">—</span> registros</div>
+    <div class="fext-search-bar">
+      <input type="text" id="fext-search" placeholder="🔍  Buscar por actividad, nombre o servicio…" oninput="filterFextTable()">
+      <select id="fext-filter-dir" onchange="filterFextTable()">
+        <option value="">Todas las direcciones</option>
+        <option value="Gerencia">Gerencia</option>
+        <option value="Médica">Médica</option>
+        <option value="Enfermería">Enfermería</option>
+        <option value="Gestión">Gestión</option>
+        <option value="RRHH">RRHH</option>
+      </select>
+    </div>
+    <div class="fext-table-wrap">
+      <table id="fext-table">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Categoría</th>
+            <th>Servicio/Unidad</th>
+            <th>Actividad formativa</th>
+            <th>Dirección</th>
+            <th>Inicio</th>
+            <th style="text-align:right">Horas</th>
+            <th style="text-align:right">Inversión</th>
+          </tr>
+        </thead>
+        <tbody id="fext-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+
+
+</div>
+</div>
 
 <!-- MODAL IMPORTAR (FORMACIÓN) -->
 <div class="modal-bg" id="mdl-import-for">
@@ -4705,5 +4978,286 @@ if('serviceWorker' in navigator){
 </script>
 <script>(function(){fetch("CONTROL_SUPLES.ods",{cache:"no-store"}).then(function(r){if(!r.ok)throw new Error("No se encontro CONTROL_SUPLES.ods");return r.arrayBuffer();}).then(function(buf){var wb=XLSX.read(buf,{type:"array",cellDates:true});var sheetName=wb.SheetNames.includes("1_Datos_generales")?"1_Datos_generales":wb.SheetNames[0];var rows=XLSX.utils.sheet_to_json(wb.Sheets[sheetName],{defval:null});RAW_ROWS=rows;DATA=processRows(rows,"CONTROL_SUPLES.ods");populateYearSelect();renderAll();}).catch(function(err){console.error("Auto-carga de CONTROL_SUPLES.ods fallo:",err);});})();</script>
 <script>(function(){fetch("Indicadores.ods",{cache:"no-store"}).then(function(r){if(!r.ok)throw new Error("No se encontro Indicadores.ods");return r.arrayBuffer();}).then(function(buf){var wb=XLSX.read(buf,{type:"array",cellDates:false});var ws=wb.Sheets[wb.SheetNames[0]];var arr=XLSX.utils.sheet_to_json(ws,{header:1,defval:null,raw:true});var rows=parseAccionWideSheet(arr);if(!rows.length)throw new Error("Indicadores.ods sin columnas de año reconocibles");RAW_ROWS_ACC=rows;DATA_ACC=processAccionRows(rows,"Indicadores.ods");populateYearSelectAcc();renderAccAll();}).catch(function(err){console.error("Auto-carga de Indicadores.ods fallo:",err);});})();</script>
-<script>(function(){fetch("CARRERA_PREVISION.ods",{cache:"no-store"}).then(function(r){if(!r.ok)throw new Error("No se encontro CARRERA_PREVISION.ods");return r.arrayBuffer();}).then(function(buf){var wb=XLSX.read(buf,{type:"array",cellDates:true});var ws=wb.Sheets[wb.SheetNames[0]];var arr=XLSX.utils.sheet_to_json(ws,{header:1,defval:null,raw:true});var procsRaw=parseCarreraSheet(arr);if(!procsRaw.length)throw new Error("CARRERA_PREVISION.ods sin filas de convocatoria/comision reconocibles");RAW_ROWS_CAR=arr;DATA_CAR=processCarreraRows(procsRaw,"CARRERA_PREVISION.ods");populateCarFilters();renderCarAll();}).catch(function(err){console.error("Auto-carga de CARRERA_PREVISION.ods fallo:",err);});})();</script></body>
+<script>(function(){fetch("CARRERA_PREVISION.ods",{cache:"no-store"}).then(function(r){if(!r.ok)throw new Error("No se encontro CARRERA_PREVISION.ods");return r.arrayBuffer();}).then(function(buf){var wb=XLSX.read(buf,{type:"array",cellDates:true});var ws=wb.Sheets[wb.SheetNames[0]];var arr=XLSX.utils.sheet_to_json(ws,{header:1,defval:null,raw:true});var procsRaw=parseCarreraSheet(arr);if(!procsRaw.length)throw new Error("CARRERA_PREVISION.ods sin filas de convocatoria/comision reconocibles");RAW_ROWS_CAR=arr;DATA_CAR=processCarreraRows(procsRaw,"CARRERA_PREVISION.ods");populateCarFilters();renderCarAll();}).catch(function(err){console.error("Auto-carga de CARRERA_PREVISION.ods fallo:",err);});})();</script><script>
+(function(){
+
+/* ── Datos inyectados por generate_formacion_externa_data.py ── */
+/* __FEXT_DATA_START__ */
+const FEXT_DATA = {"anio":2025,"fuente":"FORMACION_EXTERNA.xlsx","total_pres":2414,"total_aut":2224,"total_inv":608454.37,"total_horas":31429.5,"expedientes":[{"dir":"Gerencia","pres":23,"anu":3,"den":1,"aut":19,"desc":0},{"dir":"Gestión","pres":63,"anu":4,"den":1,"aut":58,"desc":0},{"dir":"Médica","pres":1799,"anu":75,"den":20,"aut":1649,"desc":55},{"dir":"Enfermería","pres":518,"anu":23,"den":1,"aut":490,"desc":4},{"dir":"Recursos Humanos","pres":11,"anu":2,"den":1,"aut":8,"desc":0}],"inversion":[{"dir":"Gerencia","horas":362.5,"ayuda":420.0,"indirecto":5923.05,"total":6343.05},{"dir":"Gestión","horas":691.0,"ayuda":3076.0,"indirecto":10857.91,"total":13933.91},{"dir":"Médica","horas":18854.0,"ayuda":4623.0,"indirecto":423444.26,"total":428067.26},{"dir":"Médica (Residentes)","horas":5030.0,"ayuda":6814.5,"indirecto":42250.05,"total":49064.55},{"dir":"Enfermería","horas":6409.0,"ayuda":20898.01,"indirecto":88675.86,"total":109573.87},{"dir":"Recursos Humanos","horas":83.0,"ayuda":0.0,"indirecto":1471.73,"total":1471.73}],"participacion":[{"dir":"Gerencia","asistente":19,"ponencia":0,"comunicacion":0,"poster":0,"otros":0,"distancia":0},{"dir":"Gestión","asistente":50,"ponencia":0,"comunicacion":1,"poster":3,"otros":3,"distancia":1},{"dir":"Médica","asistente":1340,"ponencia":78,"comunicacion":62,"poster":127,"otros":42,"distancia":0},{"dir":"Enfermería","asistente":415,"ponencia":10,"comunicacion":9,"poster":43,"otros":12,"distancia":1},{"dir":"Recursos Humanos","asistente":8,"ponencia":0,"comunicacion":0,"poster":0,"otros":0,"distancia":0}],"lugares":[{"lugar":"P.MÉDICO PSIQUIATRÍA","dir":"Médica","horas":1386.0,"ayuda":1000.0,"indirecto":26683.92,"total":27683.92},{"lugar":"P.MÉDICO TRAUMA","dir":"Médica","horas":1337.0,"ayuda":0.0,"indirecto":26118.08,"total":26118.08},{"lugar":"P.MÉDICO PEDIATRÍA","dir":"Médica","horas":1442.0,"ayuda":1500.0,"indirecto":23331.97,"total":24831.97},{"lugar":"P.MÉDICO REUMATOLOGÍA","dir":"Médica","horas":861.0,"ayuda":1280.0,"indirecto":16384.54,"total":17664.54},{"lugar":"P.MÉDICO OFTALMOLOGÍA","dir":"Médica","horas":910.0,"ayuda":1600.0,"indirecto":16044.66,"total":17644.66},{"lugar":"P.MÉDICO GINECOLOGÍA","dir":"Médica","horas":791.0,"ayuda":1000.0,"indirecto":16481.86,"total":17481.86},{"lugar":"P.MÉDICO NEFROLOGÍA","dir":"Médica","horas":810.0,"ayuda":1000.0,"indirecto":16401.69,"total":17401.69},{"lugar":"P.MÉDICO CARDIOLOGÍA","dir":"Médica","horas":861.0,"ayuda":0.0,"indirecto":16801.02,"total":16801.02},{"lugar":"P.MÉDICO ONCOLOGÍA MÉDICA","dir":"Médica","horas":721.0,"ayuda":1620.0,"indirecto":14220.75,"total":15840.75},{"lugar":"P.MÉDICO NEUROLOGÍA","dir":"Médica","horas":637.0,"ayuda":1000.0,"indirecto":13801.02,"total":14801.02},{"lugar":"UVI","dir":"Enfermería","horas":393.0,"ayuda":810.0,"indirecto":5371.58,"total":6181.58},{"lugar":"PARITORIO","dir":"Enfermería","horas":398.0,"ayuda":2020.0,"indirecto":4622.81,"total":6642.81},{"lugar":"PLANTA 1ª PAR - HOSP.EDIF.","dir":"Enfermería","horas":420.0,"ayuda":1505.0,"indirecto":5001.16,"total":6506.16},{"lugar":"GIMNASIO REHABILITACION","dir":"Enfermería","horas":361.0,"ayuda":1050.72,"indirecto":4994.86,"total":6045.58},{"lugar":"SUBDIRECCIÓN INGENIERÍA","dir":"Gestión/RRHH","horas":112.0,"ayuda":0.0,"indirecto":1953.15,"total":1953.15}]};
+/* __FEXT_DATA_END__ */
+
+/* ── Colores por dirección ── */
+const FEXT_COLORS = {
+  'Gerencia':         '#0055A5',
+  'Gestión':          '#1A8080',
+  'Médica':           '#7c3aed',
+  'Médica (Residentes)': '#a78bfa',
+  'Enfermería':       '#C89B2A',
+  'Recursos Humanos': '#C0392B',
+  'Gestión/RRHH':     '#059669',
+};
+const FEXT_DIR_COLORS = ['#0055A5','#1A8080','#7c3aed','#C89B2A','#C0392B'];
+const GC = 'rgba(0,0,0,0.05)';
+
+/* ── Switch sub-tab ── */
+function switchFormTab(tab) {
+  document.querySelectorAll('.form-subtab-pane').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.form-subtab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('fext-' + tab).classList.add('active');
+  document.getElementById('btn-form-' + tab).classList.add('active');
+  if (tab === 'externa') initFormacionExterna();
+}
+
+/* ── Formateadores ── */
+const fmtN = n => isNaN(n) ? '—' : Math.round(n).toLocaleString('es-ES');
+const fmtEur = n => '€' + (n >= 1e6
+  ? (n/1e6).toFixed(2) + 'M'
+  : n >= 1e3 ? (n/1e3).toFixed(0) + 'K'
+  : Math.round(n).toLocaleString('es-ES'));
+const fmtEurFull = n => '€' + n.toLocaleString('es-ES', {minimumFractionDigits:0, maximumFractionDigits:0});
+const fmtPct = (a,b) => b > 0 ? (a/b*100).toFixed(1) + '%' : '—';
+
+/* ── Registros Chart.js activos ── */
+const fextCharts = {};
+function fextMkChart(id, cfg) {
+  if (fextCharts[id]) fextCharts[id].destroy();
+  const el = document.getElementById(id);
+  if (!el) return;
+  fextCharts[id] = new Chart(el, cfg);
+}
+
+/* ── INIT ── */
+let fextInited = false;
+function initFormacionExterna() {
+  if (fextInited) return;
+  fextInited = true;
+  const D = FEXT_DATA;
+  const E = D.expedientes;
+  const I = D.inversion;
+  const P = D.participacion;
+  const L = D.lugares;
+
+  const totalPres = E.reduce((s,e) => s + e.pres, 0);
+  const totalAut  = E.reduce((s,e) => s + e.aut, 0);
+  const totalDen  = E.reduce((s,e) => s + e.den, 0);
+  const totalAnu  = E.reduce((s,e) => s + e.anu, 0);
+  const totalInv  = I.reduce((s,i) => s + i.total, 0);
+  const totalH    = I.reduce((s,i) => s + i.horas, 0);
+  const tasaAut   = totalPres > 0 ? (totalAut/totalPres*100).toFixed(1) : 0;
+
+  /* KPIs */
+  document.getElementById('fext-kpis-row').innerHTML = `
+    <div class="fext-kpi" style="--kpi-color:#0055A5">
+      <div class="fext-kpi-val">${fmtN(totalPres)}</div>
+      <div class="fext-kpi-lbl">Expedientes presentados</div>
+      <div class="fext-kpi-sub">Año 2025 · 5 direcciones</div>
+    </div>
+    <div class="fext-kpi" style="--kpi-color:#059669">
+      <div class="fext-kpi-val">${fmtN(totalAut)}</div>
+      <div class="fext-kpi-lbl">Autorizados</div>
+      <div class="fext-kpi-sub">Tasa: ${tasaAut}%</div>
+    </div>
+    <div class="fext-kpi" style="--kpi-color:#C0392B">
+      <div class="fext-kpi-val">${fmtN(totalDen + totalAnu)}</div>
+      <div class="fext-kpi-lbl">No autorizados</div>
+      <div class="fext-kpi-sub">${fmtN(totalDen)} den. · ${fmtN(totalAnu)} anu.</div>
+    </div>
+    <div class="fext-kpi" style="--kpi-color:#7c3aed">
+      <div class="fext-kpi-val">${fmtEur(totalInv)}</div>
+      <div class="fext-kpi-lbl">Inversión total</div>
+      <div class="fext-kpi-sub">Ayudas + costes indirectos</div>
+    </div>
+    <div class="fext-kpi" style="--kpi-color:#C89B2A">
+      <div class="fext-kpi-val">${fmtN(totalH)}</div>
+      <div class="fext-kpi-lbl">Horas de permiso</div>
+      <div class="fext-kpi-sub">Total concedidas 2025</div>
+    </div>`;
+
+  /* Insight */
+  const dirMasInv = I.slice().sort((a,b) => b.total - a.total)[0];
+  const dirMasPres = E.slice().sort((a,b) => b.pres - a.pres)[0];
+  document.getElementById('fext-insight-text').innerHTML =
+    `La <strong>Dirección ${dirMasPres.dir}</strong> concentra el mayor volumen de solicitudes
+    (${fmtN(dirMasPres.pres)} presentadas · ${fmtN(dirMasPres.aut)} autorizadas).
+    La mayor inversión corresponde también a <strong>${dirMasInv.dir}</strong>
+    con ${fmtEurFull(dirMasInv.total)} — un ${(dirMasInv.total/totalInv*100).toFixed(1)}% del total.
+    La tasa global de autorización es del <strong>${tasaAut}%</strong>.`;
+
+  /* Chart 1: Donut expedientes */
+  fextMkChart('fext-c-exp-donut', {
+    type: 'doughnut',
+    data: {
+      labels: E.map(e => e.dir),
+      datasets: [
+        {
+          label: 'Autorizados',
+          data: E.map(e => e.aut),
+          backgroundColor: FEXT_DIR_COLORS.map(c => c + 'cc'),
+          borderWidth: 3,
+          borderColor: '#fff',
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      cutout: '58%',
+      plugins: {
+        legend: { position: 'bottom', labels: { padding: 10, usePointStyle: true, pointStyle: 'rect', font: { size: 11 } } },
+        tooltip: {
+          callbacks: {
+            label: c => {
+              const e = E[c.dataIndex];
+              return ` ${e.dir}: ${fmtN(e.aut)} aut. / ${fmtN(e.pres)} pres. (${fmtPct(e.aut, e.pres)})`;
+            }
+          }
+        }
+      }
+    }
+  });
+
+  /* Chart 2: Inversión barras horizontal */
+  const invSorted = I.slice().sort((a,b) => b.total - a.total);
+  fextMkChart('fext-c-inv-bar', {
+    type: 'bar',
+    data: {
+      labels: invSorted.map(i => i.dir),
+      datasets: [
+        { label: 'Ayuda económica', data: invSorted.map(i => i.ayuda),    backgroundColor: '#0055A5cc', borderRadius: 3 },
+        { label: 'Coste indirecto', data: invSorted.map(i => i.indirecto), backgroundColor: '#7c3aedcc', borderRadius: 3 },
+      ]
+    },
+    options: {
+      indexAxis: 'y',
+      responsive: true,
+      maintainAspectRatio: false,
+      interaction: { mode: 'index', intersect: false },
+      plugins: {
+        legend: { position: 'bottom', labels: { padding: 10, usePointStyle: true, pointStyle: 'rect', font: { size: 11 } } },
+        tooltip: { callbacks: { label: c => ` ${c.dataset.label}: ${fmtEurFull(c.parsed.x)}` } }
+      },
+      scales: {
+        x: { stacked: true, grid: { color: GC }, border: { display: false }, ticks: { callback: v => fmtEur(v) } },
+        y: { stacked: true, grid: { display: false }, border: { display: false } }
+      }
+    }
+  });
+
+  /* Tasas autorización (barras manuales) */
+  const maxTasa = 100;
+  document.getElementById('fext-tasa-bars').innerHTML = E.map((e, i) => {
+    const tasa = e.pres > 0 ? e.aut/e.pres*100 : 0;
+    const col = tasa >= 90 ? '#059669' : tasa >= 75 ? '#C89B2A' : '#C0392B';
+    return `<div class="fext-bar-wrap">
+      <div class="fext-bar-lbl" title="${e.dir}">${e.dir}</div>
+      <div class="fext-bar-track">
+        <div class="fext-bar-fill" style="width:${tasa.toFixed(1)}%;background:${col}"></div>
+      </div>
+      <div class="fext-bar-val">${tasa.toFixed(1)}% · ${fmtN(e.aut)}/${fmtN(e.pres)}</div>
+    </div>`;
+  }).join('');
+
+  /* Chart 3: Horas permiso */
+  const hSorted = I.slice().sort((a,b) => b.horas - a.horas);
+  fextMkChart('fext-c-horas', {
+    type: 'bar',
+    data: {
+      labels: hSorted.map(i => i.dir.length > 14 ? i.dir.substring(0,13)+'…' : i.dir),
+      datasets: [{ data: hSorted.map(i => i.horas), backgroundColor: FEXT_DIR_COLORS, borderRadius: 5, borderSkipped: false }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => ` ${fmtN(c.parsed.y)} horas` } } },
+      scales: {
+        x: { grid: { color: GC }, border: { display: false } },
+        y: { grid: { color: GC }, border: { display: false }, beginAtZero: true, ticks: { callback: v => fmtN(v) + 'h' } }
+      }
+    }
+  });
+
+  /* Chart 4: Participación stacked */
+  const partColors = { asistente:'#0055A5', ponencia:'#7c3aed', comunicacion:'#059669', poster:'#C89B2A', otros:'#C0392B', distancia:'#64748b' };
+  const partLabels = { asistente:'Asistente', ponencia:'Ponencia', comunicacion:'Comunicación', poster:'Poster', otros:'Otros', distancia:'A distancia' };
+  fextMkChart('fext-c-part-stacked', {
+    type: 'bar',
+    data: {
+      labels: P.map(p => p.dir),
+      datasets: Object.keys(partColors).map(k => ({
+        label: partLabels[k],
+        data: P.map(p => p[k]),
+        backgroundColor: partColors[k] + 'cc',
+        borderRadius: 2,
+      }))
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      interaction: { mode: 'index', intersect: false },
+      plugins: { legend: { position: 'bottom', labels: { padding: 8, usePointStyle: true, pointStyle: 'rect', font: { size: 10 } } } },
+      scales: {
+        x: { stacked: true, grid: { color: GC }, border: { display: false }, ticks: { font: { size: 11 } } },
+        y: { stacked: true, grid: { color: GC }, border: { display: false }, ticks: { precision: 0 } }
+      }
+    }
+  });
+
+  /* Lugares: barras manuales */
+  const maxInvL = L[0]?.total || 1;
+  document.getElementById('fext-lugares-bars').innerHTML = L.map(l => {
+    const col = FEXT_COLORS[l.dir] || '#0055A5';
+    return `<div class="fext-bar-wrap" style="margin-bottom:6px">
+      <div class="fext-bar-lbl" title="${l.lugar} (${l.dir})" style="width:190px;font-size:11px">${l.lugar.substring(0,28)}</div>
+      <div class="fext-bar-track">
+        <div class="fext-bar-fill" style="width:${(l.total/maxInvL*100).toFixed(1)}%;background:${col}"></div>
+      </div>
+      <div class="fext-bar-val" style="min-width:65px">${fmtEur(l.total)}</div>
+    </div>`;
+  }).join('');
+
+  /* Tabla actividades */
+  renderFextTable();
+}
+
+/* ── Tabla filtrable ── */
+function renderFextTable(actsParam) {
+  const D = FEXT_DATA;
+  const acts = actsParam || D.actividades || [];
+  document.getElementById('fext-act-count').textContent = acts.length.toLocaleString('es-ES');
+  const colDir = {
+    'Gerencia': '#0055A5', 'Médica': '#7c3aed', 'Enfermería': '#C89B2A',
+    'Gestión': '#1A8080', 'RRHH': '#C0392B'
+  };
+  document.getElementById('fext-tbody').innerHTML = acts.slice(0, 200).map(a => `<tr>
+    <td style="font-weight:500;max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${a.nombre}</td>
+    <td style="max-width:110px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:11px;color:#6b7280">${a.cat}</td>
+    <td style="max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:11px">${a.lugar}</td>
+    <td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:500;color:#1e3a5f">${a.actividad}</td>
+    <td><span class="fext-dir-badge" style="background:${(colDir[a.dir]||'#6b7280')}22;color:${colDir[a.dir]||'#6b7280'}">${a.dir}</span></td>
+    <td style="font-size:11px;color:#9ca3af;white-space:nowrap">${a.inicio}</td>
+    <td style="text-align:right;font-variant-numeric:tabular-nums">${a.horas}h</td>
+    <td style="text-align:right;font-variant-numeric:tabular-nums;font-weight:500">${fmtEurFull(a.total)}</td>
+  </tr>`).join('');
+  if (acts.length > 200) {
+    document.getElementById('fext-tbody').innerHTML +=
+      `<tr><td colspan="8" style="text-align:center;padding:12px;color:#9ca3af;font-size:12px">Mostrando 200 de ${acts.length.toLocaleString('es-ES')} registros · usa los filtros para acotar</td></tr>`;
+  }
+}
+
+function filterFextTable() {
+  const q   = (document.getElementById('fext-search').value || '').toLowerCase().trim();
+  const dir = (document.getElementById('fext-filter-dir').value || '');
+  const acts = (FEXT_DATA.actividades || []).filter(a => {
+    const matchQ = !q || [a.nombre, a.cat, a.lugar, a.actividad].some(f => f.toLowerCase().includes(q));
+    const matchD = !dir || a.dir === dir;
+    return matchQ && matchD;
+  });
+  renderFextTable(acts);
+}
+
+window.switchFormTab = switchFormTab;
+window.filterFextTable = filterFextTable;
+})();
+</script>
+</body>
 </html>
