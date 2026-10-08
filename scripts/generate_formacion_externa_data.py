@@ -132,7 +132,7 @@ def procesar(ruta):
         if sheet not in wb.sheetnames:
             continue
         ws5 = wb[sheet]
-        for r in list(ws5.iter_rows(values_only=True))[12:]:
+        for r in list(ws5.iter_rows(values_only=True))[10:]:
             if not r[0] or not r[3]:
                 continue
             nombre = str(r[0]).strip()
