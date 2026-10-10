@@ -1,31 +1,10 @@
 {
  "eventos": [
   {
-   "id": "1hovp0f947elftpv00muavdhif",
-   "titulo": "1ª SESIÓN - MATRÓN / A",
-   "inicio": "2026-06-12",
-   "hora": "10:00",
-   "fin": "2026-06-13"
-  },
-  {
-   "id": "5rjrjmfioq4ucc2gssqoe7tc0e",
-   "titulo": "1ª SESIÓN - ENFERMERA/O PEDIATRIA",
-   "inicio": "2026-06-12",
-   "hora": "10:00",
-   "fin": "2026-06-13"
-  },
-  {
    "id": "5rqcm67v2087tc6gse0slig2pt",
    "titulo": "1ª SESIÓN - ENFERMERA/O GERIATRÍA",
    "inicio": "2026-06-12",
    "hora": "10:15",
-   "fin": "2026-06-13"
-  },
-  {
-   "id": "3c920hvkb6o1vehpgggql9prda",
-   "titulo": "2ª SESIÓN - ENFERMERA/O TRABAJO",
-   "inicio": "2026-06-12",
-   "hora": "10:30",
    "fin": "2026-06-13"
   },
   {
