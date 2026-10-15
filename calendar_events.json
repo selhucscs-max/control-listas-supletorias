@@ -1,12 +1,6 @@
 {
  "eventos": [
   {
-   "id": "5mkvoge0igrm30s8ptvh75594u",
-   "titulo": "ENFERMERO/A_Publicación Bases",
-   "inicio": "2026-06-16",
-   "fin": "2026-06-17"
-  },
-  {
    "id": "7abbg57c750lslprrmv23allpi",
    "titulo": "ENFERMERO/A- (Plazo de presentación de solicitudes)",
    "inicio": "2026-06-17",
@@ -521,6 +515,84 @@
    "titulo": "PLANCHADOR/A- (Plazo de presentación de solicitudes)",
    "inicio": "2026-09-29",
    "fin": "2026-10-02"
+  },
+  {
+   "id": "012nti4ngaihc6ffkmeg1ja31k",
+   "titulo": "MEDICA/O DE FAMILIA_Publicación Bases",
+   "inicio": "2026-10-19",
+   "fin": "2026-10-20"
+  },
+  {
+   "id": "0dmqhp06invghlf8cg3vdgcs2f",
+   "titulo": "FEA CIR. TORÁCICA_Publicación Bases",
+   "inicio": "2026-10-19",
+   "fin": "2026-10-20"
+  },
+  {
+   "id": "5ptbeop62m8v7umpj68dr5k0pc",
+   "titulo": "FEA CARDIOLOGIA_Publicación Bases",
+   "inicio": "2026-10-19",
+   "fin": "2026-10-20"
+  },
+  {
+   "id": "6rj8l4kumqrieoqaa2ju5iveg7",
+   "titulo": "FEA MEDICINA INTERNA_Publicación Bases",
+   "inicio": "2026-10-19",
+   "fin": "2026-10-20"
+  },
+  {
+   "id": "7g2ru2stffh5mqfl4642hb46oe",
+   "titulo": "FEA ANGIOLOGIA Y CIR. VASCULAR_Publicación Bases",
+   "inicio": "2026-10-19",
+   "fin": "2026-10-20"
+  },
+  {
+   "id": "7jcv7s54j3moppts0p6bhcg2bq",
+   "titulo": "FEA MED NUCLEAR_Publicación Modificación de CV",
+   "inicio": "2026-10-19",
+   "fin": "2026-10-20"
+  },
+  {
+   "id": "7kflviqfpsqr7vsbg5v38g05ae",
+   "titulo": "FEA INMUNOLOGÍA_Publicación Bases",
+   "inicio": "2026-10-19",
+   "fin": "2026-10-20"
+  },
+  {
+   "id": "0cr1anqcfsigiq7qgc4e89biu7",
+   "titulo": "FEA INMUNOLOGIA - (Plazo de presentación de solicitudes)",
+   "inicio": "2026-10-20",
+   "fin": "2026-10-23"
+  },
+  {
+   "id": "1361f00f9tpnrtn7i5m3fkfcmb",
+   "titulo": "FEA ANGIOLOGIA Y CIR. VASCULAR - (Plazo de presentación de solicitudes)",
+   "inicio": "2026-10-20",
+   "fin": "2026-10-23"
+  },
+  {
+   "id": "2rvgocr5o15c8tv0i8offh0bc5",
+   "titulo": "FEA MEDICINA INTERNA - (Plazo de presentación de solicitudes)",
+   "inicio": "2026-10-20",
+   "fin": "2026-10-23"
+  },
+  {
+   "id": "30bksdu4lbqn83f5uhaj6t6g6d",
+   "titulo": "FEA CARDIOLOGIA - (Plazo de presentación de solicitudes)",
+   "inicio": "2026-10-20",
+   "fin": "2026-10-23"
+  },
+  {
+   "id": "5edib1ist36o9j2n81vbmof53e",
+   "titulo": "MÉDICA/O DE FAMILIA - (Plazo de presentación de solicitudes)",
+   "inicio": "2026-10-20",
+   "fin": "2026-10-23"
+  },
+  {
+   "id": "7lvt72jh8cud6fmf7d1rgiesg3",
+   "titulo": "FEA CIR. TORÁCICA - (Plazo de presentación de solicitudes)",
+   "inicio": "2026-10-20",
+   "fin": "2026-10-23"
   },
   {
    "id": "53i9mm1lujgdso7lrjf8gi71qd_20270101",
