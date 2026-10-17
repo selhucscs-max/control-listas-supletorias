@@ -7,12 +7,6 @@
    "fin": "2026-07-17"
   },
   {
-   "id": "6un8ec60rj7samo2pt3l74cil2",
-   "titulo": "MATRÓN/A (AD&EX Prov)",
-   "inicio": "2026-06-18",
-   "fin": "2026-06-19"
-  },
-  {
    "id": "0sv40tvj67gb5ti70jcs06ktmp",
    "titulo": "MATRÓN/A- (Plazo de reclamaciones AD&EX)",
    "inicio": "2026-06-19",
@@ -535,6 +529,18 @@
    "fin": "2026-10-20"
   },
   {
+   "id": "6au6vbc37ts4hf0fa6v27imt4j",
+   "titulo": "FEA UROLOGÍA_Publicación Bases",
+   "inicio": "2026-10-19",
+   "fin": "2026-10-20"
+  },
+  {
+   "id": "6qbicr38au9ga1c3745tmu4q45",
+   "titulo": "FEA NEUROLOGÍA_Publicación Bases",
+   "inicio": "2026-10-19",
+   "fin": "2026-10-20"
+  },
+  {
    "id": "6rj8l4kumqrieoqaa2ju5iveg7",
    "titulo": "FEA MEDICINA INTERNA_Publicación Bases",
    "inicio": "2026-10-19",
@@ -559,6 +565,12 @@
    "fin": "2026-10-20"
   },
   {
+   "id": "01rvdt7ss7k9r5oqpcbo6s5qju",
+   "titulo": "FEA UROLOGÍA - (Plazo de presentación de solicitudes)",
+   "inicio": "2026-10-20",
+   "fin": "2026-10-23"
+  },
+  {
    "id": "0cr1anqcfsigiq7qgc4e89biu7",
    "titulo": "FEA INMUNOLOGIA - (Plazo de presentación de solicitudes)",
    "inicio": "2026-10-20",
@@ -567,6 +579,12 @@
   {
    "id": "1361f00f9tpnrtn7i5m3fkfcmb",
    "titulo": "FEA ANGIOLOGIA Y CIR. VASCULAR - (Plazo de presentación de solicitudes)",
+   "inicio": "2026-10-20",
+   "fin": "2026-10-23"
+  },
+  {
+   "id": "2co1slu37r5t21qbsf42p74uqo",
+   "titulo": "FEA NEUROLOGÍA - (Plazo de presentación de solicitudes)",
    "inicio": "2026-10-20",
    "fin": "2026-10-23"
   },
