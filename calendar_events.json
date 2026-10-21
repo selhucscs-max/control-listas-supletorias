@@ -13,18 +13,6 @@
    "fin": "2026-06-24"
   },
   {
-   "id": "0skaoebue9d37kq2hngl7ljm0n",
-   "titulo": "FEA - GERIATRÍA (AD&EX Def y BAREMACIÓN Prov)",
-   "inicio": "2026-06-22",
-   "fin": "2026-06-23"
-  },
-  {
-   "id": "2lkn3o6vbjbmcjbge59f4jd5e5",
-   "titulo": "FEA - ORL (AD&EX Def y BAREMACIÓN Prov)",
-   "inicio": "2026-06-22",
-   "fin": "2026-06-23"
-  },
-  {
    "id": "724emlhpip4hl3a21qs4b7qor4",
    "titulo": "FEA - ORL_ (Plazo de reclamaciones Prov)",
    "inicio": "2026-06-23",
@@ -547,7 +535,7 @@
   },
   {
    "id": "7jcv7s54j3moppts0p6bhcg2bq",
-   "titulo": "FEA MED NUCLEAR_Publicación Modificación de CV",
+   "titulo": "FEA MED NUCLEAR_ Modificación de CV",
    "inicio": "2026-10-19",
    "fin": "2026-10-20"
   },
@@ -604,6 +592,18 @@
    "titulo": "FEA CIR. TORÁCICA - (Plazo de presentación de solicitudes)",
    "inicio": "2026-10-20",
    "fin": "2026-10-23"
+  },
+  {
+   "id": "6qsjsap2ge2mn5ear25k6vsp8u",
+   "titulo": "MATRON/A_Publicación Bases",
+   "inicio": "2026-10-21",
+   "fin": "2026-10-22"
+  },
+  {
+   "id": "6rtmtkkng3ddal66j93jg2j79f",
+   "titulo": "MATRON/A - (Plazo de presentación de solicitudes)",
+   "inicio": "2026-10-22",
+   "fin": "2026-11-06"
   },
   {
    "id": "53i9mm1lujgdso7lrjf8gi71qd_20270101",
