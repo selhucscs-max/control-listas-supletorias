@@ -7,44 +7,6 @@
    "fin": "2026-07-17"
   },
   {
-   "id": "2bps72muid6a4ueqnpacjfka0q",
-   "titulo": "ENF_GERIÁTRICA_ (Plazo de reclamaciones  Rel_Prov)",
-   "inicio": "2026-06-25",
-   "fin": "2026-06-30"
-  },
-  {
-   "id": "2ppqd0jsr69qq6hgjanp0nr57g",
-   "titulo": "ENF_TRABAJO_ (Plazo de reclamaciones  Rel_Prov)",
-   "inicio": "2026-06-25",
-   "fin": "2026-06-30"
-  },
-  {
-   "id": "5fpqolkvhvrm2dvv6g3vvq74dm",
-   "titulo": "ENF_SALUD MENTAL_ (Plazo de reclamaciones  Rel_Prov)",
-   "inicio": "2026-06-25",
-   "fin": "2026-06-30"
-  },
-  {
-   "id": "7meqbuhsovnhps54jvmhcn4j2p",
-   "titulo": "ENF_PEDIÁTRICA_ (Plazo de reclamaciones  Rel_Prov)",
-   "inicio": "2026-06-25",
-   "fin": "2026-06-30"
-  },
-  {
-   "id": "2jga3aq1ktinmk0qhudpmn9t72",
-   "titulo": "2ª SESIÓN - FEA GERIATRÍA",
-   "inicio": "2026-06-29",
-   "hora": "12:15",
-   "fin": "2026-06-30"
-  },
-  {
-   "id": "6jb98o2mm4ptsmgse1qkt4a49q",
-   "titulo": "2ª SESIÓN - FEA ORL",
-   "inicio": "2026-06-29",
-   "hora": "12:30",
-   "fin": "2026-06-30"
-  },
-  {
    "id": "3u7kghk1prr3963u9s78c6sdos",
    "titulo": "CALEFACTOR  (Lista Definitiva)",
    "inicio": "2026-06-30",
@@ -555,6 +517,27 @@
    "titulo": "MATRON/A - (Plazo de presentación de solicitudes)",
    "inicio": "2026-10-22",
    "fin": "2026-11-06"
+  },
+  {
+   "id": "57fi1drhrrohe6hpbglubh30sl",
+   "titulo": "2ª SESIÓN - FEA OBST Y GINE",
+   "inicio": "2026-10-29",
+   "hora": "09:15",
+   "fin": "2026-10-30"
+  },
+  {
+   "id": "3it4m6fh768p31ber22nhb3kl7",
+   "titulo": "2ª SESIÓN - FEA GERIATRIA",
+   "inicio": "2026-10-29",
+   "hora": "09:20",
+   "fin": "2026-10-30"
+  },
+  {
+   "id": "008s0pemh89ntkq1fjamt10aj3",
+   "titulo": "2ª SESIÓN - FEA RADIOFARMACIA",
+   "inicio": "2026-10-29",
+   "hora": "09:25",
+   "fin": "2026-10-30"
   },
   {
    "id": "53i9mm1lujgdso7lrjf8gi71qd_20270101",
