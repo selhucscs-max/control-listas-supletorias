@@ -7,12 +7,6 @@
    "fin": "2026-07-17"
   },
   {
-   "id": "3u7kghk1prr3963u9s78c6sdos",
-   "titulo": "CALEFACTOR  (Lista Definitiva)",
-   "inicio": "2026-06-30",
-   "fin": "2026-07-01"
-  },
-  {
    "id": "2v2r93b4a1fceji2fhirb1r41c",
    "titulo": "2ª SESIÓN - ENFERMERA/O PEDIATRIA",
    "inicio": "2026-07-03",
@@ -519,6 +513,12 @@
    "fin": "2026-11-06"
   },
   {
+   "id": "4l1m0u9c0eurgf4pbs2junmquh",
+   "titulo": "FEA PSICOLOGÍA CLÍNICA (AD&EX Prov)",
+   "inicio": "2026-10-29",
+   "fin": "2026-10-30"
+  },
+  {
    "id": "57fi1drhrrohe6hpbglubh30sl",
    "titulo": "2ª SESIÓN - FEA OBST Y GINE",
    "inicio": "2026-10-29",
@@ -538,6 +538,12 @@
    "inicio": "2026-10-29",
    "hora": "09:25",
    "fin": "2026-10-30"
+  },
+  {
+   "id": "3q9f64qjh0b6hakgropi8i791s",
+   "titulo": "FEA PSICOLOGIA CLÍNICA - (Plazo de presentación subsanaciones)",
+   "inicio": "2026-10-30",
+   "fin": "2026-11-07"
   },
   {
    "id": "53i9mm1lujgdso7lrjf8gi71qd_20270101",
