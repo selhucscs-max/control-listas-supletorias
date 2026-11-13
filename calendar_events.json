@@ -500,10 +500,24 @@
    "fin": "2026-11-20"
   },
   {
+   "id": "1n9eoqv2r7249f20f6bfpkj9p2_20261113T150000Z",
+   "titulo": "INHÁBIL PLATINO - PLATEA",
+   "inicio": "2026-11-13",
+   "hora": "15:00",
+   "fin": "2026-11-15"
+  },
+  {
    "id": "53i9mm1lujgdso7lrjf8gi71qd_20270101",
    "titulo": "INHÁBIL SEDE ELECTRÓNICA",
    "inicio": "2027-01-01",
    "fin": "2027-01-02"
+  },
+  {
+   "id": "1n9eoqv2r7249f20f6bfpkj9p2_20271113T150000Z",
+   "titulo": "INHÁBIL PLATINO - PLATEA",
+   "inicio": "2027-11-13",
+   "hora": "15:00",
+   "fin": "2027-11-15"
   }
  ]
 }
