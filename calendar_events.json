@@ -1,12 +1,6 @@
 {
  "eventos": [
   {
-   "id": "6kt30hrfpqacfqdojc5okee17f",
-   "titulo": "GOBERNANTA_Publicación Bases",
-   "inicio": "2026-07-21",
-   "fin": "2026-07-22"
-  },
-  {
    "id": "674buc33sp10lqrst66hjsi5h9",
    "titulo": "GOBERNANTA- (Plazo de presentación de solicitudes)",
    "inicio": "2026-07-22",
@@ -493,6 +487,42 @@
    "inicio": "2026-11-17",
    "hora": "14:45",
    "fin": "2026-11-18"
+  },
+  {
+   "id": "4b714f8m6lhdlnd8dqvnuh0mqq",
+   "titulo": "MEDICO DE FAMILIA (AD&EX Prov)",
+   "inicio": "2026-11-24",
+   "fin": "2026-11-25"
+  },
+  {
+   "id": "5b7h7lempirejj7j244qrmfk2e",
+   "titulo": "FEA RADIOFARMACIA (AD&EX Prov)",
+   "inicio": "2026-11-24",
+   "fin": "2026-11-25"
+  },
+  {
+   "id": "7thh95q34s85h9vniomq8aevij",
+   "titulo": "FEA CARDIOLOGIA (AD&EX Prov)",
+   "inicio": "2026-11-24",
+   "fin": "2026-11-25"
+  },
+  {
+   "id": "014vs89qoii323tilsf6ds7m6v",
+   "titulo": "MEDICO DE FAMILIA  (Plazo de presentación subsanaciones AD&EX Prov)",
+   "inicio": "2026-11-25",
+   "fin": "2026-12-02"
+  },
+  {
+   "id": "0jf5b5175i4f2tphchl529fri7",
+   "titulo": "FEA CARDIOLOGIA  (Plazo de presentación subsanaciones AD&EX Prov.)",
+   "inicio": "2026-11-25",
+   "fin": "2026-12-02"
+  },
+  {
+   "id": "15eojknuod4rhr6def2sirtknr",
+   "titulo": "FEA RADIOFARMACIA  (Plazo de presentación subsanaciones AD&EX Prov)",
+   "inicio": "2026-11-25",
+   "fin": "2026-12-02"
   },
   {
    "id": "53i9mm1lujgdso7lrjf8gi71qd_20270101",
